@@ -24,8 +24,6 @@ public class MusicHandler {
     boolean walked = false;
 
     public MusicHandler() throws IOException {
-        walk = new OggClip(new FileInputStream(getClass().getClassLoader().getResource("assets/sounds/footstep09.ogg").getPath()));
-
     }
 
     public void startBackgroundSong() {

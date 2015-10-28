@@ -17,9 +17,15 @@ public class KeyHandler extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         handler.addKey(key);
-        if (handler.keys.contains(KeyEvent.VK_CONTROL)) {
-            sfx.swingSFX();
-        }
+         for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject tempObject = handler.objects.get(i);
+
+            if (tempObject.getId() == ObjectId.Player ) {
+                if (key == KeyEvent.VK_CONTROL && (!tempObject.isAttacking_left())) {
+                    sfx.swingSFX();
+                }
+            }
+         }
     }
 
     @Override

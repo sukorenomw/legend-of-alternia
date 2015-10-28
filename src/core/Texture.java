@@ -18,9 +18,9 @@ public class Texture {
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
-            playerSheet = loader.load("/assets/images/character/male.png");
+            playerSheet = loader.load("/assets/images/character/female.png");
             groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-1.png");
-            playerAttackSheet = loader.load("/assets/images/character/male-attack.png");
+            playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
