@@ -155,7 +155,7 @@ public class Player extends GameObject {
                     dying = true;
                     
                 }
-                if ( (attacking_left || attacking_right) && getBoundsSword().intersects(tempObject.getBounds())){
+                if ( (attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds())) ){
                     tempObject.setDying(true);
                     handler.removeObject(tempObject);
                 }
@@ -173,8 +173,9 @@ public class Player extends GameObject {
         g2d.draw(getBoundsLeft());
         g2d.draw(getBoundsRight());
         g2d.draw(getBoundsTop());
-        g2d.draw(getBoundsSword());
-        System.out.println(dying);
+        g2d.draw(getBoundsSwordRight());
+        g2d.draw(getBoundsSwordLeft());
+
 //        
         if(dying){
             
@@ -220,7 +221,10 @@ public class Player extends GameObject {
         return new Rectangle((int) x, (int) (y + ((HEIGHT / 6) / 2)), (int) WIDTH / 5, (int) (HEIGHT - (HEIGHT / 3)));
     }
 
-    public Rectangle getBoundsSword() {
-        return new Rectangle((int) x+50, (int) (y+10), (int) WIDTH+40, (int) HEIGHT-25);
+    public Rectangle getBoundsSwordRight() {
+        return new Rectangle((int) x+50, (int) (y+10), (int) WIDTH+50, (int) HEIGHT-25);
+    }
+    public Rectangle getBoundsSwordLeft(){
+        return new Rectangle((int) x-100, (int) (y+10), (int) WIDTH+50, (int) HEIGHT-25);
     }
 }

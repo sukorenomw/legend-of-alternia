@@ -32,7 +32,10 @@ public class Monster extends GameObject {
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
+        x += velX;
+        
         walk.runAnimation();
+        velX = -1;
         
     }
 
@@ -47,7 +50,7 @@ public class Monster extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, (int)WIDTH, (int)HEIGHT);
+        return new Rectangle((int)x+10, (int)y+5, (int)WIDTH+17, (int)HEIGHT);
     }
     
 }

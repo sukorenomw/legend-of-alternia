@@ -13,7 +13,7 @@ public class Camera {
     public void tick(GameObject player) {
         if(player.getX() < Game.WIDTH/2+96){
             x = -96 ;
-        }else if(player.getX() < 9800 && player.getX() > 9300){
+        }else if(player.getX() < 97440 && player.getX() > 9300){
             
         }else{
             x = - player.getX() + Game.WIDTH /2;
