@@ -7,12 +7,8 @@ package core;
 
 /**
  *
- * @author itoma
+ * @author raiven
  */
-public enum ObjectId {
-    Player(),
-    Block(),
-    Ground(),
-    MainMenu(),
-    Monster();
+public class MainMenu {
+    
 }

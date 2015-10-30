@@ -76,7 +76,7 @@ public class KeyHandler extends KeyAdapter {
                     }
                     if (handler.keys.contains(KeyEvent.VK_SPACE) && !tempObject.isJumping()) {
                         tempObject.setJumping(true);
-                        tempObject.setVelY(-15);
+                        tempObject.setVelY(-13);
                     }
                     if (handler.keys.contains(KeyEvent.VK_CONTROL)) {
                         if (tempObject.isMove_right()) {

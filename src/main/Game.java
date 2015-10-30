@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
-import objects.Block;
+import objects.Monster;
 import objects.Player;
 
 public class Game extends Canvas implements Runnable {
@@ -35,7 +35,7 @@ public class Game extends Canvas implements Runnable {
     private MusicHandler musicHandler;
     
     static Texture texture;
-
+    
     private void init() {
         WIDTH = getWidth();
         HEIGHT = getHeight();
@@ -43,7 +43,7 @@ public class Game extends Canvas implements Runnable {
         texture = new Texture();
 
         ImageLoader imageLoader = new ImageLoader();
-        level = imageLoader.load("/assets/images/dungeon/dun-1.png");
+        level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         handler = new Handler();
         loadImageLevel(level);
         
@@ -60,7 +60,7 @@ public class Game extends Canvas implements Runnable {
        
         handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
-
+    
     public synchronized void start() {
         if (running)
             return;
@@ -139,7 +139,7 @@ public class Game extends Canvas implements Runnable {
         int w = image.getWidth();
         int h = image.getHeight();
         
-        for (int i = 2; i < 103; i++) {
+        for (int i = 2; i < 203; i++) {
             for (int j = 2; j < 21; j++) {
                 int pixel = image.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
@@ -172,8 +172,8 @@ public class Game extends Canvas implements Runnable {
                     handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 7, ObjectId.Block));
                 if (red == 255 && green == 106  && blue == 0)
                     handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 9, ObjectId.Block));
-                
-                
+                if (red == 0 && green == 0 && blue == 255)
+                    handler.addObject(new Monster(i*Block.WIDTH, j*Block.HEIGHT-50, ObjectId.Monster));       
             }
         }
     }

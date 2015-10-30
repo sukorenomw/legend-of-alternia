@@ -3,17 +3,20 @@ package core;
 import java.awt.image.BufferedImage;
 import objects.Block;
 import objects.Ground;
+import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS;
+    private SpriteSheet bS, pS, gS, pAS, mS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
     private BufferedImage playerAttackSheet = null;
+    private BufferedImage monsterSheet = null; 
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[13];
     public BufferedImage[] player = new BufferedImage[36];
+    public BufferedImage[] monster = new BufferedImage[16];
 
     public Texture() {
         ImageLoader loader = new ImageLoader();
@@ -21,6 +24,7 @@ public class Texture {
             playerSheet = loader.load("/assets/images/character/female.png");
             groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-1.png");
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
+            monsterSheet = loader.load("/assets/images/monster/terrex.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -28,6 +32,7 @@ public class Texture {
         pS = new SpriteSheet(playerSheet);
         gS = new SpriteSheet(groundSheet);
         pAS = new SpriteSheet(playerAttackSheet);
+        mS = new SpriteSheet(monsterSheet);
         
         getTextures();
     }
@@ -83,5 +88,22 @@ public class Texture {
         player[33] = pAS.grabImage(3, 2, 102, 49);
         player[34] = pAS.grabImage(2, 2, 102, 49);
         player[35] = pAS.grabImage(1, 2, 102, 49);
+        
+        monster[0] = mS.grabImage(1, 1, 96, 80);
+        monster[1] = mS.grabImage(2, 1, 96, 80);
+        monster[2] = mS.grabImage(3, 1, 96, 80);
+        monster[3] = mS.grabImage(4, 1, 96, 80);
+        monster[4] = mS.grabImage(5, 1, 96, 80);
+        monster[5] = mS.grabImage(6, 1, 96, 80);
+        monster[6] = mS.grabImage(7, 1, 96, 80);
+        monster[7] = mS.grabImage(8, 1, 96, 80);
+        monster[8] = mS.grabImage(1, 2, 96, 80);
+        monster[9] = mS.grabImage(2, 2, 96, 80);
+        monster[10] = mS.grabImage(3, 2, 96, 80);
+        monster[11] = mS.grabImage(4, 2, 96, 80);
+        monster[12] = mS.grabImage(5, 2, 96, 80);
+        monster[13] = mS.grabImage(6, 2, 96, 80);
+        monster[14] = mS.grabImage(7, 2, 96, 80);
+        monster[15] = mS.grabImage(8, 2, 96, 80);
     }
 }

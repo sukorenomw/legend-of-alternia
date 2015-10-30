@@ -17,7 +17,15 @@ public abstract class GameObject {
     protected float x, y;
     protected ObjectId id;
     protected float velX = 0, velY = 0;
-    protected boolean falling = true, jumping = false, move_left = false, move_right = true, attacking_right = false, attacking_left = false;
+    protected boolean falling = true, jumping = false, move_left = false, move_right = true, attacking_right = false, attacking_left = false, dying = false;
+
+    public boolean isDying() {
+        return dying;
+    }
+
+    public void setDying(boolean dying) {
+        this.dying = dying;
+    }
 
     public GameObject(float x, float y, ObjectId id) {
         this.x = x;
