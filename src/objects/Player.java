@@ -165,16 +165,16 @@ public class Player extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.blue);
-        g.fillRect((int)x, (int)y, (int)WIDTH, (int)HEIGHT);        
+        //g.setColor(Color.blue);
+        //g.fillRect((int)x, (int)y, (int)WIDTH, (int)HEIGHT);        
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.yellow);
-        g2d.draw(getBounds());
-        g2d.draw(getBoundsLeft());
-        g2d.draw(getBoundsRight());
-        g2d.draw(getBoundsTop());
-        g2d.draw(getBoundsSwordRight());
-        g2d.draw(getBoundsSwordLeft());
+//        g2d.draw(getBounds());
+//        g2d.draw(getBoundsLeft());
+//        g2d.draw(getBoundsRight());
+//        g2d.draw(getBoundsTop());
+//        g2d.draw(getBoundsSwordRight());
+//        g2d.draw(getBoundsSwordLeft());
 
 //        
         if(dying){

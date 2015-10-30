@@ -71,7 +71,7 @@ public class Monster extends GameObject {
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
-        g2d.draw(getBounds());
+//        g2d.draw(getBounds());
     }
 
     @Override
