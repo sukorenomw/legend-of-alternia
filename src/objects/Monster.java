@@ -14,10 +14,13 @@ import main.Game;
 public class Monster extends GameObject {
     public static final float WIDTH = 100, HEIGHT = 100;
     Texture texture = Game.getInstance();
-    private Animation walk;
+    private Animation walk, backward;
+    private boolean walking = true;
+    private int static_x;
 
     public Monster(float x, float y, ObjectId id) {
         super(x, y, id);
+        static_x =(int) x;
         walk = new Animation(5,
             texture.monster[0],
             texture.monster[1],
@@ -27,22 +30,45 @@ public class Monster extends GameObject {
             texture.monster[5],
             texture.monster[6],
             texture.monster[7]);
+        backward = new Animation(5, 
+            texture.monster[8],
+            texture.monster[9],
+            texture.monster[10],
+            texture.monster[11],
+            texture.monster[12],
+            texture.monster[13],
+            texture.monster[14],
+            texture.monster[15]);
+        velX = -2;
         
     }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
         x += velX;
-        
+        if(x < static_x-100 ){
+            velX = +2;
+            walking = false;
+        }else if(x > static_x){
+            walking = true;
+            velX = -2;
+        }
+        backward.runAnimation();
         walk.runAnimation();
-        velX = -1;
         
     }
 
     @Override
     public void render(Graphics g) {
-        if(!dying)
-        walk.drawAnimation(g, (int)x, (int)y-13);
+        if(!dying){
+            if(walking){
+                walk.drawAnimation(g, (int)x, (int)y-13);
+            }else{
+                backward.drawAnimation(g, (int)x, (int)y-13);
+            }
+            
+        }
+        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
         g2d.draw(getBounds());
