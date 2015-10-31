@@ -31,7 +31,7 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private KeyHandler keyHandler;
     private Camera camera;
-    private BufferedImage level;
+    private BufferedImage level, background;
     private MusicHandler musicHandler;
     
     static Texture texture;
@@ -44,6 +44,7 @@ public class Game extends Canvas implements Runnable {
 
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
+        background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
         loadImageLevel(level);
         
@@ -122,10 +123,8 @@ public class Game extends Canvas implements Runnable {
         
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
-        
-        g.setColor(new Color(0, 0, 0));
-        g.fillRect(0, 0, getWidth(), getHeight());
-        
+         
+        g.drawImage(background, (int)0, (int)0, null);       
         
         g2d.translate(camera.getX(), camera.getY());
         handler.render(g);
