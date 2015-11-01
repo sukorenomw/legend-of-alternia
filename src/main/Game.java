@@ -48,8 +48,8 @@ public class Game extends Canvas implements Runnable {
         village = imageLoader.load("");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
-        //loadImageLevel(level);
-        loadVillage(village);
+        loadImageLevel(level);
+//        loadVillage(village);
 
         camera = new Camera(0, 0);
         try {
