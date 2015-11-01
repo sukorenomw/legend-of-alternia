@@ -23,31 +23,34 @@ import objects.Monster;
 import objects.Player;
 
 public class Game extends Canvas implements Runnable {
+
     public static final double FPS = 55.0;
     public static int WIDTH, HEIGHT;
-    
+
     private boolean running = false;
     private Thread thread;
     private Handler handler;
     private KeyHandler keyHandler;
     private Camera camera;
-    private BufferedImage level, background;
+    private BufferedImage level, background, village;
     private MusicHandler musicHandler;
-    
+
     static Texture texture;
-    
+
     private void init() {
         WIDTH = getWidth();
         HEIGHT = getHeight();
-        
+
         texture = new Texture();
 
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
+        village = imageLoader.load("");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
-        loadImageLevel(level);
-        
+        //loadImageLevel(level);
+        loadVillage(village);
+
         camera = new Camera(0, 0);
         try {
             musicHandler = new MusicHandler();
@@ -57,20 +60,20 @@ public class Game extends Canvas implements Runnable {
         musicHandler.startBackgroundSong();
         keyHandler = new KeyHandler(handler, musicHandler);
         addKeyListener(keyHandler);
-        
-       
+
         handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
-    
+
     public synchronized void start() {
-        if (running)
+        if (running) {
             return;
-        
+        }
+
         running = true;
         thread = new Thread(this);
         thread.start();
     }
-    
+
     @Override
     public void run() {
         init();
@@ -102,7 +105,7 @@ public class Game extends Canvas implements Runnable {
             }
         }
     }
-    
+
     private void tick() {
         handler.tick();
         keyHandler.tick();
@@ -110,78 +113,120 @@ public class Game extends Canvas implements Runnable {
             GameObject object = handler.objects.get(i);
             if (object.getId() == ObjectId.Player) {
                 camera.tick(object);
-            }             
+            }
         }
     }
-    
+
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
             this.createBufferStrategy(3);
             return;
         }
-        
+
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
-         
-        g.drawImage(background, (int)0, (int)0, null);       
-        
+
+        //g.drawImage(background, (int)0, (int)0, null);       
+        g.setColor(new Color(208, 244, 247));
+        g.fillRect(0, 0, getWidth(), getHeight());
         g2d.translate(camera.getX(), camera.getY());
         handler.render(g);
         g2d.translate(-camera.getX(), -camera.getY());
-        
+
         g.dispose();
         bs.show();
     }
-    
+
     private void loadImageLevel(BufferedImage image) {
         int w = image.getWidth();
         int h = image.getHeight();
-        
+
         for (int i = 2; i < 203; i++) {
             for (int j = 2; j < 21; j++) {
                 int pixel = image.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
-                
-                if (red == 127 && green == 106 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 0, ObjectId.Block));
-                if (red == 91 && green == 127 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 1, ObjectId.Block));
-                if (red == 38 && green == 127 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 2, ObjectId.Block));
-                if (red == 127 && green == 51 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 3, ObjectId.Block));
-                 if (red == 255 && green == 0 && blue == 220)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 4, ObjectId.Block));
-                 if (red == 64 && green == 64 && blue == 64)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 5, ObjectId.Block));
-                 if (red == 255 && green == 0 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 6, ObjectId.Block));
-                 if (red == 128 && green == 128 && blue == 128)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 8, ObjectId.Block));
-                 if (red == 255 && green == 216 && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 10, ObjectId.Block));
-                 if (red == 255 && green == 233 && blue == 127)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 11, ObjectId.Block));
-                 if (red == 255 && green == 178  && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 12, ObjectId.Block));
-                if (red == 127 && green == 0  && blue == 110)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 7, ObjectId.Block));
-                if (red == 255 && green == 106  && blue == 0)
-                    handler.addObject(new Block(i*Block.WIDTH, j*Block.HEIGHT, 9, ObjectId.Block));
-                if (red == 0 && green == 0 && blue == 255)
-                    handler.addObject(new Monster(i*Block.WIDTH, j*Block.HEIGHT-50, ObjectId.Monster));       
+
+                if (red == 127 && green == 106 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 0, ObjectId.Block));
+                }
+                if (red == 91 && green == 127 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 1, ObjectId.Block));
+                }
+                if (red == 38 && green == 127 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 2, ObjectId.Block));
+                }
+                if (red == 127 && green == 51 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 3, ObjectId.Block));
+                }
+                if (red == 255 && green == 0 && blue == 220) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 4, ObjectId.Block));
+                }
+                if (red == 64 && green == 64 && blue == 64) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 5, ObjectId.Block));
+                }
+                if (red == 255 && green == 0 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 6, ObjectId.Block));
+                }
+                if (red == 128 && green == 128 && blue == 128) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 8, ObjectId.Block));
+                }
+                if (red == 255 && green == 216 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 10, ObjectId.Block));
+                }
+                if (red == 255 && green == 233 && blue == 127) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 11, ObjectId.Block));
+                }
+                if (red == 255 && green == 178 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 12, ObjectId.Block));
+                }
+                if (red == 127 && green == 0 && blue == 110) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 7, ObjectId.Block));
+                }
+                if (red == 255 && green == 106 && blue == 0) {
+                    handler.addObject(new Block(i * Block.WIDTH, j * Block.HEIGHT, 9, ObjectId.Block));
+                }
+                if (red == 0 && green == 0 && blue == 255) {
+                    handler.addObject(new Monster(i * Block.WIDTH, j * Block.HEIGHT - 50, ObjectId.Monster));
+                }
             }
         }
     }
-    
+
+    private void loadVillage(BufferedImage image) {
+        int w = image.getWidth();
+        int h = image.getHeight();
+
+        for (int i = 2; i < 203; i++) {
+            for (int j = 2; j < 203; j++) {
+                int pixel = image.getRGB(i, j);
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = (pixel) & 0xff;
+
+            }
+        }
+    }
+
     public static Texture getInstance() {
         return texture;
     }
-    
+
     public static void main(String[] args) {
-        new Window(800, 600, "Legend of Alternia", new Game());
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                new Window(800, 600, "Legend of Alternia", new Game());
+            }
+        });
+
     }
 }

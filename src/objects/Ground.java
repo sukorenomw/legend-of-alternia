@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import main.Game;
 
 public class Ground extends GameObject {
-    public static final float WIDTH = 32, HEIGHT = 32;
+    public static final float WIDTH = 50, HEIGHT = 50;
     Texture texture = Game.getInstance();
     private int type;
 
