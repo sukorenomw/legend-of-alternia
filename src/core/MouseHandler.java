@@ -3,6 +3,7 @@ package core;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import main.Game;
+import static main.Game.state;
 
 public class MouseHandler extends MouseAdapter{
     Handler handler;
@@ -18,9 +19,9 @@ public class MouseHandler extends MouseAdapter{
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (Game.getGameInstance().mainmenu.bNewGame.isHover()) {
+        if (Game.getGameInstance().mainmenu.bNewGame.isHover() && state == Game.state.MAIN_MENU) {
             Game.getGameInstance().playGame();
-        } else if (Game.getGameInstance().mainmenu.bExit.isHover()) {
+        } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
             System.exit(0);
         }
     }

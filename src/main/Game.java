@@ -54,14 +54,18 @@ public class Game extends Canvas implements Runnable {
         texture = new Texture();
 
         state = State.MAIN_MENU;
-        mainmenu = new MainMenu();
+        try {
+            mainmenu = new MainMenu();
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
-       //loadImageLevel(level);
+        //loadImageLevel(level);
         loadVillage(village);
 
         camera = new Camera(0, 0);
@@ -70,7 +74,8 @@ public class Game extends Canvas implements Runnable {
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
-        musicHandler.startBackgroundSong();
+//        musicHandler.load("assets/sounds/village.mp3");
+//        musicHandler.play();
         keyHandler = new KeyHandler(handler, musicHandler);
         addKeyListener(keyHandler);
 
@@ -156,7 +161,7 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
-        }else if (state == State.WORLD){
+        } else if (state == State.WORLD) {
             g.setColor(new Color(208, 244, 247));
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
@@ -228,8 +233,8 @@ public class Game extends Canvas implements Runnable {
         int w = image.getWidth();
         int h = image.getHeight();
 
-        for (int i = 2; i < w; i++) {
-            for (int j = 2; j < h; j++) {
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 50; j++) {
                 int pixel = image.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
@@ -238,6 +243,7 @@ public class Game extends Canvas implements Runnable {
                 if (red == 134 && green == 69 && blue == 15) {
                     handler.addObject(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                 }
+
             }
         }
     }
@@ -251,6 +257,9 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void playGame() {
+        mainmenu.musicHandler.stop();
+        musicHandler.load("assets/sounds/village.mp3");
+        musicHandler.play();
         state = State.WORLD;
     }
 

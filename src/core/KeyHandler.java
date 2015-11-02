@@ -2,6 +2,9 @@ package core;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Game;
 
 public class KeyHandler extends KeyAdapter {
@@ -12,7 +15,12 @@ public class KeyHandler extends KeyAdapter {
 
     public KeyHandler(Handler handler, MusicHandler sfx) {
         this.handler = handler;
-        this.sfx = sfx;
+        try {
+            this.sfx = new MusicHandler();
+            this.sfx.load("assets/sounds/knifeSlice.mp3");
+        } catch (IOException ex) {
+            Logger.getLogger(KeyHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -22,9 +30,10 @@ public class KeyHandler extends KeyAdapter {
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
 
-            if (tempObject.getId() == ObjectId.Player) {
+            if (tempObject.getId() == ObjectId.Player && state.MAIN_MENU != Game.state) {
                 if (key == KeyEvent.VK_CONTROL && (!tempObject.isAttacking_left())) {
-                    sfx.swingSFX();
+                    //sfx.load("assets/sounds/knifeSlice.mp3");
+                    sfx.playOnce();
                 }
             }
         }

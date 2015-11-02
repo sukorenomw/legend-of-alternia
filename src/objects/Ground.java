@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import main.Game;
 
 public class Ground extends GameObject {
-    public static final float WIDTH = 32, HEIGHT = 32;
+    public static final float WIDTH = 48, HEIGHT = 48;
     Texture texture = Game.getInstance();
     private int type;
 
@@ -28,7 +28,7 @@ public class Ground extends GameObject {
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.ground[type], (int)x, (int)y, null);
-        Graphics2D g2d = (Graphics2D) g;
+        //Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
     }

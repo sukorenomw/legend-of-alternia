@@ -8,6 +8,7 @@ package core;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import main.Game;
 import objects.Button;
 
@@ -20,12 +21,17 @@ public class MainMenu {
     Button bLoadGame;
     Button bOptions;
     Button bExit;
+    public MusicHandler musicHandler;
     
-    public MainMenu() {
+    public MainMenu() throws IOException {
+        musicHandler = new MusicHandler();
+        musicHandler.load("assets/sounds/menu.mp3");
+        musicHandler.play();
         bNewGame = new Button (515, 402, 190, 49, "New Game");
         bLoadGame = new Button(515, 447, 190, 49, "Load Game");
         bOptions = new Button(515, 492, 190, 49, "Options");
         bExit = new Button(515, 537, 190, 49, "Exit");
+        
     }
     
     public void render(Graphics g) {
