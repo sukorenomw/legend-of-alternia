@@ -17,7 +17,23 @@ public abstract class GameObject {
     protected float x, y;
     protected ObjectId id;
     protected float velX = 0, velY = 0;
-    protected boolean falling = true, jumping = false, move_left = false, move_right = true, attacking_right = false, attacking_left = false, dying = false;
+    protected boolean falling = true, jumping = false, move_left = false,move_up = false, move_down = false, move_right = true, attacking_right = false, attacking_left = false, dying = false;
+
+    public boolean isMove_up() {
+        return move_up;
+    }
+
+    public void setMove_up(boolean move_up) {
+        this.move_up = move_up;
+    }
+
+    public boolean isMove_down() {
+        return move_down;
+    }
+
+    public void setMove_down(boolean move_down) {
+        this.move_down = move_down;
+    }
 
     public boolean isDying() {
         return dying;

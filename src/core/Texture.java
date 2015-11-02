@@ -15,7 +15,7 @@ public class Texture {
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[13];
-    public BufferedImage[] player = new BufferedImage[36];
+    public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
 
     public Texture() {
@@ -88,6 +88,25 @@ public class Texture {
         player[33] = pAS.grabImage(3, 2, 102, 49);
         player[34] = pAS.grabImage(2, 2, 102, 49);
         player[35] = pAS.grabImage(1, 2, 102, 49);
+        player[36] = pS.grabImage(4, 5, 32, 49);
+        player[37] = pS.grabImage(5, 5, 32, 49);
+        player[38] = pS.grabImage(6, 5, 32, 49);
+        player[39] = pS.grabImage(7, 5, 32, 49);
+        player[40] = pS.grabImage(8, 5, 32, 49);
+        player[41] = pS.grabImage(9, 5, 32, 49);
+        player[42] = pS.grabImage(1, 6, 32, 49);
+        player[43] = pS.grabImage(2, 6, 32, 49);
+        player[44] = pS.grabImage(3, 6, 32, 49);
+        player[45] = pS.grabImage(4, 6, 32, 49);
+        player[46] = pS.grabImage(5, 6, 32, 49);
+        player[47] = pS.grabImage(6, 6, 32, 49);
+        player[48] = pS.grabImage(7, 6, 32, 49);
+        player[49] = pS.grabImage(8, 6, 32, 49);
+        player[50] = pS.grabImage(9, 6, 32, 49);
+        player[51] = pS.grabImage(1, 7, 32, 49);
+        player[52] = pS.grabImage(2, 7, 32, 49);
+        player[53] = pS.grabImage(3, 7, 32, 49);
+        
         
         monster[0] = mS.grabImage(1, 1, 96, 80);
         monster[1] = mS.grabImage(2, 1, 96, 80);

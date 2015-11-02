@@ -2,11 +2,13 @@ package core;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import main.Game;
 
 public class KeyHandler extends KeyAdapter {
 
     Handler handler;
     MusicHandler sfx;
+    private State state;
 
     public KeyHandler(Handler handler, MusicHandler sfx) {
         this.handler = handler;
@@ -17,22 +19,22 @@ public class KeyHandler extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         handler.addKey(key);
-         for (int i = 0; i < handler.objects.size(); i++) {
+        for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
 
-            if (tempObject.getId() == ObjectId.Player ) {
+            if (tempObject.getId() == ObjectId.Player) {
                 if (key == KeyEvent.VK_CONTROL && (!tempObject.isAttacking_left())) {
                     sfx.swingSFX();
                 }
             }
-         }
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         handler.removeKey(key);
-        
+
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
 
@@ -42,6 +44,12 @@ public class KeyHandler extends KeyAdapter {
                 }
                 if (key == KeyEvent.VK_LEFT) {
                     tempObject.setVelX(0);
+                }
+                if (key == KeyEvent.VK_UP){
+                    tempObject.setVelY(0);
+                }
+                if (key == KeyEvent.VK_DOWN){
+                    tempObject.setVelY(0);
                 }
                 if (key == KeyEvent.VK_CONTROL) {
 //                    if (tempObject.isAttacking_right()) {
@@ -62,8 +70,36 @@ public class KeyHandler extends KeyAdapter {
 
             for (int j = 0; j < handler.objects.size(); j++) {
                 GameObject tempObject = handler.objects.get(j);
-
-                if (tempObject.getId() == ObjectId.Player) {
+                if (Game.state == state.WORLD) {
+                    if (handler.keys.contains(KeyEvent.VK_RIGHT)) {
+                        tempObject.setVelX(5);
+                        tempObject.setMove_left(false);
+                        tempObject.setMove_right(true);
+                        tempObject.setMove_down(false);
+                        tempObject.setMove_up(false);
+                    }
+                    if (handler.keys.contains(KeyEvent.VK_LEFT)) {
+                        tempObject.setVelX(-5);
+                        tempObject.setMove_left(true);
+                        tempObject.setMove_right(false);
+                        tempObject.setMove_down(false);
+                        tempObject.setMove_up(false);
+                    }
+                    if (handler.keys.contains(KeyEvent.VK_UP)) {
+                        tempObject.setVelY(-5);
+                        tempObject.setMove_down(false);
+                        tempObject.setMove_up(true);
+                        tempObject.setMove_left(false);
+                        tempObject.setMove_right(false);
+                    }
+                    if (handler.keys.contains(KeyEvent.VK_DOWN)) {
+                        tempObject.setVelY(5);
+                        tempObject.setMove_down(true);
+                        tempObject.setMove_up(false);
+                        tempObject.setMove_left(false);
+                        tempObject.setMove_right(false);
+                    }
+                } else if (tempObject.getId() == ObjectId.Player) {
                     if (handler.keys.contains(KeyEvent.VK_RIGHT)) {
                         tempObject.setVelX(5);
                         tempObject.setMove_left(false);

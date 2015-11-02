@@ -5,14 +5,18 @@ import core.GameObject;
 import core.Handler;
 import core.ImageLoader;
 import core.KeyHandler;
+import core.MainMenu;
+import core.MouseHandler;
 import core.MusicHandler;
 import core.ObjectId;
+import core.State;
 import core.Texture;
 import core.Window;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -36,6 +40,11 @@ public class Game extends Canvas implements Runnable {
     private MusicHandler musicHandler;
 
     static Texture texture;
+    static Game game;
+    public static State state;
+
+    public MainMenu mainmenu;
+    private MouseAdapter mouseHandler;
 
     private void init() {
         WIDTH = getWidth();
@@ -43,12 +52,15 @@ public class Game extends Canvas implements Runnable {
 
         texture = new Texture();
 
+        state = State.MAIN_MENU;
+        mainmenu = new MainMenu();
+
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
-        loadImageLevel(level);
+       //loadImageLevel(level);
 //        loadVillage(village);
 
         camera = new Camera(0, 0);
@@ -60,6 +72,9 @@ public class Game extends Canvas implements Runnable {
         musicHandler.startBackgroundSong();
         keyHandler = new KeyHandler(handler, musicHandler);
         addKeyListener(keyHandler);
+
+        mouseHandler = new MouseHandler(handler);
+        addMouseListener(mouseHandler);
 
         handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
@@ -107,12 +122,16 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
-        handler.tick();
-        keyHandler.tick();
-        for (int i = 0; i < handler.objects.size(); i++) {
-            GameObject object = handler.objects.get(i);
-            if (object.getId() == ObjectId.Player) {
-                camera.tick(object);
+        if (state == state.MAIN_MENU) {
+            mainmenu.tick();
+        } else if (state == state.GAME_PLAY || state == state.WORLD) {
+            handler.tick();
+            keyHandler.tick();
+            for (int i = 0; i < handler.objects.size(); i++) {
+                GameObject object = handler.objects.get(i);
+                if (object.getId() == ObjectId.Player) {
+                    camera.tick(object);
+                }
             }
         }
     }
@@ -127,13 +146,22 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
 
-        //g.drawImage(background, (int)0, (int)0, null);       
-        g.setColor(new Color(208, 244, 247));
-        g.fillRect(0, 0, getWidth(), getHeight());
-        g2d.translate(camera.getX(), camera.getY());
-        handler.render(g);
-        g2d.translate(-camera.getX(), -camera.getY());
-
+        if (state == State.MAIN_MENU) {
+            mainmenu.render(g);
+        } else if (state == State.GAME_PLAY) {
+            //g.drawImage(background, (int)0, (int)0, null);       
+            g.setColor(new Color(208, 244, 247));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g2d.translate(camera.getX(), camera.getY());
+            handler.render(g);
+            g2d.translate(-camera.getX(), -camera.getY());
+        }else if (state == State.WORLD){
+            g.setColor(new Color(208, 244, 247));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g2d.translate(camera.getX(), camera.getY());
+            handler.render(g);
+            g2d.translate(-camera.getX(), -camera.getY());
+        }
         g.dispose();
         bs.show();
     }
@@ -214,6 +242,14 @@ public class Game extends Canvas implements Runnable {
         return texture;
     }
 
+    public static Game getGameInstance() {
+        return game;
+    }
+
+    public void playGame() {
+        state = State.WORLD;
+    }
+
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -224,7 +260,8 @@ public class Game extends Canvas implements Runnable {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                new Window(800, 600, "Legend of Alternia", new Game());
+                game = new Game();
+                new Window(800, 600, "Legend of Alternia", game);
             }
         });
 

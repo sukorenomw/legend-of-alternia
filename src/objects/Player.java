@@ -5,6 +5,7 @@ import core.GameObject;
 import core.Handler;
 import core.MusicHandler;
 import core.ObjectId;
+import core.State;
 import core.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,8 +22,8 @@ public class Player extends GameObject {
     private static final float MAX_JUMP = 5f;
     private Handler handler;
     private MusicHandler sfx;
-    private Animation walk, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
-
+    private Animation walk, move_downs, move_ups,idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
+    private State state;
     Texture texture = Game.getInstance();
 
     public Player(float x, float y, Handler handler, ObjectId id, MusicHandler sfx) {
@@ -39,6 +40,28 @@ public class Player extends GameObject {
                 texture.player[13],
                 texture.player[14],
                 texture.player[15]);
+        move_downs = new Animation(2,
+                texture.player[36],
+                texture.player[37],
+                texture.player[38],
+                texture.player[39],
+                texture.player[40],
+                texture.player[41],
+                texture.player[42],
+                texture.player[43],
+                texture.player[44]);
+        move_ups = new Animation(2,
+                texture.player[45],
+                texture.player[46],
+                texture.player[47],
+                texture.player[48],
+                texture.player[49],
+                texture.player[50],
+                texture.player[51],
+                texture.player[52],
+                texture.player[53]);
+        idle_up = new Animation(7, texture.player[45]);
+        idle_down = new Animation((7), texture.player[36]);
         backwards = new Animation(2, texture.player[0],
                 texture.player[1],
                 texture.player[2],
@@ -83,7 +106,7 @@ public class Player extends GameObject {
         x += velX;
         y += velY;
 
-        if (falling || jumping) {
+        if ((falling || jumping) && Game.state != state.WORLD) {
             velY += GRAVITY;
 
             if (velY > MAX_SPEED) {
@@ -97,8 +120,12 @@ public class Player extends GameObject {
         backwards.runAnimation();
         idle_right.runAnimation();
         idle_left.runAnimation();
+        idle_up.runAnimation();
+        idle_down.runAnimation();
         attack_right.runAnimation();
         attack_left.runAnimation();
+        move_ups.runAnimation();
+        move_downs.runAnimation();
         collision(objects);
     }
 
@@ -110,7 +137,7 @@ public class Player extends GameObject {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 72;
                     velY = 0;
-                    
+
                 }
 
                 if (getBounds().intersects(tempObject.getBounds())) {
@@ -153,9 +180,9 @@ public class Player extends GameObject {
                 if (getBoundsLeft().intersects(tempObject.getBounds())) {
                     x = tempObject.getX() + 72;
                     dying = true;
-                    
+
                 }
-                if ( (attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds())) ){
+                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     tempObject.setDying(true);
                     handler.removeObject(tempObject);
                 }
@@ -177,9 +204,9 @@ public class Player extends GameObject {
 //        g2d.draw(getBoundsSwordLeft());
 
 //        
-        if(dying){
-            
-        }else if (attacking_right) {
+        if (dying) {
+
+        } else if (attacking_right) {
             attack_right.drawAnimation(g, (int) x, (int) y);
         } else if (attacking_left) {
             attack_left.drawAnimation(g, (int) x - 102, (int) y);
@@ -189,11 +216,19 @@ public class Player extends GameObject {
             } else {
                 jump_left.drawAnimation(g, (int) x, (int) y);
             }
-        } else if (velX < 0) {
+        }else if(velY < 0){
+            move_ups.drawAnimation(g, (int)x, (int)y);
+        }else if (velY > 0){
+            move_downs.drawAnimation(g, (int)x, (int)y);
+        }else if (velX < 0) {
             backwards.drawAnimation(g, (int) x, (int) y);
         } else if (velX > 0) {
             walk.drawAnimation(g, (int) x, (int) y);
-        } else if (move_left) {
+        } else if(move_down){
+           idle_down.drawAnimation(g, (int)x, (int)y);
+        } else if(move_up){
+            idle_up.drawAnimation(g, (int)x, (int)y);
+        }else if (move_left) {
             idle_left.drawAnimation(g, (int) x, (int) y);
         } else if (move_right) {
             idle_right.drawAnimation(g, (int) x, (int) y);
@@ -222,9 +257,10 @@ public class Player extends GameObject {
     }
 
     public Rectangle getBoundsSwordRight() {
-        return new Rectangle((int) x+50, (int) (y+10), (int) WIDTH+50, (int) HEIGHT-25);
+        return new Rectangle((int) x + 50, (int) (y + 10), (int) WIDTH + 50, (int) HEIGHT - 25);
     }
-    public Rectangle getBoundsSwordLeft(){
-        return new Rectangle((int) x-100, (int) (y+10), (int) WIDTH+50, (int) HEIGHT-25);
+
+    public Rectangle getBoundsSwordLeft() {
+        return new Rectangle((int) x - 100, (int) (y + 10), (int) WIDTH + 50, (int) HEIGHT - 25);
     }
 }
