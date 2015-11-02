@@ -4,19 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/game_dev/legend-of-alternia/src/main/Game.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/GameStates.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Texture.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/objects/Ground.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Animation.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/objects/Player.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/objects/Button.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/KeyHandler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/GameObject.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/Handler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/State.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/Window.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/MainMenu.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/objects/Block.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/MouseHandler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Camera.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/character/female.png</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/MusicHandler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/ImageLoader.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/SpriteSheet.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/ObjectId.java</file>
         </group>
     </open-files>
 </project-private>

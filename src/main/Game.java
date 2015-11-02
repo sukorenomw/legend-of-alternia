@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable {
         mouseHandler = new MouseHandler(handler);
         addMouseListener(mouseHandler);
 
-        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+        
     }
 
     public synchronized void start() {
@@ -260,6 +260,7 @@ public class Game extends Canvas implements Runnable {
         loadVillage(village);
         musicHandler.play();
         state = State.WORLD;
+        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
     public void loadGame() {
@@ -268,6 +269,7 @@ public class Game extends Canvas implements Runnable {
         loadImageLevel(level);
         musicHandler.play();
         state = State.GAME_PLAY;
+        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
     public static void main(String[] args) {
