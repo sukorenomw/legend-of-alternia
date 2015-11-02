@@ -15,5 +15,5 @@ public enum GameStates {
     Dungeon(),
     Intro(),
     Loading(),
-    Ending();
+    Ending(),;
 }

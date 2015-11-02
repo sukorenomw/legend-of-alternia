@@ -65,8 +65,6 @@ public class Game extends Canvas implements Runnable {
         village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
-        //loadImageLevel(level);
-        loadVillage(village);
 
         camera = new Camera(0, 0);
         try {
@@ -155,13 +153,13 @@ public class Game extends Canvas implements Runnable {
         if (state == State.MAIN_MENU) {
             mainmenu.render(g);
         } else if (state == State.GAME_PLAY) {
-            //g.drawImage(background, (int)0, (int)0, null);       
-            g.setColor(new Color(208, 244, 247));
-            g.fillRect(0, 0, getWidth(), getHeight());
+            
+            g.drawImage(background, (int)0, (int)0, null);       
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
         } else if (state == State.WORLD) {
+            
             g.setColor(new Color(208, 244, 247));
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
@@ -259,8 +257,17 @@ public class Game extends Canvas implements Runnable {
     public void playGame() {
         mainmenu.musicHandler.stop();
         musicHandler.load("assets/sounds/village.mp3");
+        loadVillage(village);
         musicHandler.play();
         state = State.WORLD;
+    }
+
+    public void loadGame() {
+        mainmenu.musicHandler.stop();
+        musicHandler.load("assets/sounds/dun.mp3");
+        loadImageLevel(level);
+        musicHandler.play();
+        state = State.GAME_PLAY;
     }
 
     public static void main(String[] args) {

@@ -113,11 +113,15 @@ public class KeyHandler extends KeyAdapter {
                         tempObject.setVelX(5);
                         tempObject.setMove_left(false);
                         tempObject.setMove_right(true);
+                        tempObject.setMove_down(false);
+                        tempObject.setMove_up(false);
                     }
                     if (handler.keys.contains(KeyEvent.VK_LEFT)) {
                         tempObject.setVelX(-5);
                         tempObject.setMove_left(true);
                         tempObject.setMove_right(false);
+                        tempObject.setMove_down(false);
+                        tempObject.setMove_up(false);
                     }
                     if (handler.keys.contains(KeyEvent.VK_SPACE) && !tempObject.isJumping()) {
                         tempObject.setJumping(true);

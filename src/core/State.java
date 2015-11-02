@@ -15,5 +15,6 @@ public enum State {
     MAIN_MENU,
     GAME_PLAY,
     PAUSE,
-    WORLD
+    WORLD,
+    LOAD_GAME
 }

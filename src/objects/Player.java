@@ -216,9 +216,9 @@ public class Player extends GameObject {
             } else {
                 jump_left.drawAnimation(g, (int) x, (int) y);
             }
-        }else if(velY < 0){
+        }else if(velY < 0 && Game.state == state.WORLD){
             move_ups.drawAnimation(g, (int)x, (int)y);
-        }else if (velY > 0){
+        }else if (velY > 0 && Game.state == state.WORLD){
             move_downs.drawAnimation(g, (int)x, (int)y);
         }else if (velX < 0) {
             backwards.drawAnimation(g, (int) x, (int) y);
