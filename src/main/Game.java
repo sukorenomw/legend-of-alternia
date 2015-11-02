@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
+import objects.Ground;
 import objects.Monster;
 import objects.Player;
 
@@ -57,11 +58,11 @@ public class Game extends Canvas implements Runnable {
 
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
-        village = imageLoader.load("");
+        village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
         handler = new Handler();
        //loadImageLevel(level);
-//        loadVillage(village);
+        loadVillage(village);
 
         camera = new Camera(0, 0);
         try {
@@ -227,13 +228,16 @@ public class Game extends Canvas implements Runnable {
         int w = image.getWidth();
         int h = image.getHeight();
 
-        for (int i = 2; i < 203; i++) {
-            for (int j = 2; j < 203; j++) {
+        for (int i = 2; i < w; i++) {
+            for (int j = 2; j < h; j++) {
                 int pixel = image.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
+                if (red == 134 && green == 69 && blue == 15) {
+                    handler.addObject(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
+                }
             }
         }
     }

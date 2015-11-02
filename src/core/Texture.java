@@ -6,10 +6,11 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
+    private BufferedImage villageSheet = null;
     private BufferedImage playerAttackSheet = null;
     private BufferedImage monsterSheet = null; 
     
@@ -25,6 +26,7 @@ public class Texture {
             groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-1.png");
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
+            villageSheet = loader.load("/assets/images/villages/base-terain.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,11 +35,13 @@ public class Texture {
         gS = new SpriteSheet(groundSheet);
         pAS = new SpriteSheet(playerAttackSheet);
         mS = new SpriteSheet(monsterSheet);
-        
+        vS = new SpriteSheet(villageSheet);
         getTextures();
     }
     
     private void getTextures() {
+        ground[0] = vS.grabImage(1, 1, (int)32, (int)32);
+        
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);
         block[2] = gS.grabImage(3, 1, (int)32, (int)32);
