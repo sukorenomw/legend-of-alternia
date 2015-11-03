@@ -63,7 +63,7 @@ public class Game extends Canvas implements Runnable {
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("/assets/images/villages/map.png");
-        background = imageLoader.load("/assets/images/dungeon/bg1.jpg");
+        background = imageLoader.load("/assets/images/dungeon/bg4.jpg");
         handler = new Handler();
 
         camera = new Camera(0, 0);
