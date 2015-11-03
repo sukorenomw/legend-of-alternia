@@ -63,7 +63,7 @@ public class Game extends Canvas implements Runnable {
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("/assets/images/villages/map.png");
-        background = imageLoader.load("/assets/images/dungeon/cave4.jpg");
+        background = imageLoader.load("/assets/images/dungeon/bg1.jpg");
         handler = new Handler();
 
         camera = new Camera(0, 0);
@@ -265,7 +265,7 @@ public class Game extends Canvas implements Runnable {
 
     public void loadGame() {
         mainmenu.musicHandler.stop();
-        musicHandler.load("assets/sounds/dun.mp3");
+        musicHandler.load("assets/sounds/dun-1.mp3");
         loadImageLevel(level);
         musicHandler.play();
         state = State.GAME_PLAY;
