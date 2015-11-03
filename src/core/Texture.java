@@ -23,7 +23,7 @@ public class Texture {
         ImageLoader loader = new ImageLoader();
         try {
             playerSheet = loader.load("/assets/images/character/female.png");
-            groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-4.png");
+            groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-3.png");
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
             villageSheet = loader.load("/assets/images/villages/base-terain.png");

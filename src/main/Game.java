@@ -63,7 +63,7 @@ public class Game extends Canvas implements Runnable {
         ImageLoader imageLoader = new ImageLoader();
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("/assets/images/villages/map.png");
-        background = imageLoader.load("/assets/images/dungeon/bg4.jpg");
+        background = imageLoader.load("/assets/images/dungeon/bg3.jpg");
         handler = new Handler();
 
         camera = new Camera(0, 0);
@@ -153,7 +153,6 @@ public class Game extends Canvas implements Runnable {
         if (state == State.MAIN_MENU) {
             mainmenu.render(g);
         } else if (state == State.GAME_PLAY) {
-            
             g.drawImage(background, (int)0, (int)0, null);       
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
@@ -278,7 +277,7 @@ public class Game extends Canvas implements Runnable {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(3500);
+                    Thread.sleep(3100);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
                 }
