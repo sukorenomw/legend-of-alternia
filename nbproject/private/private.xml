@@ -5,6 +5,7 @@
         <group>
             <file>file:/E:/game_dev/legend-of-alternia/src/main/Game.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/dungeon/Rock-sheet-1.png</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/core/LevelHandler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Texture.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/objects/Ground.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/objects/Player.java</file>
@@ -12,6 +13,7 @@
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Handler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/State.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/dungeon/Ground-sheet-2.png</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/npc/NPC.png</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/MouseHandler.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/character/female.png</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/MusicHandler.java</file>
@@ -24,11 +26,13 @@
             <file>file:/E:/game_dev/legend-of-alternia/src/core/GameObject.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Window.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/MainMenu.java</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/objects/Heart.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/objects/Block.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/Camera.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/core/SpriteSheet.java</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/character/male.png</file>
             <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/character/male-attack.png</file>
+            <file>file:/E:/game_dev/legend-of-alternia/src/assets/images/dungeon/dungeon.png</file>
         </group>
     </open-files>
 </project-private>

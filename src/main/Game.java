@@ -132,11 +132,15 @@ public class Game extends Canvas implements Runnable {
     private void tick() {
         if (state == state.MAIN_MENU) {
             mainmenu.tick();
-        } else if (state == state.GAME_PLAY || state == state.WORLD) {
+        } else if (state == state.WORLD) {
             handler.tick();
             keyHandler.tick();
             camera.tick(handler.player);
             levelHandler.tick();
+        } else if (state == state.GAME_PLAY){
+            handler.tick();
+            keyHandler.tick();
+            camera.tick(handler.player);
         }
     }
 
@@ -271,7 +275,6 @@ public class Game extends Canvas implements Runnable {
         state = State.GAME_PLAY;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
-        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         handler.addObject(new Heart(100, 100, 0, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 1, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 2, ObjectId.Heart, camera));
