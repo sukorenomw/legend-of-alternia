@@ -27,6 +27,21 @@ public class SpriteSheet {
         return img;
     }
 
+    public BufferedImage grabImage2(int col, int row, int width, int height) {
+        BufferedImage img = image.getSubimage((col * width) - width,
+                (row * height) - height, width, height);
+        BufferedImage bufferedImage = new BufferedImage(200, 200,
+                BufferedImage.TYPE_BYTE_INDEXED);
+        
+        AffineTransform tx = new AffineTransform();
+        tx.scale(1, 1);
+
+        AffineTransformOp op = new AffineTransformOp(tx,
+                AffineTransformOp.TYPE_BILINEAR);
+        img = op.filter(img, null);
+        return img;
+    }
+    
     public BufferedImage grabImageByCoor(int x, int y, int width, int height) {
         BufferedImage img = image.getSubimage(x, y, width, height);
         return img;

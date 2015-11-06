@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
 import objects.Ground;
+import objects.Heart;
 import objects.Monster;
 import objects.Player;
 
@@ -38,7 +39,7 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     public LevelHandler levelHandler;
     private KeyHandler keyHandler;
-    private Camera camera;
+    public Camera camera;
     private BufferedImage level, background, village;
     private MusicHandler musicHandler;
 
@@ -151,12 +152,11 @@ public class Game extends Canvas implements Runnable {
         if (state == State.MAIN_MENU) {
             mainmenu.render(g);
         } else if (state == State.GAME_PLAY) {
-            g.drawImage(background, (int)0, (int)0, null);       
+            g.drawImage(background, (int)0, (int)0, null);      
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
         } else if (state == State.WORLD) {
-            
             g.setColor(new Color(208, 244, 247));
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
@@ -270,6 +270,10 @@ public class Game extends Canvas implements Runnable {
         state = State.GAME_PLAY;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
+        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+        handler.addObject(new Heart(100, 100, 0, ObjectId.Heart, camera));
+        handler.addObject(new Heart(100, 100, 1, ObjectId.Heart, camera));
+        handler.addObject(new Heart(100, 100, 2, ObjectId.Heart, camera));
     }
 
     public static void main(String[] args) {

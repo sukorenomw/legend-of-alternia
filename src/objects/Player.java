@@ -25,7 +25,7 @@ public class Player extends GameObject {
     private Animation walk, move_downs, move_ups,idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
     private State state;
     Texture texture = Game.getInstance();
-
+    private int heartNumber;
     public Player(float x, float y, Handler handler, ObjectId id, MusicHandler sfx) {
         super(x, y, id);
         this.handler = handler;
