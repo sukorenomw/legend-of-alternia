@@ -16,5 +16,6 @@ public enum State {
     GAME_PLAY,
     PAUSE,
     WORLD,
-    LOAD_GAME
+    LOAD_GAME,
+    INTRO
 }

@@ -1,6 +1,8 @@
 package main;
 
 import core.Camera;
+import core.FileHandler;
+import core.FontHandler;
 import core.GameObject;
 import core.Handler;
 import core.ImageLoader;
@@ -15,12 +17,17 @@ import core.Texture;
 import core.Window;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
@@ -35,13 +42,20 @@ public class Game extends Canvas implements Runnable {
     public static int WIDTH, HEIGHT;
 
     private boolean running = false;
+    private int storyStates;
     private Thread thread;
     private Handler handler;
     public LevelHandler levelHandler;
     private KeyHandler keyHandler;
     public Camera camera;
-    private BufferedImage level, background, village;
+    private BufferedImage level, background, village, intro;
     private MusicHandler musicHandler;
+    private Font customFont;
+    private FontHandler fontHandler;
+    private FileHandler fileHandler;
+    private ArrayList story;
+    private int introStory = 0, story_y = 130, story_x = 250;
+    private String[] curStory, detailStory;
 
     static Texture texture;
     static Game game;
@@ -55,6 +69,7 @@ public class Game extends Canvas implements Runnable {
         HEIGHT = getHeight();
 
         texture = new Texture();
+        storyStates = 1;
 
         state = State.MAIN_MENU;
         try {
@@ -67,9 +82,10 @@ public class Game extends Canvas implements Runnable {
         level = imageLoader.load("/assets/images/dungeon/dungeon.png");
         village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/bg3.jpg");
+        intro = imageLoader.load("/assets/images/intro/panel.png");
         handler = new Handler();
 //        levelHandler = new LevelHandler();
-        
+
         camera = new Camera(0, 0);
         try {
             musicHandler = new MusicHandler();
@@ -83,8 +99,14 @@ public class Game extends Canvas implements Runnable {
 
         mouseHandler = new MouseHandler(handler);
         addMouseListener(mouseHandler);
-
-        
+        fontHandler = new FontHandler();
+        customFont = fontHandler.createFont();
+        fileHandler = new FileHandler();
+        try {
+            story = fileHandler.readLargerTextFileAlternate("/data/files/story.loa");
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public synchronized void start() {
@@ -137,7 +159,7 @@ public class Game extends Canvas implements Runnable {
             keyHandler.tick();
             camera.tick(handler.player);
             levelHandler.tick();
-        } else if (state == state.GAME_PLAY){
+        } else if (state == state.GAME_PLAY) {
             handler.tick();
             keyHandler.tick();
             camera.tick(handler.player);
@@ -157,7 +179,7 @@ public class Game extends Canvas implements Runnable {
         if (state == State.MAIN_MENU) {
             mainmenu.render(g);
         } else if (state == State.GAME_PLAY) {
-            g.drawImage(background, (int)0, (int)0, null);      
+            g.drawImage(background, (int) 0, (int) 0, null);
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
@@ -167,6 +189,29 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
+        } else if (state == State.INTRO) {
+            g.setColor(new Color(0, 0, 0));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.drawImage(intro, (int) 0, (int) 0, null);
+            g2d.setColor(Color.BLACK);
+            g2d.setFont(customFont);
+//            String txt = "";
+//            for(int i = 0; i < introStory; i ++){
+//                txt += detailStory[i]+"\n";
+//            }
+            g2d.drawString(detailStory[introStory], story_x, story_y);
+            if (introStory != detailStory.length) {
+                introStory++;
+            }
+            try {
+                Thread.sleep(2000);
+                if (introStory == detailStory.length) {
+                    state = State.WORLD;
+                }
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         g.dispose();
         bs.show();
@@ -243,7 +288,10 @@ public class Game extends Canvas implements Runnable {
 //        loadVillage(village);
         levelHandler = new LevelHandler();
         musicHandler.play();
-        state = State.WORLD;
+        //state = State.WORLD;
+        curStory = ((String) story.get(0)).split(";");
+        detailStory = curStory[3].split(",:,");
+        state = State.INTRO;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
     }
