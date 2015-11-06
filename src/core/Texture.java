@@ -6,19 +6,20 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS, vS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
     private BufferedImage villageSheet = null;
     private BufferedImage playerAttackSheet = null;
     private BufferedImage monsterSheet = null; 
+    private BufferedImage heartSheet = null;
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[13];
     public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
-
+    public BufferedImage[] heart = new BufferedImage[5];
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -27,10 +28,11 @@ public class Texture {
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
             villageSheet = loader.load("/assets/images/villages/base-terain.png");
+            heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        hS = new SpriteSheet(heartSheet);
         pS = new SpriteSheet(playerSheet);
         gS = new SpriteSheet(groundSheet);
         pAS = new SpriteSheet(playerAttackSheet);
@@ -40,6 +42,12 @@ public class Texture {
     }
     
     private void getTextures() {
+        heart[0] = hS.grabImage2(1, 1, (int)32, (int)32);
+        heart[1] = hS.grabImage2(2, 1, (int)32, (int)32);
+        heart[2] = hS.grabImage2(3, 1, (int)32, (int)32);
+        heart[3] = hS.grabImage2(4, 1, (int)32, (int)32);
+        heart[4] = hS.grabImage2(5, 1, (int)32, (int)32);
+        
         ground[0] = vS.grabImage(1, 1, (int)32, (int)32);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);

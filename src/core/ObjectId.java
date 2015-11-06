@@ -14,5 +14,6 @@ public enum ObjectId {
     Block(),
     Ground(),
     MainMenu(),
-    Monster();
+    Monster(),
+    Heart();
 }
