@@ -47,8 +47,17 @@ public class LevelHandler {
     }
     
     public void tick(){
-        int cX = (int) Game.getGameInstance().camera.getX();
-        int cY = (int) Game.getGameInstance().camera.getY();
+        int cX = (int) -Game.getGameInstance().camera.getX();
+        int cY = (int) -Game.getGameInstance().camera.getY();
+        
+        int nW = (lImage.getWidth()/COL_W)*(int) Ground.WIDTH;
+        int nH = (lImage.getHeight()/COL_H)*(int) Ground.HEIGHT;
+        
+        pX = cX / nW;
+        pY = cY / nH;
+        
+        if(pX > COL_W) pX = COL_W;
+        if(pY > COL_H) pY = COL_H;
     }
     
     public LinkedList<GameObject> getLevelScreen(){
