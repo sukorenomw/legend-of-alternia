@@ -18,13 +18,21 @@ public class Camera {
             if(player.getX() < Game.WIDTH/2 + 96 && player.getY() < Game.HEIGHT/2+50){
                 x = -96;
                 y = +50;
+            }else if (player.getX() > 4300 && player.getX() < 4800 && player.getY() < Game.HEIGHT/2+50){
+                y = +50;
+            }else if (player.getY() > 4500 && player.getY() < 4800 && player.getX() < Game.WIDTH/2 + 96){
+                x = -96;
+            }else if (player.getY() > 4500 && player.getY() < 4800 && player.getX() > 4300 && player.getX() < 4800){
             }else if(player.getX() < Game.WIDTH/2 + 96){
                 x = -96;
                 y = -player.getY() + Game.WIDTH/2;
             }else if (player.getY() < Game.HEIGHT/2+50){
                 y = +50;
                 x = -player.getX() + Game.WIDTH/2; 
-            }else if(player.getX() > 4500 && player.getX() < 4800){
+            }else if(player.getX() > 4300 && player.getX() < 4800){
+                y = -player.getY() + Game.WIDTH / 2;
+            }else if(player.getY() > 4500 && player.getY() < 4800) {
+                x = -player.getX() + Game.WIDTH / 2;
             }else{
                x = -player.getX() + Game.WIDTH / 2;
                y = -player.getY() + Game.WIDTH / 2; 
