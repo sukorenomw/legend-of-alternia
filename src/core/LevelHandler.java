@@ -17,8 +17,8 @@ import objects.Ground;
  */
 public class LevelHandler {
 
-    public static final int COL_W = 8;
-    public static final int COL_H = 8;
+    public static final int COL_W = 10;
+    public static final int COL_H = 10;
 //    HashMap<String, LinkedList<GameObject>> level = new HashMap<>();
     LinkedList<LinkedList<LinkedList<GameObject>>> lLevel = new LinkedList<>();
     LinkedList<LinkedList<GameObject>> lLevelRow = new LinkedList<>();
@@ -40,7 +40,6 @@ public class LevelHandler {
             lLevelRow = new LinkedList<>();
             for (int j = 0; j < COL_H; j++) {
                 lObject = new LinkedList<>();
-//                loadVillageBackground(lObject, i * w, j * h, (i * 1) + w, (j + 1) + h)
                 loadVillage(lObject, i * w, j * h, (i + 1) * w, (j + 1) * h);
                 lLevelRow.add(lObject);
             }
@@ -49,22 +48,24 @@ public class LevelHandler {
     }
 
     public void tick() {
-        int cX = (int) -Game.getGameInstance().camera.getX();
-        int cY = (int) -Game.getGameInstance().camera.getY();
+//        if (pX <= 8) {
+            int cX = (int) -Game.getGameInstance().camera.getX();
+            int cY = (int) -Game.getGameInstance().camera.getY();
 
-        int nW = (lImage.getWidth() / COL_W) * (int) Ground.WIDTH;
-        int nH = (lImage.getHeight() / COL_H) * (int) Ground.HEIGHT;
+            int nW = (lImage.getWidth() / COL_W) * (int) Ground.WIDTH;
+            int nH = (lImage.getHeight() / COL_H) * (int) Ground.HEIGHT;
 
-        pX = cX / nW;
-        pY = cY / nH;
+            pX = cX / nW;
+            pY = cY / nH;
 
-        if (pX > COL_W) {
-            pX = COL_W - 1;
-        }
-        if (pY > COL_H) {
-            pY = COL_H - 1;
-        }
-        System.out.println("px : " + pX + " py: " + pY);
+            if (pX > COL_W) {
+                pX = COL_W - 1;
+            }
+            if (pY > COL_H) {
+                pY = COL_H - 1;
+            }
+            System.out.println("px : " + pX + " py: " + pY);
+//        }
     }
 
     public LinkedList<GameObject> getLevelScreen() {
@@ -72,17 +73,21 @@ public class LevelHandler {
     }
 
     private void loadVillage(LinkedList<GameObject> list, int ii, int jj, int w, int h) {
-        int ww = (Game.WIDTH / (int) Ground.WIDTH)+1;
-        int hh = (Game.HEIGHT / (int) Ground.HEIGHT)+1;
+        int ww = (Game.WIDTH / (int) Ground.WIDTH) + 1;
+        int hh = (Game.HEIGHT / (int) Ground.HEIGHT) + 2;
 
         if (w + ww < lImage.getWidth()) {
             w += ww;
+        } else {
+            w = lImage.getWidth();
         }
 
         if (h + hh < lImage.getHeight()) {
             h += hh;
+        } else {
+            h = lImage.getHeight();
         }
-        
+
         if (ii - ww > 0) {
             ii -= ww;
         }

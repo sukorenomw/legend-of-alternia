@@ -225,25 +225,6 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    private void loadVillage(BufferedImage image) {
-        int w = image.getWidth();
-        int h = image.getHeight();
-
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 50; j++) {
-                int pixel = image.getRGB(i, j);
-                int red = (pixel >> 16) & 0xff;
-                int green = (pixel >> 8) & 0xff;
-                int blue = (pixel) & 0xff;
-
-                if (red == 134 && green == 69 && blue == 15) {
-                    handler.addObject(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
-                }
-
-            }
-        }
-    }
-
     public static Texture getInstance() {
         return texture;
     }
