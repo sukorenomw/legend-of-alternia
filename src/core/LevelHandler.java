@@ -47,7 +47,8 @@ public class LevelHandler {
     }
     
     public void tick(){
-        
+        int cX = (int) Game.getGameInstance().camera.getX();
+        int cY = (int) Game.getGameInstance().camera.getY();
     }
     
     public LinkedList<GameObject> getLevelScreen(){
