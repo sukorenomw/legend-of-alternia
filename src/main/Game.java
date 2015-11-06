@@ -199,8 +199,14 @@ public class Game extends Canvas implements Runnable {
 //            for(int i = 0; i < introStory; i ++){
 //                txt += detailStory[i]+"\n";
 //            }
-            for(int i = 0; i <= introStory; i++){
-                g2d.drawString(detailStory[i], story_x, story_y+i*30);
+            int luar = 0;
+            for (int i = 0; i <= introStory; i++) {
+                int count=0;
+                for (String line : detailStory[i].split(":n:")) {
+                    g2d.drawString(line, story_x, story_y + luar * 30 + count*30);
+                    count++;
+                }
+                luar+=count;
             }
             if (introStory != detailStory.length) {
                 introStory++;
