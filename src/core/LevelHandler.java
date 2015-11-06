@@ -17,8 +17,8 @@ import objects.Ground;
  */
 public class LevelHandler {
 
-    public static final int COL_W = 15;
-    public static final int COL_H = 15;
+    public static final int COL_W = 8;
+    public static final int COL_H = 8;
 //    HashMap<String, LinkedList<GameObject>> level = new HashMap<>();
     LinkedList<LinkedList<LinkedList<GameObject>>> lLevel = new LinkedList<>();
     LinkedList<LinkedList<GameObject>> lLevelRow = new LinkedList<>();
@@ -40,8 +40,8 @@ public class LevelHandler {
             lLevelRow = new LinkedList<>();
             for (int j = 0; j < COL_H; j++) {
                 lObject = new LinkedList<>();
-//                loadVillageBackground(lObject, i * w, j * h, (i * 1) + w, (j + 1) + h);
-                loadVillage(lObject, i * w, j * h, (i * 1) + w, (j + 1) + h);
+//                loadVillageBackground(lObject, i * w, j * h, (i * 1) + w, (j + 1) + h)
+                loadVillage(lObject, i * w, j * h, (i + 1) * w, (j + 1) * h);
                 lLevelRow.add(lObject);
             }
             lLevel.add(lLevelRow);
@@ -64,49 +64,35 @@ public class LevelHandler {
         if (pY > COL_H) {
             pY = COL_H - 1;
         }
+        System.out.println("px : " + pX + " py: " + pY);
     }
 
     public LinkedList<GameObject> getLevelScreen() {
         return lLevel.get(pX).get(pY);
     }
-    
-    private void loadVillageBackground(LinkedList<GameObject> list, int ii, int jj, int w, int h) {
-        int ww = Game.WIDTH / (int) Ground.WIDTH;
-        int hh = Game.HEIGHT / (int) Ground.HEIGHT;
-
-        if (w + ww > lImage.getWidth()) {
-            w += ww;
-        }
-
-        if (h + hh > lImage.getHeight()) {
-            h += hh;
-        }
-
-        for (int i = ii; i < 50; i++) {
-            for (int j = jj; j < 50; j++) {
-                int pixel = lImage.getRGB(i, j);
-                int red = (pixel >> 16) & 0xff;
-                int green = (pixel >> 8) & 0xff;
-                int blue = (pixel) & 0xff;
-                list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
-            }
-        }
-    }
 
     private void loadVillage(LinkedList<GameObject> list, int ii, int jj, int w, int h) {
-        int ww = Game.WIDTH / (int) Ground.WIDTH;
-        int hh = Game.HEIGHT / (int) Ground.HEIGHT;
+        int ww = (Game.WIDTH / (int) Ground.WIDTH)+1;
+        int hh = (Game.HEIGHT / (int) Ground.HEIGHT)+1;
 
-        if (w + ww > lImage.getWidth()) {
+        if (w + ww < lImage.getWidth()) {
             w += ww;
         }
 
-        if (h + hh > lImage.getHeight()) {
+        if (h + hh < lImage.getHeight()) {
             h += hh;
         }
+        
+        if (ii - ww > 0) {
+            ii -= ww;
+        }
 
-        for (int i = ii; i < 50; i++) {
-            for (int j = jj; j < 50; j++) {
+        if (jj - hh > 0) {
+            jj -= hh;
+        }
+
+        for (int i = ii; i < w; i++) {
+            for (int j = jj; j < h; j++) {
                 int pixel = lImage.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;

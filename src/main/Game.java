@@ -136,6 +136,7 @@ public class Game extends Canvas implements Runnable {
             handler.tick();
             keyHandler.tick();
             camera.tick(handler.player);
+            levelHandler.tick();
         }
     }
 
