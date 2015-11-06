@@ -14,9 +14,10 @@ public class Texture {
     private BufferedImage playerAttackSheet = null;
     private BufferedImage monsterSheet = null; 
     private BufferedImage heartSheet = null;
+    private BufferedImage tree = null;
     
     public BufferedImage[] block = new BufferedImage[13];
-    public BufferedImage[] ground = new BufferedImage[13];
+    public BufferedImage[] ground = new BufferedImage[20];
     public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
@@ -49,6 +50,24 @@ public class Texture {
         heart[4] = hS.grabImage2(5, 1, (int)32, (int)32);
         
         ground[0] = vS.grabImage(1, 1, (int)32, (int)32);
+        ground[1] = vS.grabImage(2, 1, (int)32, (int)32);
+        ground[2] = vS.grabImage(3, 1, (int)32, (int)32);
+        ground[3] = vS.grabImage(4, 1, (int)32, (int)32);
+        ground[4] = vS.grabImage(5, 1, (int)32, (int)32);
+        ground[5] = vS.grabImage(6, 1, (int)32, (int)32);
+        ground[6] = vS.grabImage(7, 1, (int)32, (int)32);
+        ground[7] = vS.grabImage(8, 1, (int)32, (int)32);
+        ground[8] = vS.grabImage(9, 1, (int)32, (int)32);
+        ground[9] = vS.grabImage(10, 1, (int)32, (int)32);
+        ground[10] = vS.grabImage(1, 2, (int)32, (int)32);
+        ground[11] = vS.grabImage(2, 2, (int)32, (int)32);
+        ground[12] = vS.grabImage(3, 2, (int)32, (int)32);
+        ground[13] = vS.grabImage(4, 2, (int)32, (int)32);
+        ground[14] = vS.grabImage(5, 2, (int)32, (int)32);
+        ground[15] = vS.grabImage(6, 2, (int)32, (int)32);
+        ground[16] = vS.grabImage(7, 2, (int)32, (int)32);
+        ground[17] = vS.grabImage(8, 2, (int)32, (int)32);
+        ground[18] = vS.grabImage(9, 2, (int)32, (int)32);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);
