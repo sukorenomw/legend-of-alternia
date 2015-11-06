@@ -199,7 +199,9 @@ public class Game extends Canvas implements Runnable {
 //            for(int i = 0; i < introStory; i ++){
 //                txt += detailStory[i]+"\n";
 //            }
-            g2d.drawString(detailStory[introStory], story_x, story_y);
+            for(int i = 0; i <= introStory; i++){
+                g2d.drawString(detailStory[i], story_x, story_y+i*30);
+            }
             if (introStory != detailStory.length) {
                 introStory++;
             }
