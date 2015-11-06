@@ -13,9 +13,21 @@ public class Camera {
     }
 
     public void tick(GameObject player) {
+        System.out.println(getX()+"player "+player.getX());
         if (Game.state == state.WORLD) {
+            if(player.getX() < Game.WIDTH/2 + 96){
+                x = -96;
+                y = -player.getY() + Game.WIDTH/2;
+            }else if (player.getY() < Game.HEIGHT/2+50){
+                y = +50;
+                x = -player.getX() + Game.WIDTH/2; 
+            }else if(player.getX() > 9300 && player.getX() < 9600){
+                System.out.println(player.getX() + " " + x);
+            }else{
                x = -player.getX() + Game.WIDTH / 2;
-               y = -player.getY() + Game.WIDTH / 2;
+               y = -player.getY() + Game.WIDTH / 2; 
+            }
+               
         } else {
             if (player.getX() < Game.WIDTH / 2 + 96) {
                 x = -96;
