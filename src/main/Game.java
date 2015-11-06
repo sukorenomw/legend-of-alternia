@@ -5,6 +5,7 @@ import core.GameObject;
 import core.Handler;
 import core.ImageLoader;
 import core.KeyHandler;
+import core.LevelHandler;
 import core.MainMenu;
 import core.MouseHandler;
 import core.MusicHandler;
@@ -35,6 +36,7 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private Thread thread;
     private Handler handler;
+    public LevelHandler levelHandler;
     private KeyHandler keyHandler;
     private Camera camera;
     private BufferedImage level, background, village;
@@ -65,7 +67,8 @@ public class Game extends Canvas implements Runnable {
         village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/bg3.jpg");
         handler = new Handler();
-
+//        levelHandler = new LevelHandler();
+        
         camera = new Camera(0, 0);
         try {
             musicHandler = new MusicHandler();
@@ -131,12 +134,7 @@ public class Game extends Canvas implements Runnable {
         } else if (state == state.GAME_PLAY || state == state.WORLD) {
             handler.tick();
             keyHandler.tick();
-            for (int i = 0; i < handler.objects.size(); i++) {
-                GameObject object = handler.objects.get(i);
-                if (object.getId() == ObjectId.Player) {
-                    camera.tick(object);
-                }
-            }
+            camera.tick(handler.player);
         }
     }
 
@@ -256,10 +254,12 @@ public class Game extends Canvas implements Runnable {
     public void playGame() {
         mainmenu.musicHandler.stop();
         musicHandler.load("assets/sounds/village.mp3");
-        loadVillage(village);
+//        loadVillage(village);
+        levelHandler = new LevelHandler();
         musicHandler.play();
         state = State.WORLD;
-        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+//        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+        handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
     }
 
     public void loadGame() {
@@ -268,7 +268,8 @@ public class Game extends Canvas implements Runnable {
         loadImageLevel(level);
         musicHandler.play();
         state = State.GAME_PLAY;
-        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+//        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
+        handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
     }
 
     public static void main(String[] args) {

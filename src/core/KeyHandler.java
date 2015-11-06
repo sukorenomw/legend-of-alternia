@@ -44,8 +44,8 @@ public class KeyHandler extends KeyAdapter {
         int key = e.getKeyCode();
         handler.removeKey(key);
 
-        for (int i = 0; i < handler.objects.size(); i++) {
-            GameObject tempObject = handler.objects.get(i);
+//        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject tempObject = handler.player;
 
             if (tempObject.getId() == ObjectId.Player) {
                 if (key == KeyEvent.VK_RIGHT) {
@@ -71,14 +71,14 @@ public class KeyHandler extends KeyAdapter {
 
             }
 
-        }
+//        }
     }
 
     public void tick() {
         for (int i = 0; i < handler.keys.size(); i++) {
 
-            for (int j = 0; j < handler.objects.size(); j++) {
-                GameObject tempObject = handler.objects.get(j);
+//            for (int j = 0; j < handler.objects.size(); j++) {
+                GameObject tempObject = handler.player;
                 if (Game.state == state.WORLD) {
                     if (handler.keys.contains(KeyEvent.VK_RIGHT)) {
                         tempObject.setVelX(5);
@@ -138,7 +138,7 @@ public class KeyHandler extends KeyAdapter {
                         }
                     }
                 }
-            }
+//            }
 
             if (handler.keys.contains(KeyEvent.VK_ESCAPE)) {
                 System.exit(0);
