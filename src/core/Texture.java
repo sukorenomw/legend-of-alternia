@@ -6,7 +6,7 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -15,6 +15,7 @@ public class Texture {
     private BufferedImage monsterSheet = null; 
     private BufferedImage heartSheet = null;
     private BufferedImage treeImage = null;
+    private BufferedImage NPCSheet = null;
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
@@ -22,6 +23,7 @@ public class Texture {
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
     public BufferedImage[] tree = new BufferedImage[1];
+    public BufferedImage[] NPC = new BufferedImage[12];
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -32,6 +34,7 @@ public class Texture {
             villageSheet = loader.load("/assets/images/villages/base-terain.png");
             heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
             treeImage = loader.load("/assets/images/villages/tree.png");
+            NPCSheet = loader.load("/assets/images/npc/NPC.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,10 +45,24 @@ public class Texture {
         mS = new SpriteSheet(monsterSheet);
         vS = new SpriteSheet(villageSheet);
         tS = new SpriteSheet(treeImage);
+        npcS = new SpriteSheet(NPCSheet);
         getTextures();
     }
     
     private void getTextures() {
+        NPC[0] = npcS.grabImage(1, 1, (int) 40, (int) 56);
+        NPC[1] = npcS.grabImage(2, 1, (int) 40, (int) 56);
+        NPC[2] = npcS.grabImage(3, 1, (int) 40, (int) 56);
+        NPC[3] = npcS.grabImage(4, 1, (int) 40, (int) 56);
+        NPC[4] = npcS.grabImage(5, 1, (int) 40, (int) 56);
+        NPC[5] = npcS.grabImage(6, 1, (int) 40, (int) 56);
+        NPC[6] = npcS.grabImage(7, 1, (int) 40, (int) 56);
+        NPC[7] = npcS.grabImage(8, 1, (int) 40, (int) 56);
+        NPC[8] = npcS.grabImage(9, 1, (int) 40, (int) 56);
+        NPC[9] = npcS.grabImage(10, 1, (int) 40, (int) 56);
+        NPC[10] = npcS.grabImage(11, 1, (int) 40, (int) 56);
+        NPC[11] = npcS.grabImage(12, 1, (int) 40, (int) 56);
+        
         heart[0] = hS.grabImage2(1, 1, (int)32, (int)32);
         heart[1] = hS.grabImage2(2, 1, (int)32, (int)32);
         heart[2] = hS.grabImage2(3, 1, (int)32, (int)32);

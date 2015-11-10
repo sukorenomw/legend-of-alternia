@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import main.Game;
 import objects.Ground;
+import objects.NPC;
 import objects.River;
 import objects.Tree;
 
@@ -325,6 +326,14 @@ public class LevelHandler {
 
                 if (red == 43 && green == 106 && blue == 31) {
                     list.add(new Tree(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.Tree));
+                }
+
+                if (red == 0 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 2, ObjectId.NPC));
+                }
+                
+                if (red == 1 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 3, ObjectId.NPC));
                 }
             }
         }
