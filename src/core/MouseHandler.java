@@ -19,13 +19,25 @@ public class MouseHandler extends MouseAdapter{
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (Game.getGameInstance().mainmenu.bNewGame.isHover() && state == Game.state.MAIN_MENU) {
-            Game.getGameInstance().playGame();
-        } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
-            System.exit(0);
-        } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
-            Game.getGameInstance().loadGame();
+        
+        if (state == Game.state.MAIN_MENU) {
+            if (Game.getGameInstance().mainmenu.bNewGame.isHover() && state == Game.state.MAIN_MENU) {
+                Game.getGameInstance().playGame();
+            } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
+                System.exit(0);
+            } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
+                Game.getGameInstance().loadGame();
+            }
+        } else {
+            if (Game.getGameInstance().pause.bResume.isHover() && state == Game.state.PAUSE) {
+                Game.getGameInstance().playGame();
+            } else if (Game.getGameInstance().pause.bMainMenu.isHover() && state == Game.state.PAUSE) {
+                Game.getGameInstance().mainMenu();
+            } else if (Game.getGameInstance().pause.bExit.isHover() && state == Game.state.PAUSE) {
+                System.exit(0);
+            }
         }
+        
     }
     
     

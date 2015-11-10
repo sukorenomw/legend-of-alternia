@@ -12,6 +12,7 @@ import core.MainMenu;
 import core.MouseHandler;
 import core.MusicHandler;
 import core.ObjectId;
+import core.Pause;
 import core.State;
 import core.Texture;
 import core.Window;
@@ -65,6 +66,8 @@ public class Game extends Canvas implements Runnable {
     public MainMenu mainmenu;
     private MouseAdapter mouseHandler;
 
+    public Pause pause;
+    
     private void init() {
         WIDTH = getWidth();
         HEIGHT = getHeight();
@@ -75,6 +78,7 @@ public class Game extends Canvas implements Runnable {
         state = State.MAIN_MENU;
 //        state = State.WORLD;
         try {
+            pause = new Pause();
             mainmenu = new MainMenu();
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,6 +169,8 @@ public class Game extends Canvas implements Runnable {
             handler.tick();
             keyHandler.tick();
             camera.tick(handler.player);
+        } else if (state == state.PAUSE) {
+            pause.tick();
         }
     }
 
@@ -222,6 +228,8 @@ public class Game extends Canvas implements Runnable {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }  else if (state == state.PAUSE) {
+            pause.render(g);
         }
         g.dispose();
         bs.show();
@@ -317,6 +325,14 @@ public class Game extends Canvas implements Runnable {
         handler.addObject(new Heart(100, 100, 0, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 1, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 2, ObjectId.Heart, camera));
+    }
+    
+    public void pause() {
+        state = State.PAUSE;
+    }
+    
+    public void mainMenu() {
+        state = State.MAIN_MENU;
     }
 
     public static void main(String[] args) {

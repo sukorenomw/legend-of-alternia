@@ -11,6 +11,7 @@ package core;
  */
 public enum GameStates {
     MainMenu(),
+    Pause(),
     World(),
     Dungeon(),
     Intro(),
