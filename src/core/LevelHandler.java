@@ -26,12 +26,12 @@ public class LevelHandler {
     LinkedList<LinkedList<GameObject>> lLevelRow = new LinkedList<>();
     LinkedList<GameObject> lObject = new LinkedList<>();
     int pX, pY;
-    BufferedImage lImage;
+    BufferedImage lImage, oImage;
 
     public LevelHandler() {
         ImageLoader loader = new ImageLoader();
         this.lImage = loader.load("/assets/images/villages/map.png");
-
+        this.oImage = loader.load("/assets/images/villages/objects.png");
         int w = lImage.getWidth() / COL_W;
         int h = lImage.getHeight() / COL_H;
 
@@ -43,6 +43,7 @@ public class LevelHandler {
             for (int j = 0; j < COL_H; j++) {
                 lObject = new LinkedList<>();
                 loadVillage(lObject, i * w, j * h, (i + 1) * w, (j + 1) * h);
+                loadObjects(lObject, i * w, j * h, (i + 1) * w, (j + 1) * h);
                 lLevelRow.add(lObject);
             }
             lLevel.add(lLevelRow);
@@ -51,21 +52,21 @@ public class LevelHandler {
 
     public void tick() {
 //        if (pX <= 8) {
-            int cX = (int) -Game.getGameInstance().camera.getX();
-            int cY = (int) -Game.getGameInstance().camera.getY();
+        int cX = (int) -Game.getGameInstance().camera.getX();
+        int cY = (int) -Game.getGameInstance().camera.getY();
 
-            int nW = (lImage.getWidth() / COL_W) * (int) Ground.WIDTH;
-            int nH = (lImage.getHeight() / COL_H) * (int) Ground.HEIGHT;
+        int nW = (lImage.getWidth() / COL_W) * (int) Ground.WIDTH;
+        int nH = (lImage.getHeight() / COL_H) * (int) Ground.HEIGHT;
 
-            pX = cX / nW;
-            pY = cY / nH;
+        pX = cX / nW;
+        pY = cY / nH;
 
-            if (pX > COL_W) {
-                pX = COL_W - 1;
-            }
-            if (pY > COL_H) {
-                pY = COL_H - 1;
-            }
+        if (pX > COL_W) {
+            pX = COL_W - 1;
+        }
+        if (pY > COL_H) {
+            pY = COL_H - 1;
+        }
 //        }
     }
 
@@ -104,10 +105,6 @@ public class LevelHandler {
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
-                if (red == 43 && green == 106 && blue == 31) {
-                    list.add(new Tree(i * Tree.WIDTH, j * Tree.HEIGHT, 0, ObjectId.Tree));
-                }
-                
                 if (red == 134 && green == 69 && blue == 15) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                 }
@@ -291,7 +288,44 @@ public class LevelHandler {
                 if (red == 123 && green == 78 && blue == 59) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 45, ObjectId.Ground));
                 }
+            }
+        }
+    }
+
+    private void loadObjects(LinkedList<GameObject> list, int ii, int jj, int w, int h) {
+        int ww = (Game.WIDTH / (int) Tree.WIDTH) + 1;
+        int hh = (Game.HEIGHT / (int) Tree.HEIGHT) + 2;
+
+        if (w + ww < oImage.getWidth()) {
+            w += ww;
+        } else {
+            w = oImage.getWidth();
+        }
+
+        if (h + hh < oImage.getHeight()) {
+            h += hh;
+        } else {
+            h = oImage.getHeight();
+        }
+
+        if (ii - ww > 0) {
+            ii -= ww;
+        }
+
+        if (jj - hh > 0) {
+            jj -= hh;
+        }
+
+        for (int i = ii; i < w; i++) {
+            for (int j = jj; j < h; j++) {
+                int pixel = oImage.getRGB(i, j);
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = (pixel) & 0xff;
                 
+                if (red == 43 && green == 106 && blue == 31) {
+                    list.add(new Tree(i * Tree.WIDTH, j * Tree.HEIGHT, 0, ObjectId.Tree));
+                }
             }
         }
     }

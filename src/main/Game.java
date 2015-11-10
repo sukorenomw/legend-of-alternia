@@ -35,6 +35,7 @@ import objects.Ground;
 import objects.Heart;
 import objects.Monster;
 import objects.Player;
+import objects.Tree;
 
 public class Game extends Canvas implements Runnable {
 

@@ -28,7 +28,7 @@ public class Tree extends GameObject {
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.tree[type], (int)x, (int)y, null);
-        //Graphics2D g2d = (Graphics2D) g;
+//        Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
     }

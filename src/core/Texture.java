@@ -106,7 +106,7 @@ public class Texture {
         ground[44] = vS.grabImage(2, 8, (int)32, (int)32);
         ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
         
-        tree[0] = tS.grabImage2(1, 1, 96, 160);
+        tree[0] = tS.grabImage2(1, 1, (int)96, (int)160);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);
