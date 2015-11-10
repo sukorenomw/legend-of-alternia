@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import main.Game;
 import objects.Ground;
 import objects.NPC;
+import objects.Player;
 import objects.River;
 import objects.Tree;
 
@@ -327,7 +328,9 @@ public class LevelHandler {
                 if (red == 43 && green == 106 && blue == 31) {
                     list.add(new Tree(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.Tree));
                 }
-                
+                if (red == 64 && green == 0 && blue == 128) {
+                    Game.getGameInstance().handler.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handler, ObjectId.Player);
+                }
                 if (red == 0 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC));
                 }

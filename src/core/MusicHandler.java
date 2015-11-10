@@ -100,12 +100,6 @@ public class MusicHandler {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public void playOnce(){
-        if (clip.isActive()){
-            return;
-        }
-        if (clip == null) {
-            return;
-        }
         clip.stop();
         clip.setFramePosition(0);
         clip.loop(0);
