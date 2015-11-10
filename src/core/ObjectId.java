@@ -16,5 +16,6 @@ public enum ObjectId {
     MainMenu(),
     Monster(),
     Heart(),
-    River();
+    River(),
+    Tree();
 }

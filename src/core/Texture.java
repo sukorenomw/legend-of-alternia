@@ -6,7 +6,7 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -14,13 +14,14 @@ public class Texture {
     private BufferedImage playerAttackSheet = null;
     private BufferedImage monsterSheet = null; 
     private BufferedImage heartSheet = null;
-    private BufferedImage tree = null;
+    private BufferedImage treeImage = null;
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
     public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
+    public BufferedImage[] tree = new BufferedImage[1];
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -30,6 +31,7 @@ public class Texture {
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
             villageSheet = loader.load("/assets/images/villages/base-terain.png");
             heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
+            treeImage = loader.load("/assets/images/villages/tree.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,6 +41,7 @@ public class Texture {
         pAS = new SpriteSheet(playerAttackSheet);
         mS = new SpriteSheet(monsterSheet);
         vS = new SpriteSheet(villageSheet);
+        tS = new SpriteSheet(treeImage);
         getTextures();
     }
     
@@ -92,6 +95,7 @@ public class Texture {
         ground[34] = vS.grabImage(2, 5, (int)32, (int)32);
         ground[35] = vS.grabImage(3, 5, (int)32, (int)32);
         ground[36] = vS.grabImage(4, 5, (int)32, (int)32);
+        
         ground[37] = vS.grabImage(1, 6, (int)32, (int)32);
         ground[38] = vS.grabImage(2, 6, (int)32, (int)32);
         ground[39] = vS.grabImage(3, 6, (int)32, (int)32);
@@ -101,6 +105,8 @@ public class Texture {
         ground[43] = vS.grabImage(1, 8, (int)32, (int)32);
         ground[44] = vS.grabImage(2, 8, (int)32, (int)32);
         ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
+        
+        tree[0] = tS.grabImage2(1, 1, 96, 160);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);

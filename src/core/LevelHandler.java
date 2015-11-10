@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import main.Game;
 import objects.Ground;
 import objects.River;
+import objects.Tree;
 
 /**
  *
@@ -103,6 +104,10 @@ public class LevelHandler {
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
+                if (red == 43 && green == 106 && blue == 31) {
+                    list.add(new Tree(i * Tree.WIDTH, j * Tree.HEIGHT, 0, ObjectId.Tree));
+                }
+                
                 if (red == 134 && green == 69 && blue == 15) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                 }
