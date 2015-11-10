@@ -65,23 +65,29 @@ public class Texture {
         ground[13] = vS.grabImage(4, 2, (int)32, (int)32);
         ground[14] = vS.grabImage(5, 2, (int)32, (int)32);
         ground[15] = vS.grabImage(6, 2, (int)32, (int)32);
-        ground[16] = vS.grabImage(7, 2, (int)32, (int)32);
-        ground[17] = vS.grabImage(8, 2, (int)32, (int)32);
-        ground[18] = vS.grabImage(9, 2, (int)32, (int)32);
+        
+        ground[16] = vS.grabImage(7, 2, (int)32, (int)32); //pinggir kiri atas sungai
+        ground[17] = vS.grabImage(8, 2, (int)32, (int)32); //pinggir atas sungai
+        ground[18] = vS.grabImage(9, 2, (int)32, (int)32); //pinggir kanan atas sungai
+        
         ground[19] = vS.grabImage(1, 3, (int)32, (int)32);
         ground[20] = vS.grabImage(2, 3, (int)32, (int)32);
         ground[21] = vS.grabImage(3, 3, (int)32, (int)32);
         ground[22] = vS.grabImage(4, 3, (int)32, (int)32);
-        ground[23] = vS.grabImage(7, 3, (int)32, (int)32);
-        ground[24] = vS.grabImage(8, 3, (int)32, (int)32);
-        ground[25] = vS.grabImage(9, 3, (int)32, (int)32);
+        
+        ground[23] = vS.grabImage(7, 3, (int)32, (int)32); //pinggir kiri sungai
+        ground[24] = vS.grabImage(8, 3, (int)32, (int)32); //dalem sungai
+        ground[25] = vS.grabImage(9, 3, (int)32, (int)32); //pinggir kanan sungai
+        
         ground[26] = vS.grabImage(1, 4, (int)32, (int)32);
         ground[27] = vS.grabImage(2, 4, (int)32, (int)32);
         ground[28] = vS.grabImage(3, 4, (int)32, (int)32);
         ground[29] = vS.grabImage(4, 4, (int)32, (int)32);
-        ground[30] = vS.grabImage(7, 4, (int)32, (int)32);
-        ground[31] = vS.grabImage(8, 4, (int)32, (int)32);
-        ground[32] = vS.grabImage(9, 4, (int)32, (int)32);
+        
+        ground[30] = vS.grabImage(7, 4, (int)32, (int)32); //pinggir kiri bawah sungai
+        ground[31] = vS.grabImage(8, 4, (int)32, (int)32); //pinggir bawah sungai
+        ground[32] = vS.grabImage(9, 4, (int)32, (int)32); //pinggir kanan bawah sungai
+        
         ground[33] = vS.grabImage(1, 5, (int)32, (int)32);
         ground[34] = vS.grabImage(2, 5, (int)32, (int)32);
         ground[35] = vS.grabImage(3, 5, (int)32, (int)32);

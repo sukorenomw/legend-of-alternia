@@ -162,76 +162,100 @@ public class LevelHandler {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 15, ObjectId.Ground));
                 }
+                //pinggir kiri atas sungai
                 if (red == 25 && green == 98 && blue == 197) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 16, ObjectId.Ground));
                 }
+                //pinggir atas sungai
                 if (red == 10 && green == 108 && blue == 240) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.Ground));
                 }
+                //pinggir kanan atas sungai
                 if (red == 61 && green == 142 && blue == 253) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 18, ObjectId.Ground));
                 }
+                //object kiri atas jembatan
                 if (red == 167 && green == 120 && blue == 30) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 19, ObjectId.Ground));
                 }
+                //object atas tengah jembatan
                 if (red == 149 && green == 119 && blue == 38) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 20, ObjectId.Ground));
                 }
+                //object kanan atas jembatan
                 if (red == 138 && green == 106 && blue == 19) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 21, ObjectId.Ground));
                 }
+                //object atas jembatan kecil
                 if (red == 162 && green == 125 && blue == 24) {
+                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 22, ObjectId.Ground));
                 }
+                //pinggir kiri sungai
                 if (red == 65 && green == 104 && blue == 203) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 23, ObjectId.Ground));
                 }
+                //daleman sungai
                 if (red == 77 && green == 101 && blue == 162) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                 }
+                //pinggir kanan sungai
                 if (red == 4 && green == 41 && blue == 135) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 25, ObjectId.Ground));
                 }
+                //object kiri jembatan
                 if (red == 105 && green == 54 && blue == 24) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 26, ObjectId.Ground));
                 }
+                //object tengah jembatan
                 if (red == 104 && green == 50 && blue == 17) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 27, ObjectId.Ground));
                 }
+                //object kanan jembatan
                 if (red == 90 && green == 41 && blue == 12) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 28, ObjectId.Ground));
                 }
-                if (red == 98 && green == 48 && blue == 18) {
+                //object tengah jembatan kecil
+                if (red == 99 && green == 48 && blue == 18) {
+                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 29, ObjectId.Ground));
                 }
+                //pinggir kiri bawah sungai
                 if (red == 37 && green == 104 && blue == 160) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 30, ObjectId.Ground));
                 }
+                //pinggir bawah sungai
                 if (red == 30 && green == 128 && blue == 211) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                 }
+                //pinggir kanan bawah sungai
                 if (red == 38 && green == 143 && blue == 231) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 32, ObjectId.Ground));
                 }
+                //object kiri bawah jembatan
                 if (red == 128 && green == 57 && blue == 26) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 33, ObjectId.Ground));
                 }
+                //object tengah bawah jembatan
                 if (red == 124 && green == 49 && blue == 17) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 34, ObjectId.Ground));
                 }
+                //object kanan bawah jembatan
                 if (red == 142 && green == 61 && blue == 25) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 35, ObjectId.Ground));
                 }
+                //object bawah jembatan kecil
                 if (red == 143 && green == 70 && blue == 38) {
+                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 36, ObjectId.Ground));
                 }
                 if (red == 154 && green == 63 && blue == 23) {
