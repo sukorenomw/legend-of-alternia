@@ -12,10 +12,12 @@ public class KeyHandler extends KeyAdapter {
     Handler handler;
     MusicHandler sfx;
     private State state;
+    private boolean running;
 
     public KeyHandler(Handler handler, MusicHandler sfx) {
         this.handler = handler;
         try {
+            running = false;
             this.sfx = new MusicHandler();
             this.sfx.load("assets/sounds/knifeSlice.mp3");
         } catch (IOException ex) {
@@ -29,11 +31,12 @@ public class KeyHandler extends KeyAdapter {
         handler.addKey(key);
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
-
-            if (tempObject.getId() == ObjectId.Player && state.MAIN_MENU != Game.state) {
-                if (key == KeyEvent.VK_CONTROL && (!tempObject.isAttacking_left())) {
-                    //sfx.load("assets/sounds/knifeSlice.mp3");
-                    sfx.playOnce();
+            if (state.GAME_PLAY == Game.state) {
+                if (key == KeyEvent.VK_CONTROL) {
+                    if(!running){
+                        sfx.playOnce();
+                        running = true;
+                    }
                 }
             }
         }
@@ -66,6 +69,7 @@ public class KeyHandler extends KeyAdapter {
 //                    }
 //                    if (tempObject.isAttacking_left()) {
                     tempObject.setAttacking_left(false);
+                    running = false;
 //                    }
                 }
 

@@ -45,7 +45,7 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private int storyStates;
     private Thread thread;
-    private Handler handler;
+    public Handler handler;
     public LevelHandler levelHandler;
     private KeyHandler keyHandler;
     public Camera camera;
@@ -303,7 +303,6 @@ public class Game extends Canvas implements Runnable {
 //        state = State.INTRO;
         state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
-        handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
     }
 
     public void loadGame() {
@@ -313,7 +312,7 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         state = State.GAME_PLAY;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
-        handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
+        handler.player = new Player(192, 500, handler, ObjectId.Player);
         handler.addObject(new Heart(100, 100, 0, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 1, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 2, ObjectId.Heart, camera));

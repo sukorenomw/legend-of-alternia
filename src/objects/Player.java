@@ -27,10 +27,9 @@ public class Player extends GameObject {
     Texture texture = Game.getInstance();
     private int heartNumber;
 
-    public Player(float x, float y, Handler handler, ObjectId id, MusicHandler sfx) {
+    public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
         this.handler = handler;
-        this.sfx = sfx;
 
         walk = new Animation(2,
                 texture.player[8],
@@ -133,7 +132,7 @@ public class Player extends GameObject {
     public void collision(LinkedList<GameObject> objects) {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
-            if (tempObject.getId() == ObjectId.River) {
+            if (tempObject.getId() == ObjectId.River ) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 48;
                 } else if (getBoundsRight().intersects(tempObject.getBounds())) {
@@ -143,7 +142,27 @@ public class Player extends GameObject {
                 } else if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
                 }
-            } else if (tempObject.getId() == ObjectId.Block) {
+            }else if(tempObject.getId() == ObjectId.Tree){
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 160;
+                } else if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 48;
+                } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 96;
+                } else if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                }
+            }else if(tempObject.getId() == ObjectId.NPC){
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 56;
+                } else if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 48;
+                } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 40;
+                } else if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                }
+            }else if (tempObject.getId() == ObjectId.Block) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 72;
                     velY = 0;
