@@ -293,8 +293,8 @@ public class LevelHandler {
     }
 
     private void loadObjects(LinkedList<GameObject> list, int ii, int jj, int w, int h) {
-        int ww = (Game.WIDTH / (int) Tree.WIDTH) + 1;
-        int hh = (Game.HEIGHT / (int) Tree.HEIGHT) + 2;
+        int ww = (Game.WIDTH / (int) Ground.WIDTH) + 1;
+        int hh = (Game.HEIGHT / (int) Ground.HEIGHT) + 4;
 
         if (w + ww < oImage.getWidth()) {
             w += ww;
@@ -322,9 +322,9 @@ public class LevelHandler {
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
-                
+
                 if (red == 43 && green == 106 && blue == 31) {
-                    list.add(new Tree(i * Ground.WIDTH, j * Ground.HEIGHT - 100, 0, ObjectId.Tree));
+                    list.add(new Tree(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.Tree));
                 }
             }
         }
