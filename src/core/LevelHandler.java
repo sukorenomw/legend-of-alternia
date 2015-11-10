@@ -323,8 +323,8 @@ public class LevelHandler {
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
                 
-                if (red == 43 && green == 106 && blue == 31) {
-                    list.add(new Tree(i * Tree.WIDTH, j * Tree.HEIGHT, 0, ObjectId.Tree));
+                if (red == 255 && green == 255 && blue == 255) {
+                    list.add(new Tree(i * Ground.WIDTH, j * Ground.HEIGHT - 100, 0, ObjectId.Tree));
                 }
             }
         }
