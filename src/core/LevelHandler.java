@@ -327,13 +327,42 @@ public class LevelHandler {
                 if (red == 43 && green == 106 && blue == 31) {
                     list.add(new Tree(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.Tree));
                 }
-
+                
                 if (red == 0 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC));
+                }
+                if (red == 1 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 1, ObjectId.NPC));
+                }
+                if (red == 2 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 2, ObjectId.NPC));
                 }
-                
-                if (red == 1 && green == 0 && blue == 0) {
+                if (red == 3 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 3, ObjectId.NPC));
+                }
+                if (red == 4 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                }
+                if (red == 5 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 5, ObjectId.NPC));
+                }
+                if (red == 6 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 6, ObjectId.NPC));
+                }
+                if (red == 7 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 7, ObjectId.NPC));
+                }
+                if (red == 8 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 8, ObjectId.NPC));
+                }
+                if (red == 9 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC));
+                }
+                if (red == 10 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC));
+                }
+                if (red == 11 && green == 0 && blue == 0) {
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
                 }
             }
         }
