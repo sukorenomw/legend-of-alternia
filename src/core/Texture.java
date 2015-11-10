@@ -17,7 +17,7 @@ public class Texture {
     private BufferedImage tree = null;
     
     public BufferedImage[] block = new BufferedImage[13];
-    public BufferedImage[] ground = new BufferedImage[20];
+    public BufferedImage[] ground = new BufferedImage[47];
     public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
@@ -68,6 +68,33 @@ public class Texture {
         ground[16] = vS.grabImage(7, 2, (int)32, (int)32);
         ground[17] = vS.grabImage(8, 2, (int)32, (int)32);
         ground[18] = vS.grabImage(9, 2, (int)32, (int)32);
+        ground[19] = vS.grabImage(1, 3, (int)32, (int)32);
+        ground[20] = vS.grabImage(2, 3, (int)32, (int)32);
+        ground[21] = vS.grabImage(3, 3, (int)32, (int)32);
+        ground[22] = vS.grabImage(4, 3, (int)32, (int)32);
+        ground[23] = vS.grabImage(7, 3, (int)32, (int)32);
+        ground[24] = vS.grabImage(8, 3, (int)32, (int)32);
+        ground[25] = vS.grabImage(9, 3, (int)32, (int)32);
+        ground[26] = vS.grabImage(1, 4, (int)32, (int)32);
+        ground[27] = vS.grabImage(2, 4, (int)32, (int)32);
+        ground[28] = vS.grabImage(3, 4, (int)32, (int)32);
+        ground[29] = vS.grabImage(4, 4, (int)32, (int)32);
+        ground[30] = vS.grabImage(7, 4, (int)32, (int)32);
+        ground[31] = vS.grabImage(8, 4, (int)32, (int)32);
+        ground[32] = vS.grabImage(9, 4, (int)32, (int)32);
+        ground[33] = vS.grabImage(1, 5, (int)32, (int)32);
+        ground[34] = vS.grabImage(2, 5, (int)32, (int)32);
+        ground[35] = vS.grabImage(3, 5, (int)32, (int)32);
+        ground[36] = vS.grabImage(4, 5, (int)32, (int)32);
+        ground[37] = vS.grabImage(1, 6, (int)32, (int)32);
+        ground[38] = vS.grabImage(2, 6, (int)32, (int)32);
+        ground[39] = vS.grabImage(3, 6, (int)32, (int)32);
+        ground[40] = vS.grabImage(1, 7, (int)32, (int)32);
+        ground[41] = vS.grabImage(2, 7, (int)32, (int)32);
+        ground[42] = vS.grabImage(3, 7, (int)32, (int)32);
+        ground[43] = vS.grabImage(1, 8, (int)32, (int)32);
+        ground[44] = vS.grabImage(2, 8, (int)32, (int)32);
+        ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);

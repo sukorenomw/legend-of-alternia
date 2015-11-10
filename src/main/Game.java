@@ -72,6 +72,7 @@ public class Game extends Canvas implements Runnable {
         storyStates = 1;
 
         state = State.MAIN_MENU;
+//        state = State.WORLD;
         try {
             mainmenu = new MainMenu();
         } catch (IOException ex) {
@@ -201,12 +202,12 @@ public class Game extends Canvas implements Runnable {
 //            }
             int luar = 0;
             for (int i = 0; i <= introStory; i++) {
-                int count=0;
+                int count = 0;
                 for (String line : detailStory[i].split(":n:")) {
-                    g2d.drawString(line, story_x, story_y + luar * 30 + count*30);
+                    g2d.drawString(line, story_x, story_y + luar * 30 + count * 30);
                     count++;
                 }
-                luar+=count;
+                luar += count;
             }
             if (introStory != detailStory.length) {
                 introStory++;
@@ -296,10 +297,10 @@ public class Game extends Canvas implements Runnable {
 //        loadVillage(village);
         levelHandler = new LevelHandler();
         musicHandler.play();
-        //state = State.WORLD;
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-        state = State.INTRO;
+//        state = State.INTRO;
+        state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         handler.player = new Player(192, 500, handler, ObjectId.Player, musicHandler);
     }
