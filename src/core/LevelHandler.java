@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import main.Game;
 import objects.Ground;
+import objects.River;
 
 /**
  *
@@ -168,7 +169,7 @@ public class LevelHandler {
                 }
                 //pinggir atas sungai
                 if (red == 10 && green == 108 && blue == 240) {
-                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.Ground));
+                    list.add(new River(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 17, ObjectId.River));
                 }
                 //pinggir kanan atas sungai
                 if (red == 61 && green == 142 && blue == 253) {
@@ -200,7 +201,7 @@ public class LevelHandler {
                 }
                 //daleman sungai
                 if (red == 77 && green == 101 && blue == 162) {
-                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.Ground));
+                    list.add(new River(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 24, ObjectId.River));
                 }
                 //pinggir kanan sungai
                 if (red == 4 && green == 41 && blue == 135) {

@@ -22,10 +22,11 @@ public class Player extends GameObject {
     private static final float MAX_JUMP = 5f;
     private Handler handler;
     private MusicHandler sfx;
-    private Animation walk, move_downs, move_ups,idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
+    private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
     private State state;
     Texture texture = Game.getInstance();
     private int heartNumber;
+
     public Player(float x, float y, Handler handler, ObjectId id, MusicHandler sfx) {
         super(x, y, id);
         this.handler = handler;
@@ -132,8 +133,17 @@ public class Player extends GameObject {
     public void collision(LinkedList<GameObject> objects) {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
-
-            if (tempObject.getId() == ObjectId.Block) {
+            if (tempObject.getId() == ObjectId.River) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                } else if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                } else if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                }
+            } else if (tempObject.getId() == ObjectId.Block) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 72;
                     velY = 0;
@@ -216,19 +226,19 @@ public class Player extends GameObject {
             } else {
                 jump_left.drawAnimation(g, (int) x, (int) y);
             }
-        }else if(velY < 0 && Game.state == state.WORLD){
-            move_ups.drawAnimation(g, (int)x, (int)y);
-        }else if (velY > 0 && Game.state == state.WORLD){
-            move_downs.drawAnimation(g, (int)x, (int)y);
-        }else if (velX < 0) {
+        } else if (velY < 0 && Game.state == state.WORLD) {
+            move_ups.drawAnimation(g, (int) x, (int) y);
+        } else if (velY > 0 && Game.state == state.WORLD) {
+            move_downs.drawAnimation(g, (int) x, (int) y);
+        } else if (velX < 0) {
             backwards.drawAnimation(g, (int) x, (int) y);
         } else if (velX > 0) {
             walk.drawAnimation(g, (int) x, (int) y);
-        } else if(move_down){
-           idle_down.drawAnimation(g, (int)x, (int)y);
-        } else if(move_up){
-            idle_up.drawAnimation(g, (int)x, (int)y);
-        }else if (move_left) {
+        } else if (move_down) {
+            idle_down.drawAnimation(g, (int) x, (int) y);
+        } else if (move_up) {
+            idle_up.drawAnimation(g, (int) x, (int) y);
+        } else if (move_left) {
             idle_left.drawAnimation(g, (int) x, (int) y);
         } else if (move_right) {
             idle_right.drawAnimation(g, (int) x, (int) y);

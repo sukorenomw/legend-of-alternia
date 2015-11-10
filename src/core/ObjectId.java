@@ -15,5 +15,6 @@ public enum ObjectId {
     Ground(),
     MainMenu(),
     Monster(),
-    Heart();
+    Heart(),
+    River();
 }
