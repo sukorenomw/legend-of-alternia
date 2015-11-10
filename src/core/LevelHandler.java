@@ -115,7 +115,7 @@ public class LevelHandler {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 3, ObjectId.Ground));
                 }
-                if (red == 0 && green == 178 && blue == 34) {
+                if (red == 0 && green == 178 && blue == 33) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 4, ObjectId.Ground));
                 }
@@ -159,6 +159,7 @@ public class LevelHandler {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 14, ObjectId.Ground));
                 }
                 if (red == 10 && green == 138 && blue == 6) {
+                    list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 0, ObjectId.Ground));
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 15, ObjectId.Ground));
                 }
                 if (red == 25 && green == 98 && blue == 197) {
@@ -215,7 +216,7 @@ public class LevelHandler {
                 if (red == 30 && green == 128 && blue == 211) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 31, ObjectId.Ground));
                 }
-                if (red == 38 && green == 142 && blue == 231) {
+                if (red == 38 && green == 143 && blue == 231) {
                     list.add(new Ground(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 32, ObjectId.Ground));
                 }
                 if (red == 128 && green == 57 && blue == 26) {
