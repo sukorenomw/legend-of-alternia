@@ -135,11 +135,11 @@ public class Player extends GameObject {
             GameObject tempObject = objects.get(i);
             if (tempObject.getId() == ObjectId.River) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
+                    y = tempObject.getY() + 48;
                 } else if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
+                    x = tempObject.getX() - 48;
                 } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
+                    x = tempObject.getX() + 48;
                 } else if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
                 }
