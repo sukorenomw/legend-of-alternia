@@ -13,7 +13,6 @@ public class Camera {
     }
 
     public void tick(GameObject player) {
-        System.out.println(getX()+"player "+player.getX());
         if (Game.state == state.WORLD) {
             if(player.getX() < Game.WIDTH/2 + 96 && player.getY() < Game.HEIGHT/2+50){
                 x = -96;

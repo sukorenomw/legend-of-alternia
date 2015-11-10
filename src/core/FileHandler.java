@@ -34,7 +34,6 @@ public class FileHandler {
                 while ((line = reader.readLine()) != null) {
                     //process each line in some way
                     tempArray.add(line);
-                    System.out.println(line);
                 }
             }
             return tempArray;
