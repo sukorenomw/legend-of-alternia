@@ -28,12 +28,12 @@ public class River extends GameObject {
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.ground[type], (int)x, (int)y, null);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.red);
-        g2d.draw(getBoundsBottom());
-        g2d.draw(getBoundsTop());
-        g2d.draw(getBoundsLeft());
-        g2d.draw(getBoundsRight());
+//        Graphics2D g2d = (Graphics2D) g;
+//        g2d.setColor(Color.red);
+//        g2d.draw(getBoundsBottom());
+//        g2d.draw(getBoundsTop());
+//        g2d.draw(getBoundsLeft());
+//        g2d.draw(getBoundsRight());
     }
 
     @Override
