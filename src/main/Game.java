@@ -314,6 +314,9 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void loadGame() {
+        if (state == State.WORLD) {
+            musicHandler.stop();
+        }
         mainmenu.musicHandler.stop();
         musicHandler.load("assets/sounds/dun-1.mp3");
         loadImageLevel(level);

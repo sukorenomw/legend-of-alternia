@@ -17,6 +17,7 @@ public enum ObjectId {
     Monster(),
     Heart(),
     River(),
-    Tree(), 
+    Tree(),
+    Dungeon(),
     NPC();
 }

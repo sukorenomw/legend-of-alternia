@@ -250,6 +250,11 @@ public class Player extends GameObject {
                     tempObject.setDying(true);
                     handler.removeObject(tempObject);
                 }
+            } else if (tempObject.getId() == ObjectId.Dungeon) {
+               if (getBounds(10).intersects(tempObject.getBounds())) {
+                    Game.getGameInstance().loadGame();
+                }
+                
             }
         }
     }

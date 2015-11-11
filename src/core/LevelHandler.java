@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.LinkedList;
 import main.Game;
+import objects.Dungeon;
 import objects.Ground;
 import objects.NPC;
 import objects.Player;
@@ -366,6 +367,18 @@ public class LevelHandler {
                 }
                 if (red == 11 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
+                }
+                if (red == 255 && green == 0 && blue == 0) {
+                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                }
+                if (red == 0 && green == 255 && blue == 0) {
+                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                }
+                if (red == 0 && green == 0 && blue == 255) {
+                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                }
+                if (red == 255 && green == 0 && blue == 255) {
+                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
                 }
             }
         }
