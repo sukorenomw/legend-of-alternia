@@ -156,7 +156,7 @@ public class Player extends GameObject {
                          isTalk = true;
                     }
                 }
-            }else if(!isTalk){
+            }else if(!talk){
                 isTalk = false;
             }
             if (tempObject.getId() == ObjectId.River) {

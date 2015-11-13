@@ -48,6 +48,11 @@ public class KeyHandler extends KeyAdapter {
             }
         }
         if (state.WORLD == Game.state) {
+            if (key == KeyEvent.VK_E && !handler.player.talk) {
+                handler.player.talk = true;
+            }else if(handler.player.talk){
+                handler.player.talk = false;
+            }
             if (key == KeyEvent.VK_E && Game.getGameInstance().isStory) {
                 Game.getGameInstance().storyStates++;
                 Game.getGameInstance().introStory = 0;
@@ -64,9 +69,6 @@ public class KeyHandler extends KeyAdapter {
         GameObject tempObject = handler.player;
 
         if (tempObject.getId() == ObjectId.Player) {
-            if (key == KeyEvent.VK_E) {
-                tempObject.talk = false;
-            }
             if (key == KeyEvent.VK_RIGHT) {
                 tempObject.setVelX(0);
             }
