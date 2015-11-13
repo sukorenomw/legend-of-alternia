@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import main.Game;
 import objects.Dungeon;
 import objects.Ground;
+import objects.House;
 import objects.NPC;
 import objects.Player;
 import objects.River;
@@ -379,6 +380,10 @@ public class LevelHandler {
                 }
                 if (red == 255 && green == 0 && blue == 255) {
                     list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                }
+                //house
+                if (red == 64 && green == 64 && blue == 64) {
+                    list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 2, ObjectId.House));
                 }
             }
         }

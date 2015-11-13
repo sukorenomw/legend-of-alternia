@@ -6,7 +6,7 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -16,6 +16,7 @@ public class Texture {
     private BufferedImage heartSheet = null;
     private BufferedImage treeImage = null;
     private BufferedImage NPCSheet = null;
+    private BufferedImage houseSheet = null;
     
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
@@ -24,6 +25,7 @@ public class Texture {
     public BufferedImage[] heart = new BufferedImage[5];
     public BufferedImage[] tree = new BufferedImage[1];
     public BufferedImage[] NPC = new BufferedImage[12];
+    public BufferedImage[] house = new BufferedImage[3];
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -35,6 +37,7 @@ public class Texture {
             heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
             treeImage = loader.load("/assets/images/villages/tree.png");
             NPCSheet = loader.load("/assets/images/npc/NPC.png");
+            houseSheet = loader.load("/assets/images/villages/house.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,6 +49,7 @@ public class Texture {
         vS = new SpriteSheet(villageSheet);
         tS = new SpriteSheet(treeImage);
         npcS = new SpriteSheet(NPCSheet);
+        houseS = new SpriteSheet(houseSheet);
         getTextures();
     }
     
@@ -62,6 +66,10 @@ public class Texture {
         NPC[9] = npcS.grabImage(10, 1, (int) 40, (int) 56);
         NPC[10] = npcS.grabImage(11, 1, (int) 40, (int) 56);
         NPC[11] = npcS.grabImage(12, 1, (int) 40, (int) 56);
+        
+        house[0] = houseS.grabImage(1, 1, 380, 265);
+        house[1] = houseS.grabImage(1, 2, 380, 265);
+        house[2] = houseS.grabImage(2, 1, 380, 265);
         
         heart[0] = hS.grabImage2(1, 1, (int)32, (int)32);
         heart[1] = hS.grabImage2(2, 1, (int)32, (int)32);
