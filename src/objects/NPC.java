@@ -2,6 +2,7 @@ package objects;
 
 import core.GameObject;
 import core.ObjectId;
+import core.State;
 import core.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,16 +14,23 @@ import main.Game;
 public class NPC extends GameObject {
     public static final float WIDTH = 40, HEIGHT = 56;
     Texture texture = Game.getInstance();
-    private int type;
+    private int type, no;
 
     public NPC(float x, float y, int type, ObjectId id) {
         super(x, y, id);
         this.type = type;
     }
+    public NPC(float x, float y, int type, ObjectId id, int no) {
+        super(x, y, id);
+        this.type = type;
+        this.no = no;
+    }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
-    
+        if(type == 4 && Player.isTalk){
+            Game.getGameInstance().loadGame(no);
+        }
     }
 
     @Override

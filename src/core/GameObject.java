@@ -20,6 +20,7 @@ public abstract class GameObject {
     protected boolean falling = true, jumping = false, move_left = false,move_up = false, move_down = false, move_right = true, attacking_right = false, attacking_left = false, dying = false;
     protected boolean talk = false;
     protected boolean is_paused = false;
+    public static boolean isTalk;
 
     public boolean isIs_paused() {
         return is_paused;

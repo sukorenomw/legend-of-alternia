@@ -10,7 +10,7 @@ package core;
  * @author raiven
  */
 public enum State {
-
+    LOADING,
     SPLASH,
     MAIN_MENU,
     GAME_PLAY,

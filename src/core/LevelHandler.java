@@ -334,7 +334,7 @@ public class LevelHandler {
 
                 //NPC start
                 if (red == 64 && green == 0 && blue == 128) {
-                    Game.getGameInstance().handler.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handler, ObjectId.Player);
+                    Game.getGameInstance().handlerWorld.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handlerWorld, ObjectId.Player);
                 }
                 if (red == 0 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC));
@@ -372,17 +372,18 @@ public class LevelHandler {
                 if (red == 11 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
                 }
+                //4 npc jaga
                 if (red == 255 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC, 3));
                 }
                 if (red == 0 && green == 255 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH + 100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH + 100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC, 4));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC, 2));
                 }
                 if (red == 255 && green == 0 && blue == 255) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 48, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 48, 4, ObjectId.NPC, 1));
                 }
                 // NPC END
 

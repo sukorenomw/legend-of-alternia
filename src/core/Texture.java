@@ -6,18 +6,19 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
+
     private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
     private BufferedImage villageSheet = null;
     private BufferedImage playerAttackSheet = null;
-    private BufferedImage monsterSheet = null; 
+    private BufferedImage monsterSheet = null;
     private BufferedImage heartSheet = null;
     private BufferedImage treeImage = null;
     private BufferedImage NPCSheet = null;
     private BufferedImage houseSheet = null;
-    
+
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
     public BufferedImage[] player = new BufferedImage[54];
@@ -27,6 +28,7 @@ public class Texture {
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage fountain = null;
+
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -55,7 +57,27 @@ public class Texture {
         fS = new SpriteSheet(fountain);
         getTextures();
     }
-    
+
+    public void changeDungeon(int no) {
+        ImageLoader loader = new ImageLoader();
+        groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-" + no + ".png");
+        gS = new SpriteSheet(groundSheet);
+        block[0] = gS.grabImage(1, 1, (int) 32, (int) 32);
+        block[1] = gS.grabImage(2, 1, (int) 32, (int) 32);
+        block[2] = gS.grabImage(3, 1, (int) 32, (int) 32);
+        block[3] = gS.grabImage(4, 1, (int) 32, (int) 32);
+        block[4] = gS.grabImage(1, 2, (int) 32, (int) 32);
+        block[5] = gS.grabImage(2, 2, (int) 32, (int) 32);
+        block[6] = gS.grabImage(3, 2, (int) 32, (int) 32);
+        block[7] = gS.grabImage(1, 3, (int) 32, (int) 32);
+        block[8] = gS.grabImage(2, 3, (int) 32, (int) 32);
+        block[9] = gS.grabImage(3, 3, (int) 32, (int) 32);
+        block[10] = gS.grabImage(1, 4, (int) 32, (int) 32);
+        block[11] = gS.grabImage(2, 4, (int) 32, (int) 32);
+        block[12] = gS.grabImage(3, 4, (int) 32, (int) 32);
+
+    }
+
     private void getTextures() {
         NPC[0] = npcS.grabImage(1, 1, (int) 40, (int) 56);
         NPC[1] = npcS.grabImage(2, 1, (int) 40, (int) 56);
@@ -69,88 +91,88 @@ public class Texture {
         NPC[9] = npcS.grabImage(10, 1, (int) 40, (int) 56);
         NPC[10] = npcS.grabImage(11, 1, (int) 40, (int) 56);
         NPC[11] = npcS.grabImage(12, 1, (int) 40, (int) 56);
-        
+
         house[0] = houseS.grabImage(1, 1, 380, 265);
         house[1] = houseS.grabImage(1, 2, 380, 265);
         house[2] = houseS.grabImage(2, 1, 380, 265);
-        
-        heart[0] = hS.grabImage2(1, 1, (int)32, (int)32);
-        heart[1] = hS.grabImage2(2, 1, (int)32, (int)32);
-        heart[2] = hS.grabImage2(3, 1, (int)32, (int)32);
-        heart[3] = hS.grabImage2(4, 1, (int)32, (int)32);
-        heart[4] = hS.grabImage2(5, 1, (int)32, (int)32);
-        
-        ground[0] = vS.grabImage(1, 1, (int)32, (int)32);
-        ground[1] = vS.grabImage(2, 1, (int)32, (int)32);
-        ground[2] = vS.grabImage(3, 1, (int)32, (int)32);
-        ground[3] = vS.grabImage(4, 1, (int)32, (int)32);
-        ground[4] = vS.grabImage(5, 1, (int)32, (int)32);
-        ground[5] = vS.grabImage(6, 1, (int)32, (int)32);
-        ground[6] = vS.grabImage(7, 1, (int)32, (int)32);
-        ground[7] = vS.grabImage(8, 1, (int)32, (int)32);
-        ground[8] = vS.grabImage(9, 1, (int)32, (int)32);
-        ground[9] = vS.grabImage(10, 1, (int)32, (int)32);
-        ground[10] = vS.grabImage(1, 2, (int)32, (int)32);
-        ground[11] = vS.grabImage(2, 2, (int)32, (int)32);
-        ground[12] = vS.grabImage(3, 2, (int)32, (int)32);
-        ground[13] = vS.grabImage(4, 2, (int)32, (int)32);
-        ground[14] = vS.grabImage(5, 2, (int)32, (int)32);
-        ground[15] = vS.grabImage(6, 2, (int)32, (int)32);
-        
-        ground[16] = vS.grabImage(7, 2, (int)32, (int)32); //pinggir kiri atas sungai
-        ground[17] = vS.grabImage(8, 2, (int)32, (int)32); //pinggir atas sungai
-        ground[18] = vS.grabImage(9, 2, (int)32, (int)32); //pinggir kanan atas sungai
-        
-        ground[19] = vS.grabImage(1, 3, (int)32, (int)32);
-        ground[20] = vS.grabImage(2, 3, (int)32, (int)32);
-        ground[21] = vS.grabImage(3, 3, (int)32, (int)32);
-        ground[22] = vS.grabImage(4, 3, (int)32, (int)32);
-        
-        ground[23] = vS.grabImage(7, 3, (int)32, (int)32); //pinggir kiri sungai
-        ground[24] = vS.grabImage(8, 3, (int)32, (int)32); //dalem sungai
-        ground[25] = vS.grabImage(9, 3, (int)32, (int)32); //pinggir kanan sungai
-        
-        ground[26] = vS.grabImage(1, 4, (int)32, (int)32);
-        ground[27] = vS.grabImage(2, 4, (int)32, (int)32);
-        ground[28] = vS.grabImage(3, 4, (int)32, (int)32);
-        ground[29] = vS.grabImage(4, 4, (int)32, (int)32);
-        
-        ground[30] = vS.grabImage(7, 4, (int)32, (int)32); //pinggir kiri bawah sungai
-        ground[31] = vS.grabImage(8, 4, (int)32, (int)32); //pinggir bawah sungai
-        ground[32] = vS.grabImage(9, 4, (int)32, (int)32); //pinggir kanan bawah sungai
-        
-        ground[33] = vS.grabImage(1, 5, (int)32, (int)32);
-        ground[34] = vS.grabImage(2, 5, (int)32, (int)32);
-        ground[35] = vS.grabImage(3, 5, (int)32, (int)32);
-        ground[36] = vS.grabImage(4, 5, (int)32, (int)32);
-        
-        ground[37] = vS.grabImage(1, 6, (int)32, (int)32);
-        ground[38] = vS.grabImage(2, 6, (int)32, (int)32);
-        ground[39] = vS.grabImage(3, 6, (int)32, (int)32);
-        ground[40] = vS.grabImage(1, 7, (int)32, (int)32);
-        ground[41] = vS.grabImage(2, 7, (int)32, (int)32);
-        ground[42] = vS.grabImage(3, 7, (int)32, (int)32);
-        ground[43] = vS.grabImage(1, 8, (int)32, (int)32);
-        ground[44] = vS.grabImage(2, 8, (int)32, (int)32);
-        ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
-        
-        tree[0] = tS.grabImage2(1, 1, (int)96, (int)160);
+
+        heart[0] = hS.grabImage2(1, 1, (int) 32, (int) 32);
+        heart[1] = hS.grabImage2(2, 1, (int) 32, (int) 32);
+        heart[2] = hS.grabImage2(3, 1, (int) 32, (int) 32);
+        heart[3] = hS.grabImage2(4, 1, (int) 32, (int) 32);
+        heart[4] = hS.grabImage2(5, 1, (int) 32, (int) 32);
+
+        ground[0] = vS.grabImage(1, 1, (int) 32, (int) 32);
+        ground[1] = vS.grabImage(2, 1, (int) 32, (int) 32);
+        ground[2] = vS.grabImage(3, 1, (int) 32, (int) 32);
+        ground[3] = vS.grabImage(4, 1, (int) 32, (int) 32);
+        ground[4] = vS.grabImage(5, 1, (int) 32, (int) 32);
+        ground[5] = vS.grabImage(6, 1, (int) 32, (int) 32);
+        ground[6] = vS.grabImage(7, 1, (int) 32, (int) 32);
+        ground[7] = vS.grabImage(8, 1, (int) 32, (int) 32);
+        ground[8] = vS.grabImage(9, 1, (int) 32, (int) 32);
+        ground[9] = vS.grabImage(10, 1, (int) 32, (int) 32);
+        ground[10] = vS.grabImage(1, 2, (int) 32, (int) 32);
+        ground[11] = vS.grabImage(2, 2, (int) 32, (int) 32);
+        ground[12] = vS.grabImage(3, 2, (int) 32, (int) 32);
+        ground[13] = vS.grabImage(4, 2, (int) 32, (int) 32);
+        ground[14] = vS.grabImage(5, 2, (int) 32, (int) 32);
+        ground[15] = vS.grabImage(6, 2, (int) 32, (int) 32);
+
+        ground[16] = vS.grabImage(7, 2, (int) 32, (int) 32); //pinggir kiri atas sungai
+        ground[17] = vS.grabImage(8, 2, (int) 32, (int) 32); //pinggir atas sungai
+        ground[18] = vS.grabImage(9, 2, (int) 32, (int) 32); //pinggir kanan atas sungai
+
+        ground[19] = vS.grabImage(1, 3, (int) 32, (int) 32);
+        ground[20] = vS.grabImage(2, 3, (int) 32, (int) 32);
+        ground[21] = vS.grabImage(3, 3, (int) 32, (int) 32);
+        ground[22] = vS.grabImage(4, 3, (int) 32, (int) 32);
+
+        ground[23] = vS.grabImage(7, 3, (int) 32, (int) 32); //pinggir kiri sungai
+        ground[24] = vS.grabImage(8, 3, (int) 32, (int) 32); //dalem sungai
+        ground[25] = vS.grabImage(9, 3, (int) 32, (int) 32); //pinggir kanan sungai
+
+        ground[26] = vS.grabImage(1, 4, (int) 32, (int) 32);
+        ground[27] = vS.grabImage(2, 4, (int) 32, (int) 32);
+        ground[28] = vS.grabImage(3, 4, (int) 32, (int) 32);
+        ground[29] = vS.grabImage(4, 4, (int) 32, (int) 32);
+
+        ground[30] = vS.grabImage(7, 4, (int) 32, (int) 32); //pinggir kiri bawah sungai
+        ground[31] = vS.grabImage(8, 4, (int) 32, (int) 32); //pinggir bawah sungai
+        ground[32] = vS.grabImage(9, 4, (int) 32, (int) 32); //pinggir kanan bawah sungai
+
+        ground[33] = vS.grabImage(1, 5, (int) 32, (int) 32);
+        ground[34] = vS.grabImage(2, 5, (int) 32, (int) 32);
+        ground[35] = vS.grabImage(3, 5, (int) 32, (int) 32);
+        ground[36] = vS.grabImage(4, 5, (int) 32, (int) 32);
+
+        ground[37] = vS.grabImage(1, 6, (int) 32, (int) 32);
+        ground[38] = vS.grabImage(2, 6, (int) 32, (int) 32);
+        ground[39] = vS.grabImage(3, 6, (int) 32, (int) 32);
+        ground[40] = vS.grabImage(1, 7, (int) 32, (int) 32);
+        ground[41] = vS.grabImage(2, 7, (int) 32, (int) 32);
+        ground[42] = vS.grabImage(3, 7, (int) 32, (int) 32);
+        ground[43] = vS.grabImage(1, 8, (int) 32, (int) 32);
+        ground[44] = vS.grabImage(2, 8, (int) 32, (int) 32);
+        ground[45] = vS.grabImage(3, 8, (int) 32, (int) 32);
+
+        tree[0] = tS.grabImage2(1, 1, (int) 96, (int) 160);
         tree[1] = fS.ImageScale(fountain, 1.5);
-        
-        block[0] = gS.grabImage(1, 1, (int)32, (int)32);
-        block[1] = gS.grabImage(2, 1, (int)32, (int)32);
-        block[2] = gS.grabImage(3, 1, (int)32, (int)32);
-        block[3] = gS.grabImage(4, 1, (int)32, (int)32);
-        block[4] = gS.grabImage(1, 2, (int)32, (int)32);
-        block[5] = gS.grabImage(2, 2, (int)32, (int)32);
-        block[6] = gS.grabImage(3, 2, (int)32, (int)32);
-        block[7] = gS.grabImage(1, 3, (int)32, (int)32);
-        block[8] = gS.grabImage(2, 3, (int)32, (int)32);
-        block[9] = gS.grabImage(3, 3, (int)32, (int)32);
-        block[10] = gS.grabImage(1, 4, (int)32, (int)32);
-        block[11] = gS.grabImage(2, 4, (int)32, (int)32);
-        block[12] = gS.grabImage(3, 4, (int)32, (int)32);
-        
+
+        block[0] = gS.grabImage(1, 1, (int) 32, (int) 32);
+        block[1] = gS.grabImage(2, 1, (int) 32, (int) 32);
+        block[2] = gS.grabImage(3, 1, (int) 32, (int) 32);
+        block[3] = gS.grabImage(4, 1, (int) 32, (int) 32);
+        block[4] = gS.grabImage(1, 2, (int) 32, (int) 32);
+        block[5] = gS.grabImage(2, 2, (int) 32, (int) 32);
+        block[6] = gS.grabImage(3, 2, (int) 32, (int) 32);
+        block[7] = gS.grabImage(1, 3, (int) 32, (int) 32);
+        block[8] = gS.grabImage(2, 3, (int) 32, (int) 32);
+        block[9] = gS.grabImage(3, 3, (int) 32, (int) 32);
+        block[10] = gS.grabImage(1, 4, (int) 32, (int) 32);
+        block[11] = gS.grabImage(2, 4, (int) 32, (int) 32);
+        block[12] = gS.grabImage(3, 4, (int) 32, (int) 32);
+
         player[0] = pS.grabImage(1, 1, 32, 49);
         player[1] = pS.grabImage(2, 1, 32, 49);
         player[2] = pS.grabImage(3, 1, 32, 49);
@@ -205,8 +227,7 @@ public class Texture {
         player[51] = pS.grabImage(1, 7, 32, 49);
         player[52] = pS.grabImage(2, 7, 32, 49);
         player[53] = pS.grabImage(3, 7, 32, 49);
-        
-        
+
         monster[0] = mS.grabImage(1, 1, 96, 80);
         monster[1] = mS.grabImage(2, 1, 96, 80);
         monster[2] = mS.grabImage(3, 1, 96, 80);

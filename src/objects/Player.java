@@ -131,19 +131,6 @@ public class Player extends GameObject {
         collision(objects);
     }
 
-    public boolean checkCollision() {
-        if (right) {
-            System.out.println("ngomong ke ");
-        } else if (left) {
-            System.out.println("ngomong ke kiri");
-        } else if (down) {
-            System.out.println("ngomong ke bawah");
-        } else if (up) {
-            System.out.println("ngomong ke atas");
-        }
-        return true;
-    }
-
     public void collision(LinkedList<GameObject> objects) {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
@@ -156,14 +143,17 @@ public class Player extends GameObject {
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
                         System.out.println("ngomong kiri");
+                        isTalk = true;
                     }
                 } else if (down) {
                     if (getBounds(10).intersects(tempObject.getBounds())) {
                          System.out.println("ngomong bawah");
+                         isTalk = true;
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
                          System.out.println("ngomong atas");
+                         isTalk = true;
                     }
                 }
             }
@@ -252,7 +242,7 @@ public class Player extends GameObject {
                 }
             } else if (tempObject.getId() == ObjectId.Dungeon) {
                if (getBounds(10).intersects(tempObject.getBounds())) {
-                    Game.getGameInstance().loadGame();
+                    Game.getGameInstance().loadGame(1);
                 }
                 
             }
