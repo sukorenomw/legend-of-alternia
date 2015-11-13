@@ -1,9 +1,9 @@
 ﻿1;1;intro;Alternia, city of peace.,:,Kota yang berada di tengah pulau ini :n:kehilangan julukannya �kedamaian�.,:,Demon lord Vajra menghacurkan kedamaian :n:pada Alternia.,:,Vajra memberikan sebuah challenge :n:di saat semua harapan sudah hilang,,:,Vajra menantang kota Alternia untuk :n:mengalahkan ke empat guardian Vajra.,:,Bila berhasil maka Vajra :n:akan membebaskan Alternia.,:,.,:,;
 2;5;;;
-3;2;Soldier A;Hey, Bangun!! Raja telah menunggu.;
+3;2;Soldier A;*Press E to talk* @Hey, Bangun!! Raja telah menunggu.;
 4;3;Soldier A;Heroes Bangun Cepat!;
 5;2;Soldier A;Cepat, kita harus bergerak sekarang.;
-6;2;Soldier A;Jalan lah ke Utara untuk memasuki kota, kemudian pergilah ke tengah kota disana terdapat istana Raja Atalon. Cepat pergi!!;
+6;2;Soldier A;Jalan lah ke Utara untuk memasuki kota, @kemudian pergilah ke tengah kota disana @terdapat istana Raja Atalon. Cepat pergi!!;
 7;5;;;
 8;2;King Atalon;Heroes, siapa namamu?;
 9;4;;What is your name?;

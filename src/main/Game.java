@@ -198,8 +198,14 @@ public class Game extends Canvas implements Runnable {
                 g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
                 String[] words = curStory[3].split("");
                 g2d.drawString(curStory[2],(int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 500);
+                int lev=0, row = 0;
                 for(int i=0;i <= introStory;i++){
-                   g2d.drawString(words[i], (int) camera.getX() * -1 + 120 + i*8, (int) camera.getY() * -1 + 530);
+                    if(words[i].equals("@")){
+                        lev++;
+                        row = 0;
+                    }else
+                   g2d.drawString(words[i], (int) camera.getX() * -1 + 120 + row *8, (int) camera.getY() * -1 + 530+lev*20);
+                   row++;
                 }
                 if(count_ticks == 4 && introStory+1 != words.length){
                     introStory++;
