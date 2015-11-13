@@ -327,9 +327,12 @@ public class LevelHandler {
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
+                //tree
                 if (red == 43 && green == 106 && blue == 31) {
                     list.add(new Tree(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.Tree));
                 }
+
+                //NPC start
                 if (red == 64 && green == 0 && blue == 128) {
                     Game.getGameInstance().handler.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handler, ObjectId.Player);
                 }
@@ -370,10 +373,10 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
                 }
                 if (red == 255 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH- 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 255 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH +100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH + 100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
                     list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
@@ -381,17 +384,23 @@ public class LevelHandler {
                 if (red == 255 && green == 0 && blue == 255) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 48, 4, ObjectId.NPC));
                 }
-                
+                // NPC END
+
+                //fountain
+                if (red == 0 && green == 255 && blue == 255) {
+                    list.add(new Tree(i * Ground.WIDTH - 32, j * Ground.HEIGHT - 48, 1, ObjectId.Tree));
+                }
+
                 //house 1 - inn
                 if (red == 61 && green == 61 && blue == 61) {
                     list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.House));
                 }
-                
+
                 //house 2 - shop
                 if (red == 62 && green == 62 && blue == 62) {
                     list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 1, ObjectId.House));
                 }
-                
+
                 //house 3 - mini house
                 if (red == 63 && green == 63 && blue == 63) {
                     list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 2, ObjectId.House));

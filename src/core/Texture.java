@@ -23,9 +23,10 @@ public class Texture {
     public BufferedImage[] player = new BufferedImage[54];
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
-    public BufferedImage[] tree = new BufferedImage[1];
+    public BufferedImage[] tree = new BufferedImage[2];
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
+    public BufferedImage fountain = null;
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
@@ -38,6 +39,7 @@ public class Texture {
             treeImage = loader.load("/assets/images/villages/tree.png");
             NPCSheet = loader.load("/assets/images/npc/NPC.png");
             houseSheet = loader.load("/assets/images/villages/house.png");
+            fountain = loader.load("/assets/images/villages/fountain.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,6 +134,7 @@ public class Texture {
         ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
         
         tree[0] = tS.grabImage2(1, 1, (int)96, (int)160);
+        tree[1] = fountain;
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);
