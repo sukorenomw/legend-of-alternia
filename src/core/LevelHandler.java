@@ -369,16 +369,16 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
                 }
                 if (red == 255 && green == 0 && blue == 0) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH- 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 255 && blue == 0) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH +100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 255 && green == 0 && blue == 255) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 48, 4, ObjectId.NPC));
                 }
             }
         }
