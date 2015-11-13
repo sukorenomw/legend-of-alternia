@@ -19,6 +19,15 @@ public abstract class GameObject {
     protected float velX = 0, velY = 0;
     protected boolean falling = true, jumping = false, move_left = false,move_up = false, move_down = false, move_right = true, attacking_right = false, attacking_left = false, dying = false;
     protected boolean talk = false;
+    protected boolean is_paused = false;
+
+    public boolean isIs_paused() {
+        return is_paused;
+    }
+
+    public void setIs_paused(boolean is_paused) {
+        this.is_paused = is_paused;
+    }
     public boolean isMove_up() {
         return move_up;
     }

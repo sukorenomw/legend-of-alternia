@@ -209,23 +209,19 @@ public class Game extends Canvas implements Runnable {
             g2d.setColor(Color.BLACK);
             g2d.setFont(customFont);
             int luar = 0;
-            if (count_ticks == 0) {
-                for (int i = 0; i <= introStory; i++) {
-                    int count = 0;
-                    for (String line : detailStory[i].split(":n:")) {
-                        g2d.drawString(line, story_x, story_y + luar * 30 + count * 30);
-                        count++;
-                    }
-                    luar += count;
+            for (int i = 0; i <= introStory; i++) {
+                int count = 0;
+                for (String line : detailStory[i].split(":n:")) {
+                    g2d.drawString(line, story_x, story_y + luar * 30 + count * 30);
+                    count++;
                 }
-                if (introStory != detailStory.length) {
-                    introStory++;
-                }
+                luar += count;
             }
-            count_ticks++;
-            if(count_ticks == 550){
+            if (introStory != detailStory.length && count_ticks == 1650) {
+                introStory++;
                 count_ticks = 0;
             }
+            count_ticks++;
             if (introStory == detailStory.length) {
                 state = State.WORLD;
             }
@@ -309,8 +305,8 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-        state = State.INTRO;
-//        state = State.WORLD;
+        //state = State.INTRO;
+        state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 

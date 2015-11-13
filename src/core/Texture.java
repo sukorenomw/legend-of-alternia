@@ -6,7 +6,7 @@ import objects.Ground;
 import objects.Monster;
 
 public class Texture {
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -52,6 +52,7 @@ public class Texture {
         tS = new SpriteSheet(treeImage);
         npcS = new SpriteSheet(NPCSheet);
         houseS = new SpriteSheet(houseSheet);
+        fS = new SpriteSheet(fountain);
         getTextures();
     }
     
@@ -134,7 +135,7 @@ public class Texture {
         ground[45] = vS.grabImage(3, 8, (int)32, (int)32);
         
         tree[0] = tS.grabImage2(1, 1, (int)96, (int)160);
-        tree[1] = fountain;
+        tree[1] = fS.ImageScale(fountain, 1.5);
         
         block[0] = gS.grabImage(1, 1, (int)32, (int)32);
         block[1] = gS.grabImage(2, 1, (int)32, (int)32);

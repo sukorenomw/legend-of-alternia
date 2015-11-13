@@ -27,6 +27,15 @@ public class SpriteSheet {
         return img;
     }
 
+    public BufferedImage ImageScale(BufferedImage image, double scale){
+       AffineTransform tx = new AffineTransform();
+        tx.scale(scale, scale);
+
+        AffineTransformOp op = new AffineTransformOp(tx,
+                AffineTransformOp.TYPE_BILINEAR);
+        image = op.filter(image, null);
+        return image;
+    }
     public BufferedImage grabImage2(int col, int row, int width, int height) {
         BufferedImage img = image.getSubimage((col * width) - width,
                 (row * height) - height, width, height);

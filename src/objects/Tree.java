@@ -29,13 +29,24 @@ public class Tree extends GameObject {
     public void render(Graphics g) {
         g.drawImage(texture.tree[type], (int)x, (int)y, null);
 //        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.red);
+//        g2d.setColor(Color.blue);
 //        g2d.draw(getBounds());
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, (int)WIDTH, (int)HEIGHT);
+        if(type == 0){
+            return new Rectangle((int)x, (int)y, (int)WIDTH, (int)HEIGHT);
+        }
+        
+        
+        if(type == 1){
+            System.out.println("76");
+            return new Rectangle((int)x, (int)y, (int)WIDTH, (int)(76*1.5));
+        }
+        
+        
+        return null;
     }
     
 }
