@@ -370,19 +370,30 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
                 }
                 if (red == 255 && green == 0 && blue == 0) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH- 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 255 && blue == 0) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH +100, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH - 144, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
                 }
                 if (red == 255 && green == 0 && blue == 255) {
-                    list.add(new Dungeon(i * Dungeon.WIDTH, j * Dungeon.HEIGHT - 50, ObjectId.Dungeon));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 48, 4, ObjectId.NPC));
                 }
-                //house
-                if (red == 64 && green == 64 && blue == 64) {
+                
+                //house 1 - inn
+                if (red == 61 && green == 61 && blue == 61) {
+                    list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.House));
+                }
+                
+                //house 2 - shop
+                if (red == 62 && green == 62 && blue == 62) {
+                    list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 1, ObjectId.House));
+                }
+                
+                //house 3 - mini house
+                if (red == 63 && green == 63 && blue == 63) {
                     list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 2, ObjectId.House));
                 }
             }
