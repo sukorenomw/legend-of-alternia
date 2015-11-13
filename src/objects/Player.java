@@ -10,7 +10,6 @@ import core.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 import main.Game;
@@ -25,7 +24,7 @@ public class Player extends GameObject {
     private MusicHandler sfx;
     private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards, attack_right, attack_left;
     private State state;
-    public static boolean right, down, up, left;
+    public static boolean right, down, up, left, isTalk;
     Texture texture = Game.getInstance();
     private int heartNumber;
     private LinkedList<GameObject> check;
@@ -152,6 +151,7 @@ public class Player extends GameObject {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         System.out.println("ngomong kanan");
+                        isTalk = true;
                     }
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
@@ -262,7 +262,7 @@ public class Player extends GameObject {
     @Override
     public void render(Graphics g) {
         //g.setColor(Color.blue);
-        //g.fillRect((int)x, (int)y, (int)WIDTH, (int)HEIGHT);        
+        //g.fillRect((int)x, (int)y, (int)WIDTH, (int)HEIGHT); 
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.yellow);
 //        g2d.draw(getBounds());

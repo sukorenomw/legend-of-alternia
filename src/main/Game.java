@@ -50,7 +50,7 @@ public class Game extends Canvas implements Runnable {
     public LevelHandler levelHandler;
     private KeyHandler keyHandler;
     public Camera camera;
-    private BufferedImage level, background, village, intro;
+    private BufferedImage level, background, village, intro, dialogBox;
     private MusicHandler musicHandler;
     private Font customFont;
     private FontHandler fontHandler;
@@ -58,6 +58,7 @@ public class Game extends Canvas implements Runnable {
     private ArrayList story;
     private int introStory = 0, story_y = 130, story_x = 250;
     private String[] curStory, detailStory;
+    private int count_ticks;
 
     static Texture texture;
     static Game game;
@@ -67,7 +68,7 @@ public class Game extends Canvas implements Runnable {
     private MouseAdapter mouseHandler;
 
     public Pause pause;
-    
+
     private void init() {
         WIDTH = getWidth();
         HEIGHT = getHeight();
@@ -89,6 +90,7 @@ public class Game extends Canvas implements Runnable {
         village = imageLoader.load("/assets/images/villages/map.png");
         background = imageLoader.load("/assets/images/dungeon/bg3.jpg");
         intro = imageLoader.load("/assets/images/intro/panel.png");
+        dialogBox = imageLoader.load("/assets/images/dialog/dialog.png");
         handler = new Handler();
 //        levelHandler = new LevelHandler();
 
@@ -196,6 +198,9 @@ public class Game extends Canvas implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
             handler.render(g);
+            if (handler.player.isTalk) {
+                g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
+            }
             g2d.translate(-camera.getX(), -camera.getY());
         } else if (state == State.INTRO) {
             g.setColor(new Color(0, 0, 0));
@@ -203,32 +208,28 @@ public class Game extends Canvas implements Runnable {
             g.drawImage(intro, (int) 0, (int) 0, null);
             g2d.setColor(Color.BLACK);
             g2d.setFont(customFont);
-//            String txt = "";
-//            for(int i = 0; i < introStory; i ++){
-//                txt += detailStory[i]+"\n";
-//            }
             int luar = 0;
-            for (int i = 0; i <= introStory; i++) {
-                int count = 0;
-                for (String line : detailStory[i].split(":n:")) {
-                    g2d.drawString(line, story_x, story_y + luar * 30 + count * 30);
-                    count++;
+            if (count_ticks == 0) {
+                for (int i = 0; i <= introStory; i++) {
+                    int count = 0;
+                    for (String line : detailStory[i].split(":n:")) {
+                        g2d.drawString(line, story_x, story_y + luar * 30 + count * 30);
+                        count++;
+                    }
+                    luar += count;
                 }
-                luar += count;
-            }
-            if (introStory != detailStory.length) {
-                introStory++;
-            }
-            try {
-                Thread.sleep(2000);
-                if (introStory == detailStory.length) {
-                    state = State.WORLD;
+                if (introStory != detailStory.length) {
+                    introStory++;
                 }
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }  else if (state == state.PAUSE) {
+            count_ticks++;
+            if(count_ticks == 550){
+                count_ticks = 0;
+            }
+            if (introStory == detailStory.length) {
+                state = State.WORLD;
+            }
+        } else if (state == state.PAUSE) {
             pause.render(g);
         }
         g.dispose();
@@ -308,8 +309,8 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-//        state = State.INTRO;
-        state = State.WORLD;
+        state = State.INTRO;
+//        state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
@@ -328,11 +329,11 @@ public class Game extends Canvas implements Runnable {
         handler.addObject(new Heart(100, 100, 1, ObjectId.Heart, camera));
         handler.addObject(new Heart(100, 100, 2, ObjectId.Heart, camera));
     }
-    
+
     public void pause() {
         state = State.PAUSE;
     }
-    
+
     public void mainMenu() {
         state = State.MAIN_MENU;
     }
