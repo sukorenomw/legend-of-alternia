@@ -156,6 +156,8 @@ public class Player extends GameObject {
                          isTalk = true;
                     }
                 }
+            }else if(!isTalk){
+                isTalk = false;
             }
             if (tempObject.getId() == ObjectId.River) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {

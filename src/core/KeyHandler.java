@@ -40,9 +40,17 @@ public class KeyHandler extends KeyAdapter {
                     }
                 }
             } else if (state.WORLD == Game.state) {
-                if (key == KeyEvent.VK_E && tempObject.getId() == ObjectId.Player) {
+                if (key == KeyEvent.VK_E && tempObject.getId() == ObjectId.Player && tempObject.talk == false) {
                     tempObject.talk = true;
+                } else if (key == KeyEvent.VK_E && Game.getGameInstance().isStory && tempObject.getId() == ObjectId.Player) {
+                    Game.getGameInstance().storyStates++;
                 }
+            }
+        }
+        if (state.WORLD == Game.state) {
+            if (key == KeyEvent.VK_E && Game.getGameInstance().isStory) {
+                Game.getGameInstance().storyStates++;
+                Game.getGameInstance().introStory = 0;
             }
         }
     }
@@ -174,12 +182,11 @@ public class KeyHandler extends KeyAdapter {
             if (handler.keys.contains(KeyEvent.VK_ESCAPE)) {
                 System.exit(0);
             }
-            
-            
-                if (handler.keys.contains(KeyEvent.VK_ENTER)) {
-                    Game.getGameInstance().pause();
-                }
-            
+
+            if (handler.keys.contains(KeyEvent.VK_ENTER)) {
+                Game.getGameInstance().pause();
+            }
+
         }
     }
 }

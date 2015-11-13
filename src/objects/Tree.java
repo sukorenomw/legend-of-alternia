@@ -41,7 +41,6 @@ public class Tree extends GameObject {
         
         
         if(type == 1){
-            System.out.println("76");
             return new Rectangle((int)x, (int)y, (int)WIDTH, (int)(76*1.5));
         }
         

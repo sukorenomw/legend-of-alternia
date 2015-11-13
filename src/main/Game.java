@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
     public static int WIDTH, HEIGHT;
 
     private boolean running = false;
-    private int storyStates;
+    public int storyStates;
     private Thread thread;
     public Handler handler, handlerWorld, handlerDungeon;
     public LevelHandler levelHandler;
@@ -56,9 +56,10 @@ public class Game extends Canvas implements Runnable {
     private FontHandler fontHandler;
     private FileHandler fileHandler;
     private ArrayList story;
-    private int introStory = 0, story_y = 130, story_x = 250;
+    public int introStory = 0, story_y = 130, story_x = 250;
     private String[] curStory, detailStory;
-    private int count_ticks;
+    private int count_ticks= 0;
+    public boolean isStory = true;
 
     static Texture texture;
     static Game game;
@@ -75,7 +76,7 @@ public class Game extends Canvas implements Runnable {
         HEIGHT = getHeight();
 
         texture = new Texture();
-        storyStates = 1;
+        storyStates = 2;
 
 //        state = State.WORLD;
         try {
@@ -192,6 +193,23 @@ public class Game extends Canvas implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
             handlerWorld.render(g);
+            String[] curStory = ((String) story.get(storyStates)).split(";");
+            if(!curStory[1].equalsIgnoreCase("5") && isStory){
+                g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
+                String[] words = curStory[3].split("");
+                g2d.drawString(curStory[2],(int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 500);
+                for(int i=0;i <= introStory;i++){
+                   g2d.drawString(words[i], (int) camera.getX() * -1 + 120 + i*8, (int) camera.getY() * -1 + 530);
+                }
+                if(count_ticks == 4 && introStory+1 != words.length){
+                    introStory++;
+                    count_ticks=0;
+                }
+                if(introStory+1 != words.length)
+                count_ticks++;
+            }else{
+                isStory = false;
+            }
             if (handlerWorld.player.isTalk) {
                 g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
             }
@@ -218,6 +236,8 @@ public class Game extends Canvas implements Runnable {
             count_ticks++;
             if (introStory == detailStory.length) {
                 state = State.WORLD;
+                introStory = 0;
+                count_ticks = 0;
             }
         } else if (state == state.PAUSE) {
             pause.render(g);
