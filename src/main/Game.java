@@ -223,7 +223,7 @@ public class Game extends Canvas implements Runnable {
                 }
             }
             count_ticks++;
-            if(count_ticks == 1650){
+            if(count_ticks == 550){
                 count_ticks = 0;
             }
             if (introStory == detailStory.length) {
