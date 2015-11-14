@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
+import objects.Chat;
 import objects.Ground;
 import objects.Heart;
 import objects.Monster;
@@ -50,17 +51,17 @@ public class Game extends Canvas implements Runnable {
     public LevelHandler levelHandler;
     private KeyHandler keyHandler, keyHandlerDungeon;
     public Camera camera;
-    private BufferedImage level, background, village, intro, dialogBox;
+    public BufferedImage level, background, village, intro, dialogBox;
     private MusicHandler musicHandler;
     private Font customFont;
     private FontHandler fontHandler;
     private FileHandler fileHandler;
     public ArrayList story;
     public int introStory = 0, story_y = 130, story_x = 250;
-    private String[] curStory, detailStory;
-    private int count_ticks= 0;
+    public String[] curStory, detailStory;
+    public int count_ticks = 0;
     public boolean isStory = true;
-
+    public Chat chat;
     static Texture texture;
     static Game game;
     public static State state;
@@ -69,7 +70,7 @@ public class Game extends Canvas implements Runnable {
     private MouseAdapter mouseHandler, mouseHandlerDungeon;
     private ImageLoader imageLoader;
     public Pause pause;
-
+    public boolean isPressed;
     private void init() {
         state = state.LOADING;
         WIDTH = getWidth();
@@ -193,30 +194,7 @@ public class Game extends Canvas implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
             handlerWorld.render(g);
-            String[] curStory = ((String) story.get(storyStates)).split(";");
-            if(!curStory[1].equalsIgnoreCase("5") && isStory){
-                g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
-                String[] words = curStory[3].split("");
-                g2d.drawString(curStory[2],(int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 500);
-                int lev=0, row = 0;
-                for(int i=0;i <= introStory;i++){
-                    if(words[i].equals("@")){
-                        lev++;
-                        row = 0;
-                    }else
-                   g2d.drawString(words[i], (int) camera.getX() * -1 + 120 + row *8, (int) camera.getY() * -1 + 530+lev*20);
-                   row++;
-                }
-                if(count_ticks == 4 && introStory+1 != words.length){
-                    introStory++;
-                    count_ticks=0;
-                }
-                if(introStory+1 != words.length)
-                count_ticks++;
-            }else{
-                isStory = false;
-            }
-            if (handlerWorld.player.isTalk) {
+            if (handlerWorld.player.isTalk && !isStory) {
                 g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
             }
             g2d.translate(-camera.getX(), -camera.getY());
@@ -252,58 +230,58 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    private void loadImageLevel(BufferedImage image,int no) {
+    private void loadImageLevel(BufferedImage image, int no) {
         int w = image.getWidth();
         int h = image.getHeight();
 
-        for (int i = 2 ; i < 3 + 200; i++) {
-            for (int j = 2 + 26 * (no-1); j < 1 + 23*no; j++) {
+        for (int i = 2; i < 3 + 200; i++) {
+            for (int j = 2 + 26 * (no - 1); j < 1 + 23 * no; j++) {
                 int pixel = image.getRGB(i, j);
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
                 if (red == 127 && green == 106 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 0, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 0, ObjectId.Block));
                 }
                 if (red == 91 && green == 127 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 1, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 1, ObjectId.Block));
                 }
                 if (red == 38 && green == 127 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 2, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 2, ObjectId.Block));
                 }
                 if (red == 127 && green == 51 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 3, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 3, ObjectId.Block));
                 }
                 if (red == 255 && green == 0 && blue == 220) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 4, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 4, ObjectId.Block));
                 }
                 if (red == 64 && green == 64 && blue == 64) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 5, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 5, ObjectId.Block));
                 }
                 if (red == 255 && green == 0 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 6, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 6, ObjectId.Block));
                 }
                 if (red == 128 && green == 128 && blue == 128) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 8, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 8, ObjectId.Block));
                 }
                 if (red == 255 && green == 216 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 10, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 10, ObjectId.Block));
                 }
                 if (red == 255 && green == 233 && blue == 127) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 11, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 11, ObjectId.Block));
                 }
                 if (red == 255 && green == 178 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 12, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 12, ObjectId.Block));
                 }
                 if (red == 127 && green == 0 && blue == 110) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 7, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 7, ObjectId.Block));
                 }
                 if (red == 255 && green == 106 && blue == 0) {
-                    handlerDungeon.addObject(new Block(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT, 9, ObjectId.Block));
+                    handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 9, ObjectId.Block));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    handlerDungeon.addObject(new Monster(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 50, ObjectId.Monster));
+                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, ObjectId.Monster));
                 }
             }
         }
@@ -338,7 +316,7 @@ public class Game extends Canvas implements Runnable {
         texture.changeDungeon(no);
         handlerDungeon = new Handler();
         mainmenu.musicHandler.stop();
-        background = imageLoader.load("/assets/images/dungeon/bg"+no+".jpg");
+        background = imageLoader.load("/assets/images/dungeon/bg" + no + ".jpg");
         musicHandler.load("assets/sounds/dun-1.mp3");
         loadImageLevel(level, no);
         musicHandler.play();

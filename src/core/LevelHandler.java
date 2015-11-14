@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.LinkedList;
 import main.Game;
+import objects.Chat;
 import objects.Dungeon;
 import objects.Ground;
 import objects.House;
@@ -335,6 +336,7 @@ public class LevelHandler {
                 //NPC start
                 if (red == 64 && green == 0 && blue == 128) {
                     Game.getGameInstance().handlerWorld.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handlerWorld, ObjectId.Player);
+                    Game.getGameInstance().handlerWorld.chat = new Chat(i * Ground.WIDTH, j * Ground.HEIGHT - 50, ObjectId.Heart);
                 }
                 if (red == 0 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC));

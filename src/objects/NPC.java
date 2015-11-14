@@ -15,7 +15,7 @@ public class NPC extends GameObject {
     public static final float WIDTH = 40, HEIGHT = 56;
     Texture texture = Game.getInstance();
     private int type, no;
-    String name;
+    String name = "norm";
 
     public NPC(float x, float y, int type, ObjectId id) {
         super(x, y, id);

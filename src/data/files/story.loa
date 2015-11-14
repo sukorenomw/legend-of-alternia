@@ -5,10 +5,8 @@
 5;2;Soldier A;Cepat, kita harus bergerak sekarang.;
 6;2;Soldier A;Jalan lah ke Utara untuk memasuki kota, @kemudian pergilah ke tengah kota disana @terdapat istana Raja Atalon. Cepat pergi!!;
 7;5;;;
-8;2;King Atalon;Heroes, siapa namamu?;
-9;4;;What is your name?;
-10;2;King Atalon;*, carilah sage di sekitar timur Alternia. dia akan memberikanmu kunci dan letak guardian pertama.;
-11;2;Queen Selenia; berhati-hatilah *. May Tyr be with you.;
+10;2;King Atalon;*, carilah sage di sekitar timur Alternia.@ dia akan memberikanmu kunci dan @letak guardian pertama.;
+11;2;Queen Selenia;berhati-hatilah *. @May Tyr be with you.;
 12;5;;;
 13;2;Sage Adalia;OH *, selamat datang. Tunggu sebentar akan saya ambilkan pass untuk ke guardian pertama.;
 14;3;;Menunggu;

@@ -5,11 +5,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import main.Game;
+import objects.Chat;
 import objects.Player;
 
 public class Handler {
 
     public Player player;
+    public Chat chat;
     public LinkedList<GameObject> objects = new LinkedList<>();
     public Set<Integer> keys = new HashSet<>();
     private GameObject tempObject;
@@ -21,6 +23,7 @@ public class Handler {
 
             tempObject.tick(objects);
         }
+        chat.tick(objects);
         player.tick(objects);
     }
 
@@ -32,6 +35,7 @@ public class Handler {
             tempObject = objects.get(i);
             tempObject.render(g);
         }
+        chat.render(g);
         player.render(g);
     }
 

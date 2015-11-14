@@ -30,6 +30,9 @@ public class KeyHandler extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         handler.addKey(key);
+        if (state.WORLD == Game.state) {
+            Game.getGameInstance().isPressed = true;
+        }
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
             if (state.GAME_PLAY == Game.state) {
@@ -50,7 +53,7 @@ public class KeyHandler extends KeyAdapter {
         if (state.WORLD == Game.state) {
             if (key == KeyEvent.VK_E && !handler.player.talk) {
                 handler.player.talk = true;
-            }else if(handler.player.talk){
+            } else if (handler.player.talk) {
                 handler.player.talk = false;
             }
             if (key == KeyEvent.VK_E && Game.getGameInstance().isStory) {
@@ -64,6 +67,9 @@ public class KeyHandler extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         handler.removeKey(key);
+        if (state.WORLD == Game.state) {
+            Game.getGameInstance().isPressed = false;
+        }
 
 //        for (int i = 0; i < handler.objects.size(); i++) {
         GameObject tempObject = handler.player;
@@ -101,7 +107,7 @@ public class KeyHandler extends KeyAdapter {
 
 //            for (int j = 0; j < handler.objects.size(); j++) {
             GameObject tempObject = handler.player;
-            if (Game.state == state.WORLD ) {
+            if (Game.state == state.WORLD) {
                 if (handler.keys.contains(KeyEvent.VK_E)) {
                     tempObject.talk = true;
                 }

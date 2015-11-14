@@ -134,30 +134,62 @@ public class Player extends GameObject {
     public void collision(LinkedList<GameObject> objects) {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
-            if (Game.state.WORLD == state.WORLD && ObjectId.NPC == tempObject.getId() && talk) {
+            Game tempGame = Game.getGameInstance();
+            if (Game.state.WORLD == state.WORLD && ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
-                        System.out.println("ngomong kanan");
-                        Game tempGame =  Game.getGameInstance();
-                        String[] curStory = ((String)tempGame.story.get(tempGame.storyStates+1)).split(";");
-                        if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
-                            System.out.println(((NPC) tempObject).name);
-                            isTalk = true;
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }else{
+                            tempGame.isStory = false;
                         }
+                        isTalk = true;
                     }
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
-                        System.out.println("ngomong kiri");
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }else{
+                            tempGame.isStory = false;
+                        }
                         isTalk = true;
                     }
                 } else if (down) {
                     if (getBounds(10).intersects(tempObject.getBounds())) {
-                        System.out.println("ngomong bawah");
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }else{
+                            tempGame.isStory = false;
+                        }
                         isTalk = true;
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
-                        System.out.println("ngomong atas");
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }else{
+                            tempGame.isStory = false;
+                        }
                         isTalk = true;
                     }
                 }
