@@ -339,7 +339,7 @@ public class LevelHandler {
                     Game.getGameInstance().handlerWorld.chat = new Chat(i * Ground.WIDTH, j * Ground.HEIGHT - 50, ObjectId.Heart);
                 }
                 if (red == 0 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC, "Sage Adalia"));
                 }
                 if (red == 1 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 1, ObjectId.NPC));

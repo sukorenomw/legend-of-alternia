@@ -145,8 +145,6 @@ public class Player extends GameObject {
                                 tempGame.storyStates++;
                                 tempGame.isPressed = false;
                             }
-                        }else{
-                            tempGame.isStory = false;
                         }
                         isTalk = true;
                     }
@@ -159,8 +157,6 @@ public class Player extends GameObject {
                                 tempGame.storyStates++;
                                 tempGame.isPressed = false;
                             }
-                        }else{
-                            tempGame.isStory = false;
                         }
                         isTalk = true;
                     }
@@ -173,22 +169,20 @@ public class Player extends GameObject {
                                 tempGame.storyStates++;
                                 tempGame.isPressed = false;
                             }
-                        }else{
-                            tempGame.isStory = false;
                         }
                         isTalk = true;
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                       
                         if (!curStory[1].equalsIgnoreCase("5")) {
+                             System.out.println(curStory[2]);
                             if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
                                 tempGame.isStory = true;
                                 tempGame.storyStates++;
                                 tempGame.isPressed = false;
                             }
-                        }else{
-                            tempGame.isStory = false;
                         }
                         isTalk = true;
                     }
