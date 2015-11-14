@@ -39,13 +39,30 @@ public class House extends GameObject{
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.house[type], (int)x, (int)y, null);
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.red);
-//        g2d.draw(getBounds());
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.blue);
+        g2d.draw(getBounds());
+        g2d.draw(getBoundsLeft());
+        g2d.draw(getBoundsRight());
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, (int)WIDTH, (int)HEIGHT);
+        if(type == 0){
+            return new Rectangle((int)x, (int)y, (int)12*48, (int)48*5);
+        }
+        return null;
+    }
+    public Rectangle getBoundsLeft(){
+        if(type == 0){
+            return new Rectangle((int)x, (int)(y+(2.5*48)), (int)(4.8*48), (int)48*5);
+        }
+        return null;
+    }
+    public Rectangle getBoundsRight(){
+        if(type == 0){
+            return new Rectangle((int)(x+7.5*48), (int)(y+(2.5*48)), (int)(4.5*48), (int)48*5);
+        }
+        return null;
     }
 }
