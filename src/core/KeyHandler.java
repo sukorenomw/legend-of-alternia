@@ -101,11 +101,11 @@ public class KeyHandler extends KeyAdapter {
 
 //            for (int j = 0; j < handler.objects.size(); j++) {
             GameObject tempObject = handler.player;
-            if (Game.state == state.WORLD) {
+            if (Game.state == state.WORLD ) {
                 if (handler.keys.contains(KeyEvent.VK_E)) {
                     tempObject.talk = true;
                 }
-                if (handler.keys.contains(KeyEvent.VK_RIGHT)) {
+                if (handler.keys.contains(KeyEvent.VK_RIGHT) && !Game.getGameInstance().isStory) {
                     tempObject.setVelX(5);
                     tempObject.setMove_left(false);
                     tempObject.setMove_right(true);
@@ -116,7 +116,7 @@ public class KeyHandler extends KeyAdapter {
                     ((Player) tempObject).down = false;
                     ((Player) tempObject).up = false;
                 }
-                if (handler.keys.contains(KeyEvent.VK_LEFT)) {
+                if (handler.keys.contains(KeyEvent.VK_LEFT) && !Game.getGameInstance().isStory) {
                     tempObject.setVelX(-5);
                     tempObject.setMove_left(true);
                     tempObject.setMove_right(false);
@@ -127,7 +127,7 @@ public class KeyHandler extends KeyAdapter {
                     ((Player) tempObject).down = false;
                     ((Player) tempObject).up = false;
                 }
-                if (handler.keys.contains(KeyEvent.VK_UP)) {
+                if (handler.keys.contains(KeyEvent.VK_UP) && !Game.getGameInstance().isStory) {
                     tempObject.setVelY(-5);
                     tempObject.setMove_down(false);
                     tempObject.setMove_up(true);
@@ -138,7 +138,7 @@ public class KeyHandler extends KeyAdapter {
                     ((Player) tempObject).down = false;
                     ((Player) tempObject).up = true;
                 }
-                if (handler.keys.contains(KeyEvent.VK_DOWN)) {
+                if (handler.keys.contains(KeyEvent.VK_DOWN) && !Game.getGameInstance().isStory) {
                     tempObject.setVelY(5);
                     tempObject.setMove_down(true);
                     tempObject.setMove_up(false);

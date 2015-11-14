@@ -138,7 +138,12 @@ public class Player extends GameObject {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         System.out.println("ngomong kanan");
-                        isTalk = true;
+                        Game tempGame =  Game.getGameInstance();
+                        String[] curStory = ((String)tempGame.story.get(tempGame.storyStates+1)).split(";");
+                        if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
+                            System.out.println(((NPC) tempObject).name);
+                            isTalk = true;
+                        }
                     }
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
@@ -147,16 +152,16 @@ public class Player extends GameObject {
                     }
                 } else if (down) {
                     if (getBounds(10).intersects(tempObject.getBounds())) {
-                         System.out.println("ngomong bawah");
-                         isTalk = true;
+                        System.out.println("ngomong bawah");
+                        isTalk = true;
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
-                         System.out.println("ngomong atas");
-                         isTalk = true;
+                        System.out.println("ngomong atas");
+                        isTalk = true;
                     }
                 }
-            }else if(!talk){
+            } else if (!talk) {
                 isTalk = false;
             }
             if (tempObject.getId() == ObjectId.River) {
@@ -243,10 +248,10 @@ public class Player extends GameObject {
                     handler.removeObject(tempObject);
                 }
             } else if (tempObject.getId() == ObjectId.Dungeon) {
-               if (getBounds(10).intersects(tempObject.getBounds())) {
+                if (getBounds(10).intersects(tempObject.getBounds())) {
                     Game.getGameInstance().loadGame(1);
                 }
-                
+
             }
         }
     }
@@ -304,9 +309,10 @@ public class Player extends GameObject {
 //        return new Rectangle((int)(x+5+(WIDTH/5)), (int)(y+HEIGHT/2), (int)((WIDTH/5)*3)-3, (int)HEIGHT/2);
         return new Rectangle((int) (x + ((WIDTH / 4))), (int) (y + HEIGHT / 2), (int) (WIDTH / 2), (int) HEIGHT / 2);
     }
+
     public Rectangle getBounds(int num) {
 //        return new Rectangle((int)(x+5+(WIDTH/5)), (int)(y+HEIGHT/2), (int)((WIDTH/5)*3)-3, (int)HEIGHT/2);
-        return new Rectangle((int) (x + ((WIDTH / 4))), (int) (y + HEIGHT / 2)+num, (int) (WIDTH / 2), (int) HEIGHT / 2);
+        return new Rectangle((int) (x + ((WIDTH / 4))), (int) (y + HEIGHT / 2) + num, (int) (WIDTH / 2), (int) HEIGHT / 2);
     }
 
     public Rectangle getBoundsTop() {

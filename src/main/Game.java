@@ -55,7 +55,7 @@ public class Game extends Canvas implements Runnable {
     private Font customFont;
     private FontHandler fontHandler;
     private FileHandler fileHandler;
-    private ArrayList story;
+    public ArrayList story;
     public int introStory = 0, story_y = 130, story_x = 250;
     private String[] curStory, detailStory;
     private int count_ticks= 0;

@@ -370,7 +370,7 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC));
                 }
                 if (red == 11 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC, "King Atalon"));
                 }
                 //4 npc jaga
                 if (red == 255 && green == 0 && blue == 0) {
