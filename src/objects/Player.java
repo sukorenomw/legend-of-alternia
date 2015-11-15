@@ -28,7 +28,7 @@ public class Player extends GameObject {
     public static boolean right, down, up, left, isTalk, kebal;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
-    public int health = 75;
+    public int health = 300;
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
     private Heart[] heart;
