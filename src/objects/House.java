@@ -39,11 +39,11 @@ public class House extends GameObject{
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.house[type], (int)x, (int)y, null);
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.blue);
-//        g2d.draw(getBounds());
-//        g2d.draw(getBoundsLeft());
-//        g2d.draw(getBoundsRight());
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.blue);
+        g2d.draw(getBounds());
+        g2d.draw(getBoundsLeft());
+        g2d.draw(getBoundsRight());
     }
 
     @Override
@@ -51,17 +51,35 @@ public class House extends GameObject{
         if(type == 0){
             return new Rectangle((int)x, (int)y, (int)12*48, (int)48*5);
         }
+        if (type == 1){
+            return new Rectangle((int)x+150, (int)y+48, (int)250, (int)48*5);
+        }
+        if (type == 2){
+           return new Rectangle((int)x+48*2-18, (int)y+15, (int)9*48-24, (int)48*6);
+        }
         return null;
     }
     public Rectangle getBoundsLeft(){
         if(type == 0){
             return new Rectangle((int)x, (int)(y+(2.5*48)), (int)(4.8*48), (int)48*5);
         }
+        if (type == 1){
+            return new Rectangle((int)x+150, (int)y+6*48, (int)2*48+5, (int)48);
+        }
+        if (type == 2){
+            return new Rectangle((int)x+48*5+10, (int)y+6*48+15, (int)35, (int)35);
+        }
         return null;
     }
     public Rectangle getBoundsRight(){
         if(type == 0){
             return new Rectangle((int)(x+7.5*48), (int)(y+(2.5*48)), (int)(4.5*48), (int)48*5);
+        }
+        if (type == 1){
+                return new Rectangle((int)x+7*48-24, (int)y+6*48, (int)2*48-7, (int)48);
+        }
+        if (type == 2){
+           return new Rectangle((int)x+48*7+10, (int)y+6*48+15, (int)3*48, (int)35);
         }
         return null;
     }

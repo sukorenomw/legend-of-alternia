@@ -28,15 +28,27 @@ public class Misc extends GameObject {
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.misc[type], (int)x, (int)y, null);
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.blue);
-//        g2d.draw(getBounds());
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.yellow);
+        g2d.draw(getBounds());
     }
 
     @Override
     public Rectangle getBounds() {
         if(type == 0){
-            return new Rectangle((int)x, (int)y, (int)WIDTH, (int)HEIGHT);
+            return new Rectangle((int)x, (int)y, (int)(64*1.2), (int)(64*1.2));
+        }
+        if(type == 1){
+            return new Rectangle((int)x, (int)y, (int)(64*1.2), (int)(64*1.2));
+        }
+        if(type == 2){
+            return new Rectangle((int)x, (int)y, (int)(64*1.2), (int)(64*1.2));
+        }
+        if(type == 3){
+            return new Rectangle((int)x, (int)y, (int)(64*1.2), (int)(64*1.2));
+        }
+        if(type == 4){
+            return new Rectangle((int)x, (int)y, (int)(32*1.5), (int)(32*1.5));
         }
         return null;
     }
