@@ -13,6 +13,7 @@ import objects.Chat;
 import objects.Dungeon;
 import objects.Ground;
 import objects.House;
+import objects.Misc;
 import objects.NPC;
 import objects.Player;
 import objects.River;
@@ -399,14 +400,39 @@ public class LevelHandler {
                     list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 0, ObjectId.House));
                 }
 
-                //house 2 - shop
+                //house 2 - mini house
                 if (red == 62 && green == 62 && blue == 62) {
-                    list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 1, ObjectId.House));
+                    list.add(new House(i * Ground.WIDTH - 18, j * Ground.HEIGHT - 156, 1, ObjectId.House));
                 }
 
-                //house 3 - mini house
+                //house 3 - shop
                 if (red == 63 && green == 63 && blue == 63) {
-                    list.add(new House(i * Ground.WIDTH - 24, j * Ground.HEIGHT - 156, 2, ObjectId.House));
+                    list.add(new House(i * Ground.WIDTH - 8, j * Ground.HEIGHT - 156, 2, ObjectId.House));
+                }
+                
+                 //misc kayu bakar
+                if (red == 90 && green == 90 && blue == 90) {
+                    list.add(new Misc(i * Ground.WIDTH + 12, j * Ground.HEIGHT - 36, 0, ObjectId.Misc));
+                }
+                
+                //misc karung
+                if (red == 91 && green == 91 && blue == 91) {
+                    list.add(new Misc(i * Ground.WIDTH + 12, j * Ground.HEIGHT - 36, 1, ObjectId.Misc));
+                }
+                
+                 //misc ijo
+                if (red == 92 && green == 92 && blue == 92) {
+                    list.add(new Misc(i * Ground.WIDTH + 12, j * Ground.HEIGHT - 36, 2, ObjectId.Misc));
+                }
+                
+                 //misc kuning
+                if (red == 93 && green == 93 && blue == 93) {
+                    list.add(new Misc(i * Ground.WIDTH + 12, j * Ground.HEIGHT - 36, 3, ObjectId.Misc));
+                }
+                
+                 //misc sign
+                if (red == 94 && green == 94 && blue == 94) {
+                    list.add(new Misc(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 4, ObjectId.Misc));
                 }
             }
         }

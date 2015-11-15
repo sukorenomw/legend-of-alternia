@@ -20,5 +20,6 @@ public enum ObjectId {
     Tree(),
     Dungeon(),
     House(),
-    NPC();
+    NPC(), 
+    Misc();
 }

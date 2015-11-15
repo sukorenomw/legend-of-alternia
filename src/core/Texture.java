@@ -7,7 +7,7 @@ import objects.Monster;
 
 public class Texture {
 
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS, miscS, signS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -18,6 +18,8 @@ public class Texture {
     private BufferedImage treeImage = null;
     private BufferedImage NPCSheet = null;
     private BufferedImage houseSheet = null;
+    private BufferedImage miscSheet = null;
+    private BufferedImage signSheet = null;
 
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
@@ -27,6 +29,7 @@ public class Texture {
     public BufferedImage[] tree = new BufferedImage[2];
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
+    public BufferedImage[] misc = new BufferedImage[5];
     public BufferedImage fountain = null;
 
     public Texture() {
@@ -42,6 +45,8 @@ public class Texture {
             NPCSheet = loader.load("/assets/images/npc/NPC.png");
             houseSheet = loader.load("/assets/images/villages/house.png");
             fountain = loader.load("/assets/images/villages/fountain.png");
+            miscSheet = loader.load("/assets/images/villages/misc.png");
+            signSheet = loader.load("/assets/images/villages/signpost.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,6 +60,8 @@ public class Texture {
         npcS = new SpriteSheet(NPCSheet);
         houseS = new SpriteSheet(houseSheet);
         fS = new SpriteSheet(fountain);
+        miscS = new SpriteSheet(miscSheet);
+        signS = new SpriteSheet(signSheet);
         getTextures();
     }
 
@@ -79,6 +86,13 @@ public class Texture {
     }
 
     private void getTextures() {
+        misc[0] = miscS.ImageScale(miscS.grabImage2(1, 1, 64, 64), 1.2);
+        misc[1] = miscS.ImageScale(miscS.grabImage2(2, 1, 64, 64), 1.2);
+        misc[2] = miscS.ImageScale(miscS.grabImage2(1, 2, 64, 64), 1.2);
+        misc[3] = miscS.ImageScale(miscS.grabImage2(2, 2, 64, 64), 1.2);
+        misc[4] = signS.ImageScale(signS.grabImage2(2, 1, 32, 32), 1.5);
+        
+        
         NPC[0] = npcS.grabImage(1, 1, (int) 40, (int) 56);
         NPC[1] = npcS.grabImage(2, 1, (int) 40, (int) 56);
         NPC[2] = npcS.grabImage(3, 1, (int) 40, (int) 56);
@@ -157,7 +171,7 @@ public class Texture {
         ground[45] = vS.grabImage(3, 8, (int) 32, (int) 32);
 
         tree[0] = tS.grabImage2(1, 1, (int) 96, (int) 160);
-        tree[1] = fS.ImageScale(fountain, 1.5);
+        tree[1] = fS.ImageScale(fountain, 2.0);
 
         block[0] = gS.grabImage(1, 1, (int) 32, (int) 32);
         block[1] = gS.grabImage(2, 1, (int) 32, (int) 32);
