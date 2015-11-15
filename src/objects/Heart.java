@@ -27,6 +27,10 @@ public class Heart extends GameObject {
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
+        System.out.println(Game.getGameInstance().handlerDungeon.player.health/25 +" " + no);
+        if (Game.getGameInstance().handlerDungeon.player.health/25 == no){
+            heartState = 4;
+        }
     
     }
 

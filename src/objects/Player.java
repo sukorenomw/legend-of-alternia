@@ -28,9 +28,10 @@ public class Player extends GameObject {
     public static boolean right, down, up, left, isTalk, kebal;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
-    private int health = 100;
+    public int health = 75;
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
+    private Heart[] heart;
 
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
@@ -137,7 +138,6 @@ public class Player extends GameObject {
                 velY = MAX_SPEED;
             }
         }
-
         if (health <= 0) {
             dying = true;
         }
