@@ -18,9 +18,9 @@ public class Heart extends GameObject {
     private Camera camera;
     private int no = 0;
 
-    public Heart(float x, float y, int no, ObjectId id, Camera camera) {
+    public Heart(float x, float y, int no, int heartState, ObjectId id, Camera camera) {
         super(x, y, id);
-        heartState = 0;
+        this.heartState = heartState;
         this.no = no;
         this.camera = camera;
     }

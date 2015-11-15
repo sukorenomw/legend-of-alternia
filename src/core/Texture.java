@@ -23,7 +23,7 @@ public class Texture {
 
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
-    public BufferedImage[] player = new BufferedImage[54];
+    public BufferedImage[] player = new BufferedImage[60];
     public BufferedImage[] monster = new BufferedImage[16];
     public BufferedImage[] heart = new BufferedImage[5];
     public BufferedImage[] tree = new BufferedImage[2];
@@ -241,6 +241,12 @@ public class Texture {
         player[51] = pS.grabImage(1, 7, 32, 49);
         player[52] = pS.grabImage(2, 7, 32, 49);
         player[53] = pS.grabImage(3, 7, 32, 49);
+        player[54] = pS.grabImage(2, 4, 32, 49);
+        player[55] = pS.grabImage(3, 4, 32, 49);
+        player[56] = pS.grabImage(4, 4, 32, 49);
+        player[57] = pS.grabImage(5, 4, 32, 49);
+        player[58] = pS.grabImage(6, 4, 32, 49);
+        player[59] = pS.grabImage(4, 7, 32, 49);
 
         monster[0] = mS.grabImage(1, 1, 96, 80);
         monster[1] = mS.grabImage(2, 1, 96, 80);
