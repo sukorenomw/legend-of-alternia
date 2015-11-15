@@ -120,8 +120,7 @@ public class Player extends GameObject {
         kebalAnimationRight = new Animation(2,
                 texture.player[18],
                 texture.player[59]);
-        if (state.WORLD != Game.state) {
-            System.out.println("heart ga di bkin");
+        if (state.GAME_PLAY == Game.state) {
             for (int i = 0; i < heartNumber; i++) {
                 this.handler.addObject(new Heart(100, 100, i, 0, ObjectId.Heart, Game.getGameInstance().camera));
             }
