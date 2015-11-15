@@ -120,10 +120,13 @@ public class Player extends GameObject {
         kebalAnimationRight = new Animation(2,
                 texture.player[18],
                 texture.player[59]);
-
-        for (int i = 0; i < heartNumber; i++) {
-            handler.addObject(new Heart(100, 100, i, 0, ObjectId.Heart, Game.getGameInstance().camera));
+        if (state.WORLD != Game.state) {
+            System.out.println("heart ga di bkin");
+            for (int i = 0; i < heartNumber; i++) {
+                this.handler.addObject(new Heart(100, 100, i, 0, ObjectId.Heart, Game.getGameInstance().camera));
+            }
         }
+
     }
 
     @Override
@@ -138,17 +141,19 @@ public class Player extends GameObject {
                 velY = MAX_SPEED;
             }
         }
-        if (health <= 0) {
-            dying = true;
+        if (state.GAME_PLAY == Game.state) {
+            if (health <= 0) {
+                dying = true;
+            }
+            if (kebalCount >= 250 && kebal) {
+                kebal = false;
+                kebalCount = 0;
+            }
+            if (kebalCount <= 250) {
+                kebalCount++;
+            }
         }
-        System.out.println("player health: " + health);
-        if (kebalCount >= 250 && kebal) {
-            kebal = false;
-            kebalCount = 0;
-        }
-        if (kebalCount <= 250) {
-            kebalCount++;
-        }
+
         walk.runAnimation();
         jump_left.runAnimation();
         jump_right.runAnimation();
@@ -175,7 +180,6 @@ public class Player extends GameObject {
 //            }
 //        }
 //    }
-
     public void collision(LinkedList<GameObject> objects) {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);

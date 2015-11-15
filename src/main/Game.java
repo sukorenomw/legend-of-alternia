@@ -300,6 +300,7 @@ public class Game extends Canvas implements Runnable {
         keyHandler = new KeyHandler(handlerWorld, musicHandler);
         addKeyListener(keyHandler);
         musicHandler.load("assets/sounds/village.mp3");
+        state = State.LOADING;
         levelHandler = new LevelHandler();
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
