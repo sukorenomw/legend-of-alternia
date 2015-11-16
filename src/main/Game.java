@@ -195,7 +195,7 @@ public class Game extends Canvas implements Runnable {
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
         } else if (state == State.WORLD) {
-            g.setColor(new Color(208, 244, 247));
+            g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
             g2d.setColor(Color.BLACK);
@@ -327,8 +327,8 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-        state = State.INTRO;
-//        state = State.WORLD;
+//        state = State.INTRO;
+        state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 

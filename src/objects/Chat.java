@@ -35,6 +35,7 @@ public class Chat extends GameObject {
         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates)).split(";");
         if (!curStory[1].equalsIgnoreCase("5") && tempGame.isStory) {
             Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(Color.BLACK);
             g.drawImage(tempGame.dialogBox, (int) tempGame.camera.getX() * -1 + 96, (int) tempGame.camera.getY() * -1 + 480, null);
             String[] words = curStory[3].split("");
             g2d.drawString(curStory[2], (int) tempGame.camera.getX() * -1 + 120, (int) tempGame.camera.getY() * -1 + 500);
