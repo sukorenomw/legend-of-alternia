@@ -20,10 +20,10 @@ public class FontHandler {
         Font customFont = null;
         try {
             //create the font to use. Specify the size!
-            customFont = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource("assets/fonts/DisposableDroidBB.otf").getPath())).deriveFont(20f);
+            customFont = Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource("assets/fonts/PressStart2P.ttf").getPath())).deriveFont(20f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource("assets/fonts/DisposableDroidBB.otf").getPath())));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getClassLoader().getResource("assets/fonts/PressStart2P.ttf").getPath())));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (FontFormatException e) {

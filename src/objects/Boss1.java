@@ -41,7 +41,7 @@ public class Boss1 extends GameObject {
     
     public Boss1(float x, float y, ObjectId id,Player player,Handler handler) {
         super(x, y, id);
-        this.player = player;
+        this.player = Game.getGameInstance().handlerDungeon.player;
         this.handler = handler;
        velX = -10;
     }
@@ -50,7 +50,6 @@ public class Boss1 extends GameObject {
     public void tick(LinkedList<GameObject> objects) {
         
         count++;
-        
             if(x-player.getX() <=500){
                 
                 if(count%400 == 0){

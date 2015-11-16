@@ -198,6 +198,8 @@ public class Game extends Canvas implements Runnable {
             g.setColor(new Color(208, 244, 247));
             g.fillRect(0, 0, getWidth(), getHeight());
             g2d.translate(camera.getX(), camera.getY());
+            g2d.setColor(Color.BLACK);
+            g2d.setFont(customFont);
             handlerWorld.render(g);
             if (handlerWorld.player.isTalk && !isStory) {
                 g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
@@ -325,8 +327,8 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-        //state = State.INTRO;
-        state = State.WORLD;
+        state = State.INTRO;
+//        state = State.WORLD;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
