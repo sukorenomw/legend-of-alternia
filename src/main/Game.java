@@ -327,8 +327,8 @@ public class Game extends Canvas implements Runnable {
         mouseHandlerDungeon = new MouseHandler(handlerDungeon);
         addMouseListener(mouseHandlerDungeon);
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
+        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
     }
 
     public void pause() {
