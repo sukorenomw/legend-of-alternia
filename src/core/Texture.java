@@ -111,6 +111,7 @@ public class Texture {
         misc[2] = miscS.ImageScale(miscS.grabImage2(1, 2, 64, 64), 1.2);
         misc[3] = miscS.ImageScale(miscS.grabImage2(2, 2, 64, 64), 1.2);
         misc[4] = signS.ImageScale(signS.grabImage2(2, 1, 32, 32), 1.5);
+        misc[5] = signS.ImageScale(signS.grabImage2(1, 2, 32, 32), 1.5);
         
         
         NPC[0] = npcS.grabImage(1, 1, (int) 40, (int) 56);

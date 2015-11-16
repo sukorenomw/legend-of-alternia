@@ -434,6 +434,11 @@ public class LevelHandler {
                 if (red == 94 && green == 94 && blue == 94) {
                     list.add(new Misc(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 4, ObjectId.Misc));
                 }
+                
+                //misc sign save
+                if (red == 95 && green == 95 && blue == 95) {
+                    list.add(new Misc(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 5, ObjectId.Misc));
+                }
             }
         }
     }
