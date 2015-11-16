@@ -48,7 +48,7 @@ public class Boss1 extends GameObject {
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
-        
+        this.player = Game.getGameInstance().handlerDungeon.player;
         count++;
             if(x-player.getX() <=500){
                 

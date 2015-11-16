@@ -34,7 +34,7 @@ public class Texture {
     public BufferedImage[] tree = new BufferedImage[2];
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
-    public BufferedImage[] misc = new BufferedImage[5];
+    public BufferedImage[] misc = new BufferedImage[6];
     public BufferedImage[] boss1 = new BufferedImage[1];
     public BufferedImage[] boss2 = new BufferedImage[1];
     public BufferedImage[] boss3 = new BufferedImage[1];
