@@ -116,9 +116,13 @@ public class Player extends GameObject {
 
         kebalAnimationLeft = new Animation(2,
                 texture.player[22],
+                texture.player[59],
+                texture.player[22],
                 texture.player[59]);
 
         kebalAnimationRight = new Animation(2,
+                texture.player[18],
+                texture.player[59],
                 texture.player[18],
                 texture.player[59]);
         if (state.GAME_PLAY == Game.state) {
@@ -145,11 +149,11 @@ public class Player extends GameObject {
             if (health <= 0) {
                 dying = true;
             }
-            if (kebalCount >= 250 && kebal) {
+            if (kebalCount >= 300 && kebal) {
                 kebal = false;
                 kebalCount = 0;
             }
-            if (kebalCount <= 250) {
+            if (kebalCount <= 300) {
                 kebalCount++;
             }
         }
@@ -172,14 +176,6 @@ public class Player extends GameObject {
         collision(objects);
     }
 
-//    public void checkHealth(LinkedList<GameObject> objects) {
-//        for (int i = 0; i < objects.size(); i++) {
-//            GameObject tempObject = objects.get(i);
-//            if(ObjectId.Heart == tempObject.getId()){
-//                if(health)
-//            }
-//        }
-//    }
     public void collision(LinkedList<GameObject> objects) {
 
         for (int i = 0; i < objects.size(); i++) {
@@ -315,32 +311,42 @@ public class Player extends GameObject {
                 if (getBoundsLeft().intersects(tempObject.getBounds())) {
                     x = tempObject.getX() + 72;
                 }
-            } else if (tempObject.getId() == ObjectId.Monster && !kebal) {
+            } else if (tempObject.getId() == ObjectId.Monster) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 72;
+                    x = tempObject.getX() - 90;
                     velY = 0;
-                    health -= 25;
-                    kebal = true;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
+                    x = tempObject.getX() - 90;
                     velY = 0;
                     falling = false;
                     jumping = false;
-                    kebal = true;
-                    health -= 25;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 } else {
                     falling = true;
                 }
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
+                    x = tempObject.getX() - 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
+                    x = tempObject.getX() + 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     tempObject.setDying(true);
@@ -531,19 +537,26 @@ public class Player extends GameObject {
 
 //        
         if (dying) {
+            System.out.println("dying");
             dyingAnimation.drawAnimation(g, (int) x, (int) y);
         } else if (kebal && move_left) {
+            System.out.println("kebal left");
             kebalAnimationLeft.drawAnimation(g, (int) x, (int) y);
         } else if (kebal && move_right) {
+            System.out.println("kebal right");
             kebalAnimationRight.drawAnimation(g, (int) x, (int) y);
         } else if (attacking_right) {
+            System.out.println("attack right");
             attack_right.drawAnimation(g, (int) x, (int) y);
         } else if (attacking_left) {
+            System.out.println("attack left");
             attack_left.drawAnimation(g, (int) x - 102, (int) y);
         } else if (jumping) {
             if (move_right) {
+                System.out.println("jump right");
                 jump_right.drawAnimation(g, (int) x, (int) y);
             } else {
+                System.out.println("jump left");
                 jump_left.drawAnimation(g, (int) x, (int) y);
             }
         } else if (velY < 0 && Game.state == state.WORLD) {
@@ -551,16 +564,20 @@ public class Player extends GameObject {
         } else if (velY > 0 && Game.state == state.WORLD) {
             move_downs.drawAnimation(g, (int) x, (int) y);
         } else if (velX < 0) {
+            System.out.println("backward");
             backwards.drawAnimation(g, (int) x, (int) y);
         } else if (velX > 0) {
+            System.out.println("forward");
             walk.drawAnimation(g, (int) x, (int) y);
         } else if (move_down) {
             idle_down.drawAnimation(g, (int) x, (int) y);
         } else if (move_up) {
             idle_up.drawAnimation(g, (int) x, (int) y);
         } else if (move_left) {
+            System.out.println("idle left");
             idle_left.drawAnimation(g, (int) x, (int) y);
         } else if (move_right) {
+            System.out.println("idle right");
             idle_right.drawAnimation(g, (int) x, (int) y);
         } else {
             g.drawImage(texture.player[8], (int) x, (int) y, null);
