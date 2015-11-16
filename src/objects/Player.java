@@ -262,19 +262,29 @@ public class Player extends GameObject {
                 }
             } else if (tempObject.getId() == ObjectId.House) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + ((House)tempObject).getHEIGHT();
-                }else if(getBoundsTop().intersects(((House)tempObject).getBoundsLeft()) || getBoundsTop().intersects(((House)tempObject).getBoundsRight())){
-                    y = tempObject.getY() + ((House)tempObject).getHEIGHT()+10;
-                }else if(getBoundsRight().intersects(((House)tempObject).getBoundsRight())){
+                    y = tempObject.getY() + ((House) tempObject).getHEIGHT();
+                } else if (getBoundsTop().intersects(((House) tempObject).getBoundsLeft()) || getBoundsTop().intersects(((House) tempObject).getBoundsRight())) {
+                    y = tempObject.getY() + ((House) tempObject).getHEIGHT() + 10;
+                } else if (getBoundsRight().intersects(((House) tempObject).getBoundsRight())) {
                     x = tempObject.getX() + ((int) (7.5 * 48)) - 48;
-                }else if(getBoundsLeft().intersects(((House)tempObject).getBoundsLeft())){
-                    x = tempObject.getX() + ((House)tempObject).getWIDTH();
-                }else if (getBoundsRight().intersects(tempObject.getBounds()) || getBoundsRight().intersects(((House)tempObject).getBoundsLeft())) {
-                    x = tempObject.getX() + ((House)tempObject).getX1() - 48;
-                } else if (getBoundsLeft().intersects(((House)tempObject).getBounds()) || getBoundsLeft().intersects(((House)tempObject).getBoundsRight())) {
-                    x = tempObject.getX() + ((House)tempObject).getWIDTH();
+                } else if (getBoundsLeft().intersects(((House) tempObject).getBoundsLeft())) {
+                    x = tempObject.getX() + ((House) tempObject).getWIDTH();
+                } else if (getBoundsRight().intersects(tempObject.getBounds()) || getBoundsRight().intersects(((House) tempObject).getBoundsLeft())) {
+                    x = tempObject.getX() + ((House) tempObject).getX1() - 48;
+                } else if (getBoundsLeft().intersects(((House) tempObject).getBounds()) || getBoundsLeft().intersects(((House) tempObject).getBoundsRight())) {
+                    x = tempObject.getX() + ((House) tempObject).getWIDTH();
                 } else if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + ((House)tempObject).getY1() - 72;
+                    y = tempObject.getY() + ((House) tempObject).getY1() - 72;
+                }
+            } else if (tempObject.getId() == ObjectId.Misc) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + ((Misc) tempObject).getHEIGHT();;
+                } else if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 48;
+                } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + ((Misc) tempObject).getWIDTH();;
+                } else if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
                 }
             } else if (tempObject.getId() == ObjectId.NPC) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {

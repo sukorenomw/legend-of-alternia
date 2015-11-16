@@ -41,11 +41,11 @@ public class House extends GameObject {
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.house[type], (int) x, (int) y, null);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.blue);
-        g2d.draw(getBounds());
-        g2d.draw(getBoundsLeft());
-        g2d.draw(getBoundsRight());
+//        Graphics2D g2d = (Graphics2D) g;
+//        g2d.setColor(Color.blue);
+//        g2d.draw(getBounds());
+//        g2d.draw(getBoundsLeft());
+//        g2d.draw(getBoundsRight());
     }
 
     public float getWIDTH() {
