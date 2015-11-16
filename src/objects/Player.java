@@ -32,6 +32,7 @@ public class Player extends GameObject {
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
     private Heart[] heart;
+    public int bosshp=500;
 
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
@@ -180,6 +181,7 @@ public class Player extends GameObject {
 //        }
 //    }
     public void collision(LinkedList<GameObject> objects) {
+        
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             Game tempGame = Game.getGameInstance();
@@ -330,6 +332,205 @@ public class Player extends GameObject {
                     Game.getGameInstance().loadGame(1);
                 }
 
+            }else if (tempObject.getId() == ObjectId.Attack && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    health -= 25;
+                    kebal = true;
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    kebal = true;
+                    health -= 25;
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    kebal = true;
+                    health -= 25;
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    kebal = true;
+                    health -= 25;
+
+                }
+                
+            }else if (tempObject.getId() == ObjectId.Attack2 && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    health -= 25;
+                    kebal = true;
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    kebal = true;
+                    health -= 25;
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    kebal = true;
+                    health -= 25;
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    kebal = true;
+                    health -= 25;
+
+                }
+                
+            }else if (tempObject.getId() == ObjectId.Boss1 && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    
+
+                }
+                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+                    if(bosshp>25){
+                        bosshp -=25;
+                    }else{
+                    tempObject.setDying(true);
+                    handler.removeObject(tempObject);
+                    }
+                }else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    
+
+                }
+                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+                    if(bosshp>25){
+                        bosshp -=25;
+                    }else{
+                    tempObject.setDying(true);
+                    handler.removeObject(tempObject);
+                    }
+                }
+                }else if (tempObject.getId() == ObjectId.Boss3 && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    
+
+                }
+                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+                    if(bosshp>25){
+                        bosshp -=25;
+                    }else{
+                    tempObject.setDying(true);
+                    handler.removeObject(tempObject);
+                    }
+                }
+                }else if (tempObject.getId() == ObjectId.Boss4 && !kebal) {
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + 72;
+                    velY = 0;
+                    
+                }
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                    
+                } else {
+                    falling = true;
+                }
+
+                if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 72;
+                    
+                }
+
+                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + 72;
+                    
+
+                }
+                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+                    if(bosshp>25){
+                        bosshp -=25;
+                    }else{
+                    tempObject.setDying(true);
+                    handler.removeObject(tempObject);
+                    }
+                }
+                }
+                
             }
         }
     }

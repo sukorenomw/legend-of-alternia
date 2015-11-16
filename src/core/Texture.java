@@ -7,7 +7,7 @@ import objects.Monster;
 
 public class Texture {
 
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS, miscS, signS;
+    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS, miscS, signS,b1S,b2S,b3S,b4S,attS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
@@ -20,6 +20,11 @@ public class Texture {
     private BufferedImage houseSheet = null;
     private BufferedImage miscSheet = null;
     private BufferedImage signSheet = null;
+    private BufferedImage bossSheet1 = null;
+    private BufferedImage bossSheet2 = null;
+    private BufferedImage bossSheet3 = null;
+    private BufferedImage bossSheet4 = null;
+    private BufferedImage atkSheet = null;
 
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
@@ -30,6 +35,11 @@ public class Texture {
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage[] misc = new BufferedImage[5];
+    public BufferedImage[] boss1 = new BufferedImage[1];
+    public BufferedImage[] boss2 = new BufferedImage[1];
+    public BufferedImage[] boss3 = new BufferedImage[1];
+    public BufferedImage[] boss4 = new BufferedImage[1];
+     public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
 
     public Texture() {
@@ -47,6 +57,11 @@ public class Texture {
             fountain = loader.load("/assets/images/villages/fountain.png");
             miscSheet = loader.load("/assets/images/villages/misc.png");
             signSheet = loader.load("/assets/images/villages/signpost.png");
+            bossSheet1 = loader.load("/assets/images/monster/boss1.png");
+            bossSheet2 = loader.load("/assets/images/monster/boss2.png");
+            bossSheet3 = loader.load("/assets/images/monster/boss3.png");
+            bossSheet4 = loader.load("/assets/images/monster/boss4.png");
+            atkSheet = loader.load("/assets/images/monster/attacksprite.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,6 +77,11 @@ public class Texture {
         fS = new SpriteSheet(fountain);
         miscS = new SpriteSheet(miscSheet);
         signS = new SpriteSheet(signSheet);
+         b1S = new SpriteSheet(bossSheet1);
+        b2S = new SpriteSheet(bossSheet2);
+        b3S = new SpriteSheet(bossSheet3);
+        b4S = new SpriteSheet(bossSheet4);
+        attS = new SpriteSheet(atkSheet);
         getTextures();
     }
 
@@ -264,5 +284,28 @@ public class Texture {
         monster[13] = mS.grabImage(6, 2, 96, 80);
         monster[14] = mS.grabImage(7, 2, 96, 80);
         monster[15] = mS.grabImage(8, 2, 96, 80);
+        boss1[0] = b1S.grabImage(1,2, 56,71);
+        boss2[0] = b2S.grabImage(1,1, 64,64);
+        boss3[0] = b3S.grabImage(1,1, 64,96);
+        boss4[0] = b4S.grabImage(1,1, 64,64);
+        
+        attack[0] = attS.grabImage(1, 3, 50,50);
+        attack[1] = attS.grabImage(2, 3, 50,50);
+        attack[2] = attS.grabImage(3, 3, 50,50);
+        attack[3] = attS.grabImage(4, 2, 50,50);
+        attack[4] = attS.grabImage(5, 2, 50,50);
+        attack[5] = attS.grabImage(6, 2, 50,50);
+        attack[6] = attS.grabImage(4, 3, 50,50);
+        attack[7] = attS.grabImage(5, 3, 50,50);
+        attack[8] = attS.grabImage(6, 3, 50,50);
+        attack[9] = attS.grabImage(1, 4, 50,50);
+        attack[10] = attS.grabImage(2, 4, 50,50);
+        attack[11] = attS.grabImage(3, 4, 50,50);
+        attack[12] = attS.grabImage(4, 4, 50,50);
+        attack[13] = attS.grabImage(5, 4, 50,50);
+        attack[14] = attS.grabImage(6, 4, 50,50);
+        attack[15] = attS.grabImage(4, 8, 50,50);
+        attack[16] = attS.grabImage(5, 8, 50,50);
+        attack[17] = attS.grabImage(6, 8, 50,50);
     }
 }
