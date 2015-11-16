@@ -71,6 +71,7 @@ public class Game extends Canvas implements Runnable {
     private ImageLoader imageLoader;
     public Pause pause;
     public boolean isPressed;
+
     private void init() {
         state = state.LOADING;
         WIDTH = getWidth();
@@ -319,7 +320,7 @@ public class Game extends Canvas implements Runnable {
         mainmenu.musicHandler.stop();
         background = imageLoader.load("/assets/images/dungeon/bg" + no + ".jpg");
         musicHandler.load("assets/sounds/dun-1.mp3");
-        loadImageLevel(level, no);
+
         musicHandler.play();
         keyHandlerDungeon = new KeyHandler(handlerDungeon, musicHandler);
         addKeyListener(keyHandlerDungeon);
@@ -328,6 +329,7 @@ public class Game extends Canvas implements Runnable {
         addMouseListener(mouseHandlerDungeon);
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
         state = State.GAME_PLAY;
+        loadImageLevel(level, no);
         handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
     }
 
