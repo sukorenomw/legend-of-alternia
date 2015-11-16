@@ -292,16 +292,16 @@ public class Game extends Canvas implements Runnable {
 //                    handlerDungeon.addObject(new Boss4(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 42, ObjectId.Boss4,handlerDungeon.player,handlerDungeon));
 //                }
                 if (red == 0 && green == 255 && blue == 0 && no == 1) {
-                    handlerDungeon.addObject(new Boss1(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71, ObjectId.Boss1,handlerDungeon.player,handlerDungeon));
+                    handlerDungeon.addObject(new Boss1(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, ObjectId.Boss1, handlerDungeon.player, handlerDungeon));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 2) {
-                    handlerDungeon.addObject(new Boss2(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 42, ObjectId.Boss2,handlerDungeon.player,handlerDungeon));
+                    handlerDungeon.addObject(new Boss2(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, ObjectId.Boss2, handlerDungeon.player, handlerDungeon));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 3) {
-                    handlerDungeon.addObject(new Boss3(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 88, ObjectId.Boss3,handlerDungeon.player,handlerDungeon));
+                    handlerDungeon.addObject(new Boss3(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, ObjectId.Boss3, handlerDungeon.player, handlerDungeon));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
-                    handlerDungeon.addObject(new Boss4(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 42, ObjectId.Boss4,handlerDungeon.player,handlerDungeon));
+                    handlerDungeon.addObject(new Boss4(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, ObjectId.Boss4, handlerDungeon.player, handlerDungeon));
                 }
             }
         }
@@ -342,16 +342,15 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         keyHandlerDungeon = new KeyHandler(handlerDungeon, musicHandler);
         addKeyListener(keyHandlerDungeon);
-        
+
         mouseHandlerDungeon = new MouseHandler(handlerDungeon);
         addMouseListener(mouseHandlerDungeon);
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
-        
 
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
         loadImageLevel(level, no);
-        
+        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
+
     }
 
     public void pause() {
