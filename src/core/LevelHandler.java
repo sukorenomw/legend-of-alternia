@@ -361,16 +361,16 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 6, ObjectId.NPC));
                 }
                 if (red == 7 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 7, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 7, ObjectId.NPC, "Villager F"));
                 }
                 if (red == 8 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 8, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 8, ObjectId.NPC, "Villager M"));
                 }
                 if (red == 9 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC, "Adveturer"));
                 }
                 if (red == 10 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC, "Queen Selenia"));
                 }
                 if (red == 11 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC, "King Atalon"));
