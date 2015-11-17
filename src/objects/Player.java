@@ -125,7 +125,7 @@ public class Player extends GameObject {
                 texture.player[59],
                 texture.player[18],
                 texture.player[59]);
-        if (state.GAME_PLAY == Game.state) {
+        if (state.LOADING == Game.state) {
             for (int i = 0; i < heartNumber; i++) {
                 this.handler.addObject(new Heart(100, 100, i, 0, ObjectId.Heart, Game.getGameInstance().camera));
             }

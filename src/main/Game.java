@@ -370,9 +370,10 @@ public class Game extends Canvas implements Runnable {
         addMouseListener(mouseHandlerDungeon);
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
 
-        state = State.GAME_PLAY;
+        state = State.LOADING;
         loadImageLevel(level, no);
         handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
+        state = State.GAME_PLAY;
 
     }
 
