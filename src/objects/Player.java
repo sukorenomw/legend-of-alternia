@@ -25,7 +25,7 @@ public class Player extends GameObject {
     private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards,
             attack_right, attack_left, dyingAnimation, kebalAnimationLeft, kebalAnimationRight;
     private State state;
-    public static boolean right, down, up, left, isTalk, kebal, dead;
+    public static boolean right, down, up, left, isTalk, kebal = false, dead;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
     public int health = 300;
@@ -355,27 +355,21 @@ public class Player extends GameObject {
                 }
             } else if (tempObject.getId() == ObjectId.Monster) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    x = tempObject.getX() - 90;
-                    velY = 0;
+                    y = tempObject.getY() - 72;
+                    x = tempObject.getX() + 90;
                     if (!kebal) {
                         health -= 25;
                         kebal = true;
                     }
                 }
                 if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
+                    y = tempObject.getY() - 90;
                     x = tempObject.getX() - 90;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
                     if (!kebal) {
                         health -= 25;
                         kebal = true;
                     }
-                } else {
-                    falling = true;
-                }
+                } 
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
                     x = tempObject.getX() - 90;
                     if (!kebal) {
