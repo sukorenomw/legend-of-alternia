@@ -29,6 +29,32 @@ public class NPC extends GameObject {
         "May Tyr be with you . . ."
     };
 
+    private static String[] male_names = {
+        "Abbington",
+        "Godfrey",
+        "Barrett",
+        "Philip",
+        "Walter",
+        "Gregory",
+        "Angus",
+        "Wilfred",
+        "Alexander",
+        "Baldwin"
+    };
+
+    private static String[] female_names = {
+        "Florence",
+        "Juliet",
+        "Charlotte",
+        "Priscilla",
+        "Josephina",
+        "Fiona",
+        "Adelaide",
+        "Angela",
+        "Annabella",
+        "Helen"
+    };
+
     public String getName() {
         return name;
     }
@@ -51,7 +77,7 @@ public class NPC extends GameObject {
             case "Queen Selenia":
                 words = "Sob Sob Sob . . . ";
                 break;
-                
+
             default:
                 Random rand = new Random();
                 int index = rand.nextInt(((word_list.length - 1) - 1) + 1) + 1;
@@ -75,29 +101,39 @@ public class NPC extends GameObject {
         this.type = type;
         this.no = no;
         words = "Good Luck!";
-        name = "Guardian";        
+        name = "Guardian";
     }
 
     public NPC(float x, float y, int type, ObjectId id, String name) {
         super(x, y, id);
         this.type = type;
-        this.name = name;
+        if (name.equalsIgnoreCase("Villager F")) {
+            Random rand = new Random();
+            int index = rand.nextInt(((female_names.length - 1) - 1) + 1) + 1;
+            this.name = female_names[index];
+        } else if (name.equalsIgnoreCase("Villager M")) {
+            Random rand = new Random();
+            int index = rand.nextInt(((male_names.length - 1) - 1) + 1) + 1;
+            this.name = male_names[index];
+        } else {
+            this.name = name;
+        }
     }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
         if (type == 4 && Player.isTalk) {
-            if(no == 1 && Game.getGameInstance().storyStates >= 11){
+            if (no == 1 && Game.getGameInstance().storyStates >= 11) {
                 Game.getGameInstance().loadGame(no);
-            }else if(no == 2 && Game.getGameInstance().storyStates >= 17){
+            } else if (no == 2 && Game.getGameInstance().storyStates >= 17) {
                 Game.getGameInstance().loadGame(no);
-            }else if(no == 3 && Game.getGameInstance().storyStates >= 22){
+            } else if (no == 3 && Game.getGameInstance().storyStates >= 22) {
                 Game.getGameInstance().loadGame(no);
-            }else if(no == 4 && Game.getGameInstance().storyStates >= 27){
+            } else if (no == 4 && Game.getGameInstance().storyStates >= 27) {
                 Game.getGameInstance().loadGame(no);
-            }else{
+            } else {
                 words = "Maaf anda belum bisa masuk dungeon ini@Selesaikan dulu dungeon yang lain";
-            }            
+            }
         }
     }
 
