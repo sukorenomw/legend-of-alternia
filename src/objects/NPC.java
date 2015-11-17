@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+import java.util.Random;
 import main.Game;
 
 public class NPC extends GameObject {
@@ -18,6 +19,12 @@ public class NPC extends GameObject {
     private int type, no;
     String name = "Soldier";
     String words = "Kami akan menjaga kota Alteria!!!!";
+    private static String[] word_list = {
+        "Sage Adalia senang berada di timur alteria, di tengah danau",
+        "Rumor mengatakan bila Sage adalia pengikut Vajra",
+        "Raja dan Ratu begitu sedih dengan keadaan sekarang, @tolonglah kami heroes",
+        "Dahulu kami hidup berbahagia, @sekarang keadaan sudah berubah"
+    };
 
     public String getName() {
         return name;
@@ -28,6 +35,26 @@ public class NPC extends GameObject {
     }
 
     public String getWords() {
+        switch (name) {
+            case "King Atalon":
+                words = "Dahulu alteria begitu damai, tolonglah selamat kan kami hero!";
+                break;
+            case "Sage Adalia":
+                words = "Guardian 1 berada di utara dari Alternia."
+                        + "@Guardian 2 berada di timur laut Alternia."
+                        + "@Guardian 3 berada di tenggara Alternia"
+                        + "@Guardian 4 berada di selatan Alternia";
+                break;
+            case "Queen Selenia":
+                words = "Sob Sob Sob . . . ";
+                break;
+                
+            default:
+                Random rand = new Random();
+                int index = rand.nextInt(((word_list.length - 1) - 1) + 1) + 1;
+                words = word_list[index];
+                break;
+        }
         return words;
     }
 
@@ -52,29 +79,6 @@ public class NPC extends GameObject {
         super(x, y, id);
         this.type = type;
         this.name = name;
-        switch (name) {
-            case "King Atalon":
-                words = "Dahulu alteria begitu damai, tolonglah selamat kan kami hero!";
-                break;
-            case "Sage Adalia":
-                words = "Guardian 1 berada di utara dari Alternia."
-                        + "@Guardian 2 berada di timur laut Alternia."
-                        + "@Guardian 3 berada di tenggara Alternia"
-                        + "@Guardian 4 berada di selatan Alternia";
-                break;
-            case "Villager F":
-                words = "Sage Adalia senang berada di timur alteria, di tengah danau";
-                break;
-            case "Villager M":
-                words = "Rumor mengatakan bila Sage adalia pengikut Vajra";
-                break;
-            case "Adventurer":
-                words = "Raja dan Ratu begitu sedih dengan keadaan sekarang, @tolonglah kami heroes";
-                break;
-            case "Queen Selenia":
-                words = "Sob Sob Sob . . . ";
-                break;
-        }
     }
 
     @Override

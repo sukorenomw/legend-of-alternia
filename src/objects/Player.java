@@ -149,11 +149,11 @@ public class Player extends GameObject {
             if (health <= 0) {
                 dying = true;
             }
-            if (kebalCount >= 300 && kebal) {
+            if (kebalCount >= 200 && kebal) {
                 kebal = false;
                 kebalCount = 0;
             }
-            if (kebalCount <= 300) {
+            if (kebalCount <= 200) {
                 kebalCount++;
             }
         }
