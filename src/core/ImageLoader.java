@@ -19,7 +19,7 @@ public class ImageLoader {
         try {
             image = ImageIO.read(getClass().getResource(path));
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         
         return image;

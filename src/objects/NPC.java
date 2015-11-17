@@ -17,8 +17,8 @@ public class NPC extends GameObject {
     public static final float WIDTH = 40, HEIGHT = 56;
     Texture texture = Game.getInstance();
     private int type, no;
-    String name;
-    String words;
+    String name = "Soldier";
+    String words = "Kami akan menjaga kota Alteria!!!!";
     private static String[] word_list = {
         "Sage Adalia senang berada di timur alteria, di tengah danau",
         "Rumor mengatakan bila Sage adalia pengikut Vajra",
