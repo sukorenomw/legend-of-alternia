@@ -193,6 +193,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
+                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC)tempObject).getName();
                     }
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
@@ -205,6 +207,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
+                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC)tempObject).getName();
                     }
                 } else if (down) {
                     if (getBounds(10).intersects(tempObject.getBounds())) {
@@ -217,13 +221,14 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
+                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC)tempObject).getName();
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
 
                         if (!curStory[1].equalsIgnoreCase("5")) {
-                            System.out.println(curStory[2]);
                             if (((NPC) tempObject).name.equalsIgnoreCase(curStory[2]) && tempObject.getId() == ObjectId.NPC) {
                                 tempGame.isStory = true;
                                 tempGame.storyStates++;
@@ -231,6 +236,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
+                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC)tempObject).getName();
                     }
                 }
             } else if (!talk) {
@@ -537,26 +544,19 @@ public class Player extends GameObject {
 
 //        
         if (dying) {
-            System.out.println("dying");
             dyingAnimation.drawAnimation(g, (int) x, (int) y);
         } else if (kebal && move_left) {
-            System.out.println("kebal left");
             kebalAnimationLeft.drawAnimation(g, (int) x, (int) y);
         } else if (kebal && move_right) {
-            System.out.println("kebal right");
             kebalAnimationRight.drawAnimation(g, (int) x, (int) y);
         } else if (attacking_right) {
-            System.out.println("attack right");
             attack_right.drawAnimation(g, (int) x, (int) y);
         } else if (attacking_left) {
-            System.out.println("attack left");
             attack_left.drawAnimation(g, (int) x - 102, (int) y);
         } else if (jumping) {
             if (move_right) {
-                System.out.println("jump right");
                 jump_right.drawAnimation(g, (int) x, (int) y);
             } else {
-                System.out.println("jump left");
                 jump_left.drawAnimation(g, (int) x, (int) y);
             }
         } else if (velY < 0 && Game.state == state.WORLD) {
@@ -564,20 +564,16 @@ public class Player extends GameObject {
         } else if (velY > 0 && Game.state == state.WORLD) {
             move_downs.drawAnimation(g, (int) x, (int) y);
         } else if (velX < 0) {
-            System.out.println("backward");
             backwards.drawAnimation(g, (int) x, (int) y);
         } else if (velX > 0) {
-            System.out.println("forward");
             walk.drawAnimation(g, (int) x, (int) y);
         } else if (move_down) {
             idle_down.drawAnimation(g, (int) x, (int) y);
         } else if (move_up) {
             idle_up.drawAnimation(g, (int) x, (int) y);
         } else if (move_left) {
-            System.out.println("idle left");
             idle_left.drawAnimation(g, (int) x, (int) y);
         } else if (move_right) {
-            System.out.println("idle right");
             idle_right.drawAnimation(g, (int) x, (int) y);
         } else {
             g.drawImage(texture.player[8], (int) x, (int) y, null);

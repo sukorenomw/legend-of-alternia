@@ -30,8 +30,13 @@ public class MouseHandler extends MouseAdapter{
             }
         } else {
             if (Game.getGameInstance().pause.bResume.isHover() && state == Game.state.PAUSE) {
-                Game.getGameInstance().playGame();
+                Game.state = Game.getGameInstance().stateBefore;
             } else if (Game.getGameInstance().pause.bMainMenu.isHover() && state == Game.state.PAUSE) {
+                if(Game.getGameInstance().stateBefore == state.GAME_PLAY){
+                    Game.getGameInstance().musicHandler.stop();
+                }else if(Game.getGameInstance().stateBefore == state.WORLD){
+                    Game.getGameInstance().musicHandler.stop();
+                }
                 Game.getGameInstance().mainMenu();
             } else if (Game.getGameInstance().pause.bExit.isHover() && state == Game.state.PAUSE) {
                 System.exit(0);

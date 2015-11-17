@@ -47,7 +47,7 @@ public class Game extends Canvas implements Runnable {
 
     public static final double FPS = 55.0;
     public static int WIDTH, HEIGHT;
-
+    public State stateBefore;
     private boolean running = false;
     public int storyStates;
     private Thread thread;
@@ -56,7 +56,7 @@ public class Game extends Canvas implements Runnable {
     private KeyHandler keyHandler, keyHandlerDungeon;
     public Camera camera;
     public BufferedImage level, background, village, intro, dialogBox;
-    private MusicHandler musicHandler;
+    public MusicHandler musicHandler;
     private Font customFont;
     private FontHandler fontHandler;
     private FileHandler fileHandler;
@@ -69,6 +69,7 @@ public class Game extends Canvas implements Runnable {
     static Texture texture;
     static Game game;
     public static State state;
+    public String name, words;
 
     public MainMenu mainmenu;
     private MouseAdapter mouseHandler, mouseHandlerDungeon;
@@ -202,7 +203,20 @@ public class Game extends Canvas implements Runnable {
             g2d.setFont(customFont);
             handlerWorld.render(g);
             if (handlerWorld.player.isTalk && !isStory) {
-                g.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
+                g2d.setColor(Color.BLACK);
+                g2d.drawImage(dialogBox, (int) camera.getX() * -1 + 96, (int) camera.getY() * -1 + 480, null);
+                g2d.drawString(name, (int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 500);
+                if (words.contains("@")) {
+                    g2d.setColor(Color.BLACK);
+                    String words1[] = words.split("@");
+                    for (int i = 0; i < words1.length; i++) {
+                        g2d.setColor(Color.BLACK);
+                        g2d.drawString(words1[i], (int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 530 + i * 20);
+                    }
+                } else {
+                    g2d.setColor(Color.BLACK);
+                    g2d.drawString(words, (int) camera.getX() * -1 + 120, (int) camera.getY() * -1 + 530);
+                }
             }
             g2d.translate(-camera.getX(), -camera.getY());
         } else if (state == State.INTRO) {
@@ -318,6 +332,10 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void playGame() {
+        removeKeyListener(keyHandler);
+        handlerWorld = new Handler();
+        storyStates = 2;
+        isStory = true;
         mainmenu.musicHandler.stop();
         keyHandler = new KeyHandler(handlerWorld, musicHandler);
         addKeyListener(keyHandler);
@@ -333,6 +351,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void loadGame(int no) {
+        removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
             musicHandler.stop();
         }
@@ -361,6 +380,8 @@ public class Game extends Canvas implements Runnable {
 
     public void mainMenu() {
         state = State.MAIN_MENU;
+        mainmenu.musicHandler.load("assets/sounds/menu.mp3");
+        mainmenu.musicHandler.play();
     }
 
     public static void main(String[] args) {

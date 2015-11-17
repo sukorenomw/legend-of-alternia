@@ -21,7 +21,7 @@ public class Chat extends GameObject {
     }
 
     public Chat() {
-        super(Game.getGameInstance().handlerWorld.player.getX(),  Game.getGameInstance().handlerWorld.player.getY(), ObjectId.Heart);
+        super(Game.getGameInstance().handlerWorld.player.getX(), Game.getGameInstance().handlerWorld.player.getY(), ObjectId.Heart);
     }
 
     @Override

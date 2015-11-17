@@ -352,7 +352,7 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 3, ObjectId.NPC));
                 }
                 if (red == 4 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 4, ObjectId.NPC));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 4, ObjectId.NPC, "Guardian"));
                 }
                 if (red == 5 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 5, ObjectId.NPC));
@@ -367,7 +367,7 @@ public class LevelHandler {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 8, ObjectId.NPC, "Villager M"));
                 }
                 if (red == 9 && green == 0 && blue == 0) {
-                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC, "Adveturer"));
+                    list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC, "Adventurer"));
                 }
                 if (red == 10 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC, "Queen Selenia"));
