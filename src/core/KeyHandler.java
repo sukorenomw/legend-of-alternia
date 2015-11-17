@@ -193,10 +193,6 @@ public class KeyHandler extends KeyAdapter {
             }
 //            }
 
-            if (handler.keys.contains(KeyEvent.VK_ESCAPE)) {
-                System.exit(0);
-            }
-
             if (handler.keys.contains(KeyEvent.VK_ENTER)) {
                 Game.getGameInstance().stateBefore = Game.state;
                 Game.getGameInstance().pause();
