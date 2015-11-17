@@ -45,7 +45,7 @@ public class Chat extends GameObject {
                     lev++;
                     row = 0;
                 } else {
-                    g2d.drawString(words[i], (int) tempGame.camera.getX() * -1 + 120 + row * 8, (int) tempGame.camera.getY() * -1 + 530 + lev * 20);
+                    g2d.drawString(words[i], (int) tempGame.camera.getX() * -1 + 120 + row * 9, (int) tempGame.camera.getY() * -1 + 530 + lev * 20);
                 }
                 row++;
             }

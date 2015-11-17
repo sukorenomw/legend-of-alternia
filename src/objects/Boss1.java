@@ -41,7 +41,6 @@ public class Boss1 extends GameObject {
     
     public Boss1(float x, float y, ObjectId id) {
         super(x, y, id);
-        this.player = Game.getGameInstance().handlerDungeon.player;
         this.handler = Game.getGameInstance().handlerDungeon;
        velX = -10;
     }
