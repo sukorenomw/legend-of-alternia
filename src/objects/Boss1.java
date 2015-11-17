@@ -39,10 +39,10 @@ public class Boss1 extends GameObject {
     private Handler handler;
     private GameObject tempObject;
     
-    public Boss1(float x, float y, ObjectId id,Player player,Handler handler) {
+    public Boss1(float x, float y, ObjectId id) {
         super(x, y, id);
         this.player = Game.getGameInstance().handlerDungeon.player;
-        this.handler = handler;
+        this.handler = Game.getGameInstance().handlerDungeon;
        velX = -10;
     }
 
