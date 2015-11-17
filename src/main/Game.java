@@ -26,7 +26,9 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -70,7 +72,7 @@ public class Game extends Canvas implements Runnable {
     static Game game;
     public static State state;
     public String name, words;
-
+    public boolean saves = false;
     public MainMenu mainmenu;
     private MouseAdapter mouseHandler, mouseHandlerDungeon;
     private ImageLoader imageLoader;
@@ -372,6 +374,10 @@ public class Game extends Canvas implements Runnable {
         loadImageLevel(level, no);
         handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
 
+    }
+
+    public void save() {
+        saves = true;
     }
 
     public void pause() {

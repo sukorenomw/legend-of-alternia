@@ -193,8 +193,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
-                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
-                        Game.getGameInstance().name = ((NPC)tempObject).getName();
+                        Game.getGameInstance().words = ((NPC) tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC) tempObject).getName();
                     }
                 } else if (left) {
                     if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
@@ -207,8 +207,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
-                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
-                        Game.getGameInstance().name = ((NPC)tempObject).getName();
+                        Game.getGameInstance().words = ((NPC) tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC) tempObject).getName();
                     }
                 } else if (down) {
                     if (getBounds(10).intersects(tempObject.getBounds())) {
@@ -221,8 +221,8 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
-                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
-                        Game.getGameInstance().name = ((NPC)tempObject).getName();
+                        Game.getGameInstance().words = ((NPC) tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC) tempObject).getName();
                     }
                 } else if (up) {
                     if (getBoundsTop(30).intersects(tempObject.getBounds())) {
@@ -236,10 +236,29 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
-                        Game.getGameInstance().words = ((NPC)tempObject).getWords();
-                        Game.getGameInstance().name = ((NPC)tempObject).getName();
+                        Game.getGameInstance().words = ((NPC) tempObject).getWords();
+                        Game.getGameInstance().name = ((NPC) tempObject).getName();
                     }
                 }
+            } else if (Game.state.WORLD == state.WORLD && ObjectId.Save == tempObject.getId() && talk && tempGame.isPressed) {
+                if (right) {
+                    if (getBoundsRight(10).intersects(tempObject.getBounds())) {
+                        Game.getGameInstance().save();
+                    }
+                } else if (left) {
+                    if (getBoundsLeft(10).intersects(tempObject.getBounds())) {
+                        Game.getGameInstance().save();
+                    }
+                } else if (down) {
+                    if (getBounds(10).intersects(tempObject.getBounds())) {
+                        Game.getGameInstance().save();
+                    }
+                } else if (up) {
+                    if (getBoundsTop(30).intersects(tempObject.getBounds())) {
+                        Game.getGameInstance().save();
+                    }
+                }
+
             } else if (!talk) {
                 isTalk = false;
             }
@@ -289,7 +308,7 @@ public class Player extends GameObject {
                 } else if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
                 }
-            }else if(tempObject.getId() == ObjectId.Save){
+            } else if (tempObject.getId() == ObjectId.Save) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + Save.HEIGHT;
                 } else if (getBoundsRight().intersects(tempObject.getBounds())) {
@@ -299,7 +318,7 @@ public class Player extends GameObject {
                 } else if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
                 }
-            }else if (tempObject.getId() == ObjectId.NPC) {
+            } else if (tempObject.getId() == ObjectId.NPC) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 56;
                 } else if (getBoundsRight().intersects(tempObject.getBounds())) {
@@ -540,7 +559,8 @@ public class Player extends GameObject {
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(Graphics g
+    ) {
         //g.setColor(Color.blue);
         //g.fillRect((int)x, (int)y, (int)WIDTH, (int)HEIGHT); 
         Graphics2D g2d = (Graphics2D) g;
