@@ -352,6 +352,37 @@ public class Game extends Canvas implements Runnable {
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
+    public void loadGames() {
+        ArrayList data;
+        try {
+            data = fileHandler.readLargerTextFileAlternate("/data/files/saves.loa");
+            removeKeyListener(keyHandler);
+            handlerWorld = new Handler();
+            int dat[] = {2, 2, 2};
+            int i = 0;
+            for (Object data1 : data) {
+                for (String data2 : data1.toString().split(";")) {
+                    dat[i] = Integer.parseInt(data2.toString());
+                    i++;
+                }
+            }
+            storyStates = dat[0];
+            isStory = false;
+            mainmenu.musicHandler.stop();
+            keyHandler = new KeyHandler(handlerWorld, musicHandler);
+            addKeyListener(keyHandler);
+            musicHandler.load("assets/sounds/village.mp3");
+            state = State.LOADING;
+            levelHandler = new LevelHandler();
+            musicHandler.play();
+            handlerWorld.player.setX(dat[1]);
+            handlerWorld.player.setY(dat[2]);
+            state = State.WORLD;
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void loadGame(int no) {
         removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
