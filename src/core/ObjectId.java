@@ -33,5 +33,6 @@ public enum ObjectId {
     Dungeon(),
     House(),
     NPC(), 
-    Misc();
+    Misc(),
+    Save();
 }

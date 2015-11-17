@@ -17,6 +17,7 @@ import objects.Misc;
 import objects.NPC;
 import objects.Player;
 import objects.River;
+import objects.Save;
 import objects.Tree;
 
 /**
@@ -437,7 +438,7 @@ public class LevelHandler {
                 
                 //misc sign save
                 if (red == 95 && green == 95 && blue == 95) {
-                    list.add(new Misc(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 5, ObjectId.Misc));
+                    list.add(new Save(i * Ground.WIDTH, j * Ground.HEIGHT - 50, 5, ObjectId.Save));
                 }
             }
         }

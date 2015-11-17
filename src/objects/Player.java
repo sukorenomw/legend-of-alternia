@@ -289,7 +289,17 @@ public class Player extends GameObject {
                 } else if (getBounds().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() - 72;
                 }
-            } else if (tempObject.getId() == ObjectId.NPC) {
+            }else if(tempObject.getId() == ObjectId.Save){
+                if (getBoundsTop().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() + Save.HEIGHT;
+                } else if (getBoundsRight().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() - 48;
+                } else if (getBoundsLeft().intersects(tempObject.getBounds())) {
+                    x = tempObject.getX() + Save.WIDTH;
+                } else if (getBounds().intersects(tempObject.getBounds())) {
+                    y = tempObject.getY() - 72;
+                }
+            }else if (tempObject.getId() == ObjectId.NPC) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 56;
                 } else if (getBoundsRight().intersects(tempObject.getBounds())) {
