@@ -18,5 +18,6 @@ public enum State {
     WORLD,
     LOAD_GAME,
     INTRO,
-    SAVE
+    SAVE, 
+    GAME_OVER
 }

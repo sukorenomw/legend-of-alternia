@@ -248,6 +248,10 @@ public class Game extends Canvas implements Runnable {
             }
         } else if (state == state.PAUSE) {
             pause.render(g);
+        } else if (state == state.GAME_OVER) {
+            ImageLoader loader = new ImageLoader();
+            BufferedImage load = loader.load("/assets/images/main_menu/game-over.png");
+            g.drawImage(load, 0, 0, null);
         }
         g.dispose();
         bs.show();

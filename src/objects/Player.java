@@ -156,7 +156,13 @@ public class Player extends GameObject {
             if (kebalCount <= 200) {
                 kebalCount++;
             }
+            
+            if(y > 712){
+                Game.state = state.GAME_OVER;
+            }
         }
+        
+        
 
         walk.runAnimation();
         jump_left.runAnimation();

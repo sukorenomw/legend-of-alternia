@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.Game;
+import static main.Game.state;
 import objects.Player;
 
 public class KeyHandler extends KeyAdapter {
@@ -32,6 +33,11 @@ public class KeyHandler extends KeyAdapter {
         handler.addKey(key);
         if (state.WORLD == Game.state) {
             Game.getGameInstance().isPressed = true;
+        }
+        
+        if(key == KeyEvent.VK_SPACE && state.GAME_OVER == Game.state){
+            Game.getGameInstance().musicHandler.stop();
+            Game.getGameInstance().mainMenu();
         }
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
