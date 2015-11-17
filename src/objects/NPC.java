@@ -23,7 +23,10 @@ public class NPC extends GameObject {
         "Sage Adalia senang berada di timur alteria, di tengah danau",
         "Rumor mengatakan bila Sage adalia pengikut Vajra",
         "Raja dan Ratu begitu sedih dengan keadaan sekarang, @tolonglah kami heroes",
-        "Dahulu kami hidup berbahagia, @sekarang keadaan sudah berubah"
+        "Dahulu kami hidup berbahagia, @sekarang keadaan sudah berubah",
+        "Jika kamu tidak tahu apa yang kamu lakukan @temuilah orang yang selalu berada di danau!",
+        "Pergi dan selamatkanlah kota ini, @kami semua mendukungmu!!",
+        "May Tyr be with you . . ."
     };
 
     public String getName() {
