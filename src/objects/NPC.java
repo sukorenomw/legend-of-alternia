@@ -17,8 +17,8 @@ public class NPC extends GameObject {
     public static final float WIDTH = 40, HEIGHT = 56;
     Texture texture = Game.getInstance();
     private int type, no;
-    String name = "Soldier";
-    String words = "Kami akan menjaga kota Alteria!!!!";
+    String name;
+    String words;
     private static String[] word_list = {
         "Sage Adalia senang berada di timur alteria, di tengah danau",
         "Rumor mengatakan bila Sage adalia pengikut Vajra",
@@ -26,7 +26,9 @@ public class NPC extends GameObject {
         "Dahulu kami hidup berbahagia, @sekarang keadaan sudah berubah",
         "Jika kamu tidak tahu apa yang kamu lakukan @temuilah orang yang selalu berada di danau!",
         "Pergi dan selamatkanlah kota ini, @kami semua mendukungmu!!",
-        "May Tyr be with you . . ."
+        "May Tyr be with you . . .",
+        "Jangan ganggu aku . . .",
+        "Sebaiknya kamu bersiap-siaplah untuk pergi dari kota ini!"
     };
 
     private static String[] male_names = {
@@ -76,6 +78,10 @@ public class NPC extends GameObject {
                 break;
             case "Queen Selenia":
                 words = "Sob Sob Sob . . . ";
+                break;
+
+            case "Soldier":
+                words = "Kami akan menjaga kota Alteria!!!!";
                 break;
 
             default:

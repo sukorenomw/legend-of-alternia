@@ -25,7 +25,7 @@ public class Player extends GameObject {
     private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards,
             attack_right, attack_left, dyingAnimation, kebalAnimationLeft, kebalAnimationRight;
     private State state;
-    public static boolean right, down, up, left, isTalk, kebal;
+    public static boolean right, down, up, left, isTalk, kebal, dead;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
     public int health = 300;
@@ -107,7 +107,7 @@ public class Player extends GameObject {
                 texture.player[34],
                 texture.player[35]);
 
-        dyingAnimation = new Animation(7,
+        dyingAnimation = new Animation(10,
                 texture.player[54],
                 texture.player[55],
                 texture.player[56],
@@ -149,15 +149,15 @@ public class Player extends GameObject {
             if (health <= 0) {
                 dying = true;
             }
-            if (kebalCount >= 200 && kebal) {
+            if (kebalCount >= 150 && kebal) {
                 kebal = false;
                 kebalCount = 0;
             }
-            if (kebalCount <= 200) {
+            if (kebalCount <= 150) {
                 kebalCount++;
             }
             
-            if(y > 712){
+            if(y > 712 || dead){
                 Game.state = state.GAME_OVER;
             }
         }
@@ -581,6 +581,7 @@ public class Player extends GameObject {
 //        
         if (dying) {
             dyingAnimation.drawAnimation(g, (int) x, (int) y);
+            dead = true;
         } else if (kebal && move_left) {
             kebalAnimationLeft.drawAnimation(g, (int) x, (int) y);
         } else if (kebal && move_right) {
