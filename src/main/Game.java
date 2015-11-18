@@ -334,6 +334,11 @@ public class Game extends Canvas implements Runnable {
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));
                 }
+
+                if (red == 64 && green == 0 && blue == 128) {
+                    handlerDungeon.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, handlerDungeon, ObjectId.Player);
+                }
+
             }
         }
     }
@@ -420,7 +425,6 @@ public class Game extends Canvas implements Runnable {
 
         state = State.LOADING;
         loadImageLevel(level, no);
-        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player); //9000 boss
         handlerDungeon.chat = new Chat(1);
         state = State.GAME_PLAY;
 

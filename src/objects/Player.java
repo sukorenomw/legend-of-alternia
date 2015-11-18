@@ -159,7 +159,7 @@ public class Player extends GameObject {
                 kebalCount++;
             }
 
-            if (y > 712 || dead) {
+            if ((falling && y > 712) || dead) {
                 Game.state = state.GAME_OVER;
             }
         }
