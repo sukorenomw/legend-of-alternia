@@ -368,7 +368,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(192, 400, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
     }
 
