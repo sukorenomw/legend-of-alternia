@@ -25,7 +25,8 @@ public class Player extends GameObject {
     private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards,
             attack_right, attack_left, dyingAnimation, kebalAnimationLeft, kebalAnimationRight;
     private State state;
-    public static boolean right, down, up, left, isTalk, kebal = false, dead;
+    public static boolean right, down, up, left, kebal = false, dead;
+    public boolean isTalk;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
     public int health;
@@ -450,8 +451,22 @@ public class Player extends GameObject {
                         tempObject.setDying(true);
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
                         if (!curStory[1].equalsIgnoreCase("5")) {
-                            System.out.println(Game.getGameInstance().storyStates);
-                            if (((Boss) tempObject).getTipe() == 0 && Game.getGameInstance().storyStates <= 17) {
+                            if (((Boss) tempObject).getTipe() == 0 && Game.getGameInstance().storyStates <= 11) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 1 && Game.getGameInstance().storyStates <= 17) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 2 && Game.getGameInstance().storyStates <= 22) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 3 && Game.getGameInstance().storyStates <= 27) {
                                 tempGame.isStory = true;
                                 tempGame.storyStates++;
                                 tempGame.isPressed = false;
@@ -459,7 +474,7 @@ public class Player extends GameObject {
                         }
                         isTalk = true;
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC, "abraham"));
+                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC,((Boss) tempObject).getTipe() , curStory[2]));
 
                     }
                 }

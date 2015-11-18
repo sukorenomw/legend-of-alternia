@@ -19,5 +19,6 @@ public enum State {
     LOAD_GAME,
     INTRO,
     SAVE, 
-    GAME_OVER
+    GAME_OVER,
+    ENDING
 }

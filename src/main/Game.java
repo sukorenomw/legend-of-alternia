@@ -393,7 +393,6 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void loadGame(int no) {
-        storyStates = 17;
         removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
             musicHandler.stop();
