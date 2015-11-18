@@ -179,7 +179,7 @@ public class Game extends Canvas implements Runnable {
                 game_over = true;
                 musicHandler.stop();
                 musicHandler.load("assets/sounds/death.mp3");
-                musicHandler.play();
+                musicHandler.playOnce();
             }
         }
     }
