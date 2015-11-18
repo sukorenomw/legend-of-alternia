@@ -20,12 +20,14 @@ public class Monster extends GameObject {
     private int static_x;
     private int static_y;
     private int tipe;
+    private int count;
 
     public Monster(float x, float y, int width, int height, int tipe, ObjectId id) {
         super(x, y, id);
         this.tipe = tipe;
         this.width = width;
         this.height = height;
+        this.count = 0;
         static_x = (int) x;
         static_y = (int) y;
         if (tipe == 0) {
@@ -121,9 +123,19 @@ public class Monster extends GameObject {
                 velY = -2;
             }
         }
+        if (count >= 15) {
+            count = 0;
+            Game.getGameInstance().handlerDungeon.removeObject(this);
+        }
+        if (dying) {
+            count++;
+        }
         backward.runAnimation();
         walk.runAnimation();
-
+        if (this.tipe == 2) {
+            die_left.runAnimation();
+            die_right.runAnimation();
+        }
     }
 
     @Override
@@ -148,7 +160,6 @@ public class Monster extends GameObject {
                     die_right.drawAnimation(g, (int) x, (int) y);
                 }
             }
-            Game.getGameInstance().handlerDungeon.removeObject(this);
         }
     }
 
