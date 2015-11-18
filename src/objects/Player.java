@@ -25,7 +25,8 @@ public class Player extends GameObject {
     private Animation walk, move_downs, move_ups, idle_up, idle_down, idle_right, idle_left, jump_left, jump_right, backwards,
             attack_right, attack_left, dyingAnimation, kebalAnimationLeft, kebalAnimationRight;
     private State state;
-    public static boolean right, down, up, left, isTalk, kebal = false, dead;
+    public static boolean right, down, up, left, kebal = false, dead;
+    public boolean isTalk;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
     public int health;
@@ -186,7 +187,7 @@ public class Player extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             Game tempGame = Game.getGameInstance();
-            if (Game.state.WORLD == state.WORLD && ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
+            if ((Game.state.WORLD == state.WORLD || Game.state.GAME_PLAY == State.GAME_PLAY )&& ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
@@ -448,8 +449,33 @@ public class Player extends GameObject {
                     } else {
                         tempObject.isDying();
                         tempObject.setDying(true);
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            if (((Boss) tempObject).getTipe() == 0 && Game.getGameInstance().storyStates <= 11) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 1 && Game.getGameInstance().storyStates <= 17) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 2 && Game.getGameInstance().storyStates <= 22) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                            if (((Boss) tempObject).getTipe() == 3 && Game.getGameInstance().storyStates <= 27) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }
+                        isTalk = true;
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC,((Boss) tempObject).getTipe() , curStory[2]));
+
                     }
                 }
 //            } else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {

@@ -38,17 +38,28 @@ public class Boss extends GameObject {
     private Handler handler;
     private GameObject tempObject;
     private int tipe = 0;
+    private Animation boss3, boss4;
 
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
         super(x, y, id);
         this.handler = Game.getGameInstance().handlerDungeon;
-        this.health = health;
+        this.health = 300;
         this.tipe = tipe;
         dying = false;
         velX = -10;
-//        for (int i = 0; i < health/25; i++) {
-//            new Rectangle((int)x-1000,(int)y+250,(int)50,(int)50));
-//        }
+        boss3 = new Animation(15,
+                texture.boss[2],
+                texture.boss[4],
+                texture.boss[2],
+                texture.boss[5],
+                texture.boss[2],
+                texture.boss[6],
+                texture.boss[2]);
+        boss4 = new Animation(15,
+                texture.boss[3],
+                texture.boss[7],
+                texture.boss[8],
+                texture.boss[3]);
     }
 
     public int getHealth() {
@@ -59,10 +70,21 @@ public class Boss extends GameObject {
         this.health = health;
     }
 
+    public int getTipe() {
+        return tipe;
+    }
+
     @Override
     public void tick(LinkedList<GameObject> objects) {
         this.player = Game.getGameInstance().handlerDungeon.player;
         count++;
+
+        if (tipe == 2) {
+            boss3.runAnimation();
+        }
+        if (tipe == 3) {
+            boss4.runAnimation();
+        }
         if (!dying) {
             if (x - player.getX() <= 500) {
                 if (count % (200 - (tipe * 20)) == 0) {
@@ -123,10 +145,24 @@ public class Boss extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
-        if (dying) {
-            handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
-            handler.removeObject(this);
+        if (tipe == 0 || tipe == 1) {
+            g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
+            if (dying) {
+                handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
+                handler.removeObject(this);
+            }
+        } else if (tipe == 2) {
+            boss3.drawAnimation(g, (int) x, (int) y);
+            if (dying) {
+                handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
+                handler.removeObject(this);
+            }
+        } else if (tipe == 3) {
+            boss4.drawAnimation(g, (int) x, (int) y);
+            if (dying) {
+                handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
+                handler.removeObject(this);
+            }
         }
         Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);

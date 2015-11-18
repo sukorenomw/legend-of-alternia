@@ -56,7 +56,7 @@ public class Game extends Canvas implements Runnable {
     public Camera camera;
     public BufferedImage level, background, village, intro, dialogBox;
     public MusicHandler musicHandler;
-    private Font customFont;
+    public Font customFont;
     private FontHandler fontHandler;
     private FileHandler fileHandler;
     public ArrayList story;
@@ -202,6 +202,7 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
+
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -319,7 +320,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 0, ObjectId.Monster));
                 }
 //                if (red == 0 && green == 0 && blue == 255) {
-//                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71,4000,1, ObjectId.Boss));
+//                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 88,4000,2, ObjectId.Boss));
 //                }
                 if (red == 0 && green == 255 && blue == 0 && no == 1) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, 4000, 0, ObjectId.Boss));
@@ -420,6 +421,7 @@ public class Game extends Canvas implements Runnable {
         state = State.LOADING;
         loadImageLevel(level, no);
         handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player); //9000 boss
+        handlerDungeon.chat = new Chat(1);
         state = State.GAME_PLAY;
 
     }

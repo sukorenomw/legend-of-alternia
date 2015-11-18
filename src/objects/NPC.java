@@ -110,6 +110,12 @@ public class NPC extends GameObject {
         name = "Guardian";
     }
 
+    public NPC(float x, float y, int type, ObjectId id, int no, String name) {
+        super(x, y, id);
+        this.type = type;
+        this.no = no;
+    }
+
     public NPC(float x, float y, int type, ObjectId id, String name) {
         super(x, y, id);
         this.type = type;
@@ -128,17 +134,38 @@ public class NPC extends GameObject {
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
-        if (type == 4 && Player.isTalk) {
+        if (type == 4 && Game.getGameInstance().handlerWorld.player.isTalk) {
+            Game.getGameInstance().handlerWorld.player.isTalk = false;
             if (no == 1 && Game.getGameInstance().storyStates >= 11) {
+                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
             } else if (no == 2 && Game.getGameInstance().storyStates >= 17) {
+                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
             } else if (no == 3 && Game.getGameInstance().storyStates >= 22) {
+                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
             } else if (no == 4 && Game.getGameInstance().storyStates >= 27) {
+                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
             } else {
                 words = "Maaf anda belum bisa masuk dungeon ini@Selesaikan dulu dungeon yang lain";
+            }
+        } else if (type == 5 && Game.getGameInstance().handlerDungeon.player.isTalk) {
+            Game.getGameInstance().handlerDungeon.player.isTalk = false;
+            if (no == 4) {
+                Game.state = State.ENDING;
+            } else {
+                Game.getGameInstance().musicHandler.stop();
+                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
+                Game.getGameInstance().addKeyListener(Game.getGameInstance().keyHandler);
+                Game.getGameInstance().musicHandler.load("assets/sounds/village.mp3");
+                Game.getGameInstance().musicHandler.play();
+                Game.getGameInstance().handlerWorld.player.setVelY(0);
+                Game.getGameInstance().handlerWorld.player.setVelX(0);
+                Game.state = State.WORLD;
+                Game.getGameInstance().handlerWorld.player.isTalk = false;
+                
             }
         }
     }

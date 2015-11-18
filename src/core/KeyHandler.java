@@ -34,8 +34,8 @@ public class KeyHandler extends KeyAdapter {
         if (state.WORLD == Game.state) {
             Game.getGameInstance().isPressed = true;
         }
-        
-        if(key == KeyEvent.VK_SPACE && state.GAME_OVER == Game.state){
+
+        if (key == KeyEvent.VK_SPACE && state.GAME_OVER == Game.state) {
             Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
             Game.getGameInstance().musicHandler.stop();
             Game.getGameInstance().mainMenu();
@@ -49,7 +49,7 @@ public class KeyHandler extends KeyAdapter {
                         running = true;
                     }
                 }
-            } else if (state.WORLD == Game.state) {
+            } else if (state.WORLD == Game.state || state.GAME_PLAY == Game.state) {
                 if (key == KeyEvent.VK_E && tempObject.getId() == ObjectId.Player && tempObject.talk == false) {
                     tempObject.talk = true;
                 } else if (key == KeyEvent.VK_E && Game.getGameInstance().isStory && tempObject.getId() == ObjectId.Player) {
@@ -57,7 +57,8 @@ public class KeyHandler extends KeyAdapter {
                 }
             }
         }
-        if (state.WORLD == Game.state) {
+        if (state.WORLD == Game.state || state.GAME_PLAY == Game.state) {
+            Game.getGameInstance().isPressed = true;
             if (key == KeyEvent.VK_E && !handler.player.talk) {
                 handler.player.talk = true;
             } else if (handler.player.talk) {
@@ -74,7 +75,7 @@ public class KeyHandler extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         handler.removeKey(key);
-        if (state.WORLD == Game.state) {
+        if (state.WORLD == Game.state || state.GAME_PLAY == Game.state) {
             Game.getGameInstance().isPressed = false;
         }
 
@@ -114,10 +115,13 @@ public class KeyHandler extends KeyAdapter {
 
 //            for (int j = 0; j < handler.objects.size(); j++) {
             GameObject tempObject = handler.player;
-            if (Game.state == state.WORLD) {
+            if (state.WORLD == Game.state || state.GAME_PLAY == Game.state) {
                 if (handler.keys.contains(KeyEvent.VK_E)) {
                     tempObject.talk = true;
                 }
+            }
+            if (Game.state == state.WORLD) {
+
                 if (handler.keys.contains(KeyEvent.VK_RIGHT) && !Game.getGameInstance().isStory) {
                     tempObject.setVelX(5);
                     tempObject.setMove_left(false);
@@ -163,25 +167,33 @@ public class KeyHandler extends KeyAdapter {
                     ((Player) tempObject).up = false;
                 }
             } else if (tempObject.getId() == ObjectId.Player) {
-                if (handler.keys.contains(KeyEvent.VK_RIGHT)) {
+                if (handler.keys.contains(KeyEvent.VK_RIGHT) && !Game.getGameInstance().isStory) {
                     tempObject.setVelX(5);
                     tempObject.setMove_left(false);
                     tempObject.setMove_right(true);
                     tempObject.setMove_down(false);
                     tempObject.setMove_up(false);
+                    ((Player) tempObject).right = true;
+                    ((Player) tempObject).left = false;
+                    ((Player) tempObject).down = false;
+                    ((Player) tempObject).up = false;
                 }
-                if (handler.keys.contains(KeyEvent.VK_LEFT)) {
+                if (handler.keys.contains(KeyEvent.VK_LEFT) && !Game.getGameInstance().isStory) {
                     tempObject.setVelX(-5);
                     tempObject.setMove_left(true);
                     tempObject.setMove_right(false);
                     tempObject.setMove_down(false);
                     tempObject.setMove_up(false);
+                    ((Player) tempObject).right = false;
+                    ((Player) tempObject).left = true;
+                    ((Player) tempObject).down = false;
+                    ((Player) tempObject).up = false;
                 }
-                if (handler.keys.contains(KeyEvent.VK_SPACE) && !tempObject.isJumping()) {
+                if (handler.keys.contains(KeyEvent.VK_SPACE) && !tempObject.isJumping() && !Game.getGameInstance().isStory) {
                     tempObject.setJumping(true);
                     tempObject.setVelY(-13);
                 }
-                if (handler.keys.contains(KeyEvent.VK_CONTROL)) {
+                if (handler.keys.contains(KeyEvent.VK_CONTROL) && !Game.getGameInstance().isStory) {
                     if (tempObject.isMove_right()) {
                         tempObject.setAttacking_right(true);
                         tempObject.setAttacking_left(false);
