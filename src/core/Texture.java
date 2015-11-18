@@ -7,13 +7,13 @@ import objects.Monster;
 
 public class Texture {
 
-    private SpriteSheet bS, pS, gS, pAS, mS, vS, hS, tS, npcS, houseS, fS, miscS, signS,b1S,b2S,b3S,b4S,attS;
+    private SpriteSheet bS, pS, gS, pAS, mS, mS2, vS, hS, tS, npcS, houseS, fS, miscS, signS,b1S,b2S,b3S,b4S,attS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
     private BufferedImage villageSheet = null;
     private BufferedImage playerAttackSheet = null;
-    private BufferedImage monsterSheet = null;
+    private BufferedImage monsterSheet, monsterSheet2 = null;
     private BufferedImage heartSheet = null;
     private BufferedImage treeImage = null;
     private BufferedImage NPCSheet = null;
@@ -29,7 +29,7 @@ public class Texture {
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
     public BufferedImage[] player = new BufferedImage[60];
-    public BufferedImage[] monster = new BufferedImage[16];
+    public BufferedImage[] monster = new BufferedImage[37];
     public BufferedImage[] heart = new BufferedImage[5];
     public BufferedImage[] tree = new BufferedImage[2];
     public BufferedImage[] NPC = new BufferedImage[12];
@@ -46,6 +46,7 @@ public class Texture {
             groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-3.png");
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
+            monsterSheet2 = loader.load("/assets/images/monster/spider03.png");
             villageSheet = loader.load("/assets/images/villages/base-terain.png");
             heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
             treeImage = loader.load("/assets/images/villages/tree.png");
@@ -67,6 +68,7 @@ public class Texture {
         gS = new SpriteSheet(groundSheet);
         pAS = new SpriteSheet(playerAttackSheet);
         mS = new SpriteSheet(monsterSheet);
+        mS2 = new SpriteSheet(monsterSheet2);
         vS = new SpriteSheet(villageSheet);
         tS = new SpriteSheet(treeImage);
         npcS = new SpriteSheet(NPCSheet);
@@ -265,7 +267,8 @@ public class Texture {
         player[57] = pS.grabImage(5, 4, 32, 49);
         player[58] = pS.grabImage(6, 4, 32, 49);
         player[59] = pS.grabImage(4, 7, 32, 49);
-
+        
+        //terrex
         monster[0] = mS.grabImage(1, 1, 96, 80);
         monster[1] = mS.grabImage(2, 1, 96, 80);
         monster[2] = mS.grabImage(3, 1, 96, 80);
@@ -282,6 +285,30 @@ public class Texture {
         monster[13] = mS.grabImage(6, 2, 96, 80);
         monster[14] = mS.grabImage(7, 2, 96, 80);
         monster[15] = mS.grabImage(8, 2, 96, 80);
+        
+        //spider
+        monster[16] = mS2.grabImage(1, 1, 64, 64);
+        monster[17] = mS2.grabImage(2, 1, 64, 64);
+        monster[18] = mS2.grabImage(3, 1, 64, 64);
+        monster[19] = mS2.grabImage(4, 1, 64, 64);
+        monster[20] = mS2.grabImage(5, 1, 64, 64);
+        monster[21] = mS2.grabImage(6, 1, 64, 64);
+        monster[22] = mS2.grabImage(7, 1, 64, 64);
+        monster[23] = mS2.grabImage(8, 1, 64, 64);
+        monster[24] = mS2.grabImage(9, 1, 64, 64);
+        monster[25] = mS2.grabImage(10, 1, 64, 64);
+        monster[26] = mS2.grabImage(1, 3, 64, 64);
+        monster[27] = mS2.grabImage(2, 3, 64, 64);
+        monster[28] = mS2.grabImage(3, 3, 64, 64);
+        monster[29] = mS2.grabImage(4, 3, 64, 64);
+        monster[30] = mS2.grabImage(5, 3, 64, 64);
+        monster[31] = mS2.grabImage(6, 3, 64, 64);
+        monster[32] = mS2.grabImage(7, 3, 64, 64);
+        monster[33] = mS2.grabImage(8, 3, 64, 64);
+        monster[34] = mS2.grabImage(9, 3, 64, 64);
+        monster[35] = mS2.grabImage(10, 3, 64, 64);
+        
+        
         boss[0] = b1S.grabImage(1,2, 56,71);
         boss[1] = b2S.grabImage(1,1, 64,64);
         boss[2] = b3S.grabImage(1,1, 64,96);

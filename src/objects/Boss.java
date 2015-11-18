@@ -18,8 +18,6 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import objects.Attack;
 import main.Game;
-import static objects.Monster.HEIGHT;
-import static objects.Monster.WIDTH;
 
 /**
  *
