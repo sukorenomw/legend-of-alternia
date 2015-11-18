@@ -159,6 +159,10 @@ public class NPC extends GameObject {
                 Game.getGameInstance().musicHandler.stop();
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
                 Game.getGameInstance().addKeyListener(Game.getGameInstance().keyHandler);
+                Game.getGameInstance().musicHandler.load("assets/sounds/village.mp3");
+                Game.getGameInstance().musicHandler.play();
+                Game.getGameInstance().handlerWorld.player.setVelY(0);
+                Game.getGameInstance().handlerWorld.player.setVelX(0);
                 Game.state = State.WORLD;
                 Game.getGameInstance().handlerWorld.player.isTalk = false;
                 

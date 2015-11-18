@@ -56,7 +56,7 @@ public class Game extends Canvas implements Runnable {
     public Camera camera;
     public BufferedImage level, background, village, intro, dialogBox;
     public MusicHandler musicHandler;
-    private Font customFont;
+    public Font customFont;
     private FontHandler fontHandler;
     private FileHandler fileHandler;
     public ArrayList story;
