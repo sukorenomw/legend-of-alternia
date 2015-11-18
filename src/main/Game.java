@@ -55,7 +55,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     public Handler handler, handlerWorld, handlerDungeon;
     public LevelHandler levelHandler;
-    private KeyHandler keyHandler, keyHandlerDungeon;
+    public KeyHandler keyHandler, keyHandlerDungeon;
     public Camera camera;
     public BufferedImage level, background, village, intro, dialogBox;
     public MusicHandler musicHandler;
