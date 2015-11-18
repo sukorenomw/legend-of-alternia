@@ -140,11 +140,14 @@ public class NPC extends GameObject {
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
             } else if (no == 2 && Game.getGameInstance().storyStates >= 17) {
+                System.out.println(Game.getGameInstance().handlerWorld.player.getX() + "  " + Game.getGameInstance().handlerWorld.player.getY());
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
+                Game.getGameInstance().handlerWorld.player.setX(4200);
             } else if (no == 3 && Game.getGameInstance().storyStates >= 22) {
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
+                Game.getGameInstance().handlerWorld.player.setX(4200);
             } else if (no == 4 && Game.getGameInstance().storyStates >= 27) {
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                 Game.getGameInstance().loadGame(no);
@@ -153,9 +156,10 @@ public class NPC extends GameObject {
             }
         } else if (type == 5 && Game.getGameInstance().handlerDungeon.player.isTalk) {
             Game.getGameInstance().handlerDungeon.player.isTalk = false;
-            if (no == 4) {
+            if (Game.getGameInstance().storyStates >= 29) {
                 Game.state = State.ENDING;
             } else {
+                System.out.println(no);
                 Game.getGameInstance().musicHandler.stop();
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
                 Game.getGameInstance().addKeyListener(Game.getGameInstance().keyHandler);
@@ -165,7 +169,7 @@ public class NPC extends GameObject {
                 Game.getGameInstance().handlerWorld.player.setVelX(0);
                 Game.state = State.WORLD;
                 Game.getGameInstance().handlerWorld.player.isTalk = false;
-                
+
             }
         }
     }
