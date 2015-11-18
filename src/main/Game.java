@@ -389,6 +389,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void loadGame(int no) {
+        storyStates = 17;
         removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
             musicHandler.stop();
@@ -409,6 +410,7 @@ public class Game extends Canvas implements Runnable {
         state = State.LOADING;
         loadImageLevel(level, no);
         handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.chat = new Chat(1);
         state = State.GAME_PLAY;
 
     }

@@ -45,7 +45,7 @@ public class Boss extends GameObject {
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
         super(x, y, id);
         this.handler = Game.getGameInstance().handlerDungeon;
-        this.health = health;
+        this.health = 300;
         this.tipe = tipe;
         dying = false;
         velX = -10;
@@ -57,6 +57,10 @@ public class Boss extends GameObject {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getTipe() {
+        return tipe;
     }
 
     @Override

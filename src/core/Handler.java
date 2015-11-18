@@ -24,7 +24,7 @@ public class Handler {
 
             tempObject.tick(objects);
         }
-        if (Game.state == state.WORLD) {
+        if (Game.state == state.WORLD || Game.state == state.GAME_PLAY) {
             chat.tick(objects);
         }
         player.tick(objects);
@@ -38,7 +38,7 @@ public class Handler {
             tempObject = objects.get(i);
             tempObject.render(g);
         }
-        if (Game.state == state.WORLD) {
+        if (Game.state == state.WORLD || Game.state == state.GAME_PLAY) {
             chat.render(g);
         }
         player.render(g);

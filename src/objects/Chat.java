@@ -24,10 +24,19 @@ public class Chat extends GameObject {
         super(Game.getGameInstance().handlerWorld.player.getX(), Game.getGameInstance().handlerWorld.player.getY(), ObjectId.Heart);
     }
 
+    public Chat(int no) {
+        super(Game.getGameInstance().handlerDungeon.player.getX(), Game.getGameInstance().handlerDungeon.player.getY(), ObjectId.Heart);
+    }
+
     @Override
     public void tick(LinkedList<GameObject> objects) {
-        x = Game.getGameInstance().handlerWorld.player.getX();
-        y = Game.getGameInstance().handlerWorld.player.getY();
+        if (Game.state == State.GAME_PLAY) {
+            x = Game.getGameInstance().handlerDungeon.player.getX();
+            y = Game.getGameInstance().handlerDungeon.player.getY();
+        } else if (Game.state == State.WORLD) {
+            x = Game.getGameInstance().handlerWorld.player.getX();
+            y = Game.getGameInstance().handlerWorld.player.getY();
+        }
     }
 
     @Override

@@ -444,11 +444,22 @@ public class Player extends GameObject {
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     if (((Boss) tempObject).getHealth() > 0) {
                         ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
-                        System.out.println("health boss: "+((Boss) tempObject).getHealth());
+                        System.out.println("health boss: " + ((Boss) tempObject).getHealth());
                     } else {
                         tempObject.setDying(true);
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            System.out.println(Game.getGameInstance().storyStates);
+                            if (((Boss) tempObject).getTipe() == 0 && Game.getGameInstance().storyStates <= 17) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }
+                        isTalk = true;
                         handler.removeObject(tempObject);
                         handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+
                     }
                 }
 //            } else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {
