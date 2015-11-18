@@ -76,16 +76,17 @@ public class Boss1 extends GameObject {
                     handler.addObject(new Attack2((int)player.getX(),(int)player.getY()-400,ObjectId.Attack2,handler,player));
                     attack2=false;
                 }
+            }
             }else{
                 handler.removeObject(this);
-                handler.addObject(new NPC(x, y-124, 0, ObjectId.NPC));
+                handler.addObject(new NPC(x, y-124, 5, ObjectId.NPC));
             }
             Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
             
         }
-    }
+    
     @Override
     public Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, (int)WIDTH-24, (int)HEIGHT);

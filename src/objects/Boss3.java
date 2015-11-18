@@ -54,10 +54,10 @@ public class Boss3 extends GameObject {
 
         if (x - player.getX() <= 500) {
 
-            if (count % 400 == 0) {
+            if (count % 350 == 0) {
                 attack = true;
             }
-            if (count % 675 == 0) {
+            if (count % 500 == 0) {
                 attack2 = true;
             }
 
@@ -78,16 +78,17 @@ public class Boss3 extends GameObject {
                     handler.addObject(new Attack4((int) player.getX(), (int) player.getY() - 400, ObjectId.Attack2, handler, player));
                     attack2 = false;
                 }
-            } else {
+            }
+        } else {
                 handler.removeObject(this);
-                handler.addObject(new NPC(x, y - 124, 0, ObjectId.NPC));
+                handler.addObject(new NPC(x, y - 124, 5, ObjectId.NPC));
             }
             Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
 
         }
-    }
+    
 
     @Override
     public Rectangle getBounds() {
