@@ -42,21 +42,34 @@ public class Attack extends GameObject {
         this.height = height;
         this.width = width;
         switch (tipe) {
-            case 5: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
+            case 0: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
                 velY = 8;
                 temp = y-400;
                 break;
-            case 17:
+            case 1:
                 velX = -8;
                 temp = x - 450;
                 break;
+            case 2: 
+                velY = 8;
+                temp = y-400;
+                break;
+            case 3: 
+                velY = 8;
+                temp = y-400;
+                break;
+            case 4: 
+                velY = 8;
+                temp = y-400;
+                break;
+                
         }
     }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
         switch (tipe) {
-            case 5:
+            case 0:
                 if (temp < y) {
                     y += velY;
                 } else {
@@ -65,9 +78,33 @@ public class Attack extends GameObject {
                 }
                 break;
 
-            case 17:
+            case 1:
                 if (x > temp) {
                     x += velX;
+                } else {
+                    remove = true;
+                    handler.removeObject(this);
+                }
+                break;
+            case 2:
+                if (temp < y) {
+                    y += velY;
+                } else {
+                    remove = true;
+                    handler.removeObject(this);
+                }
+                break;
+            case 3:
+                if (temp < y) {
+                    y += velY;
+                } else {
+                    remove = true;
+                    handler.removeObject(this);
+                }
+                break;
+            case 4:
+                if (temp < y) {
+                    y += velY;
                 } else {
                     remove = true;
                     handler.removeObject(this);

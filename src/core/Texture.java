@@ -314,16 +314,14 @@ public class Texture {
         boss[2] = b3S.grabImage(1,1, 64,96);
         boss[3] = b4S.grabImage(1,1, 64,64);
         
-        attack[0] = attS.grabImage(1, 3, 50,50);
-        attack[1] = attS.grabImage(2, 3, 50,50);
+        attack[0] = attS.grabImage(6, 2, 50,50);
+        attack[1] = attS.grabImage(6, 8, 50,50);
         attack[2] = attS.grabImage(3, 3, 50,50);
-        attack[3] = attS.grabImage(4, 2, 50,50);
-        attack[4] = attS.grabImage(5, 2, 50,50);
-        attack[5] = attS.grabImage(6, 2, 50,50);
-        attack[6] = attS.grabImage(4, 3, 50,50);
+        attack[3] = attS.grabImage(1, 4, 50,50);
+        attack[4] = attS.grabImage(4, 3, 50,50);
         attack[7] = attS.grabImage(5, 3, 50,50);
         attack[8] = attS.grabImage(6, 3, 50,50);
-        attack[9] = attS.grabImage(1, 4, 50,50);
+      
         attack[10] = attS.grabImage(2, 4, 50,50);
         attack[11] = attS.grabImage(3, 4, 50,50);
         attack[12] = attS.grabImage(4, 4, 50,50);
@@ -331,6 +329,6 @@ public class Texture {
         attack[14] = attS.grabImage(6, 4, 50,50);
         attack[15] = attS.grabImage(4, 8, 50,50);
         attack[16] = attS.grabImage(5, 8, 50,50);
-        attack[17] = attS.grabImage(6, 8, 50,50);
+       
     }
 }
