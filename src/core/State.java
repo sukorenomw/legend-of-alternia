@@ -20,5 +20,6 @@ public enum State {
     INTRO,
     SAVE, 
     GAME_OVER,
-    ENDING
+    ENDING,
+    HOW_TO_PLAY
 }

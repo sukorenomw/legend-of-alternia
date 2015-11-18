@@ -19,7 +19,7 @@ import objects.Button;
 public class MainMenu {
     Button bNewGame;
     Button bLoadGame;
-    Button bOptions;
+    Button bHowToPlay;
     Button bExit;
     public MusicHandler musicHandler;
     
@@ -29,7 +29,7 @@ public class MainMenu {
         musicHandler.play();
         bNewGame = new Button (515, 402, 190, 49, "New Game");
         bLoadGame = new Button(515, 447, 190, 49, "Load Game");
-        bOptions = new Button(515, 492, 190, 49, "Options");
+        bHowToPlay = new Button(515, 492, 190, 49, "HowToPlay");
         bExit = new Button(515, 537, 190, 49, "Exit");
         
     }
@@ -41,7 +41,7 @@ public class MainMenu {
         
         bNewGame.render(g);
         bLoadGame.render(g);
-        bOptions.render(g);
+        bHowToPlay.render(g);
         bExit.render(g);
         
     }
@@ -52,7 +52,7 @@ public class MainMenu {
         if (mPos != null) {
             bNewGame.checkHover(mPos);
             bLoadGame.checkHover(mPos);
-            bOptions.checkHover(mPos);
+            bHowToPlay.checkHover(mPos);
             bExit.checkHover(mPos);
         }
     }

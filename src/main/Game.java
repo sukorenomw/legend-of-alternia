@@ -5,6 +5,7 @@ import core.FileHandler;
 import core.FontHandler;
 import core.GameObject;
 import core.Handler;
+import core.HowToPlay;
 import core.ImageLoader;
 import core.KeyHandler;
 import core.LevelHandler;
@@ -72,6 +73,7 @@ public class Game extends Canvas implements Runnable {
     public String name, words;
     public boolean saves = false;
     public MainMenu mainmenu;
+    public HowToPlay howtoplay;
     private MouseAdapter mouseHandler, mouseHandlerDungeon;
     private ImageLoader imageLoader;
     public Pause pause;
@@ -89,6 +91,7 @@ public class Game extends Canvas implements Runnable {
         try {
             pause = new Pause();
             mainmenu = new MainMenu();
+            howtoplay = new HowToPlay();
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -182,6 +185,8 @@ public class Game extends Canvas implements Runnable {
                 musicHandler.load("assets/sounds/death.mp3");
                 musicHandler.playOnce();
             }
+        } else if (state == state.HOW_TO_PLAY) {
+            howtoplay.tick();
         }
     }
 
@@ -282,6 +287,8 @@ public class Game extends Canvas implements Runnable {
             ImageLoader loader = new ImageLoader();
             BufferedImage load = loader.load("/assets/images/main_menu/game-over.png");
             g.drawImage(load, 0, 0, null);
+        } else if (state == state.HOW_TO_PLAY) {
+            howtoplay.render(g);
         }
         g.dispose();
         bs.show();
@@ -464,6 +471,10 @@ public class Game extends Canvas implements Runnable {
 
     public void pause() {
         state = State.PAUSE;
+    }
+    
+    public void howToPlay() {
+        state = State.HOW_TO_PLAY;
     }
 
     public void mainMenu() {
