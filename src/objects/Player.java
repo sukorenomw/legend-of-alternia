@@ -446,6 +446,7 @@ public class Player extends GameObject {
                         ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
                         System.out.println("health boss: " + ((Boss) tempObject).getHealth());
                     } else {
+                        tempObject.isDying();
                         tempObject.setDying(true);
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
                         if (!curStory[1].equalsIgnoreCase("5")) {

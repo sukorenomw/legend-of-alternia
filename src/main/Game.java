@@ -305,10 +305,13 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 9, ObjectId.Block));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, ObjectId.Monster));
+                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 1, ObjectId.Monster));
+                }
+                if (red == 0 && green == 0 && blue == 254) {
+                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 0, ObjectId.Monster));
                 }
 //                if (red == 0 && green == 0 && blue == 255) {
-//                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71, ObjectId.Boss));
+//                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71,4000,1, ObjectId.Boss));
 //                }
                 if (red == 0 && green == 255 && blue == 0 && no == 1) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, 4000, 0, ObjectId.Boss));
@@ -320,7 +323,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 6000, 2, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3,ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));
                 }
             }
         }
