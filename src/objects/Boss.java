@@ -150,7 +150,7 @@ public class Boss extends GameObject {
     public void render(Graphics g) {
         if (tipe == 0 || tipe == 1) {
             g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
-            g.drawString("Boss = ", (int)x-200,(int)y-230);
+            g.drawString("Boss", (int)x-200,(int)y-230);
             g.fillRoundRect((int)x-200, (int)y-200, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
