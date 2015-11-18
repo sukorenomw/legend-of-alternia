@@ -47,7 +47,7 @@ public class Game extends Canvas implements Runnable {
     public static final double FPS = 55.0;
     public static int WIDTH, HEIGHT;
     public State stateBefore;
-    private boolean running = false;
+    private boolean running = false, game_over = false;
     public int storyStates;
     private Thread thread;
     public Handler handler, handlerWorld, handlerDungeon;
@@ -175,6 +175,13 @@ public class Game extends Canvas implements Runnable {
             camera.tick(handlerDungeon.player);
         } else if (state == state.PAUSE) {
             pause.tick();
+        } else if (state == state.GAME_OVER) {
+            if (!game_over) {
+                game_over = true;
+                musicHandler.stop();
+                musicHandler.load("assets/sounds/death.mp3");
+                musicHandler.playOnce();
+            }
         }
     }
 
@@ -190,6 +197,7 @@ public class Game extends Canvas implements Runnable {
 
         if (state == State.MAIN_MENU) {
             mainmenu.render(g);
+            game_over = false;
         } else if (state == State.GAME_PLAY) {
             g.drawImage(background, (int) 0, (int) 0, null);
             g2d.translate(camera.getX(), camera.getY());
@@ -330,7 +338,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Block(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 9, ObjectId.Block));
                 }
                 if (red == 0 && green == 0 && blue == 255) {
-                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 1, ObjectId.Monster));
+                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 64, 64, 1, ObjectId.Monster));
                 }
                 if (red == 0 && green == 0 && blue == 254) {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 0, ObjectId.Monster));
@@ -350,6 +358,11 @@ public class Game extends Canvas implements Runnable {
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));
                 }
+
+                if (red == 64 && green == 0 && blue == 128) {
+                    handlerDungeon.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, handlerDungeon, ObjectId.Player);
+                }
+
             }
         }
     }
@@ -437,7 +450,6 @@ public class Game extends Canvas implements Runnable {
 
         state = State.LOADING;
         loadImageLevel(level, no);
-        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
         handlerDungeon.chat = new Chat(1);
         state = State.GAME_PLAY;
 

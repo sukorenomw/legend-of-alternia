@@ -44,25 +44,25 @@ public class Attack extends GameObject {
         switch (tipe) {
             case 0: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
                 velY = 8;
-                temp = y-400;
+                temp = y + 431;
                 break;
             case 1:
                 velX = -8;
                 temp = x - 450;
                 break;
-            case 2: 
+            case 2:
                 velY = 8;
-                temp = y-400;
+                temp = y + 432;
                 break;
-            case 3: 
+            case 3:
                 velY = 8;
-                temp = y-400;
+                temp = y + 431;
                 break;
-            case 4: 
+            case 4:
                 velY = 8;
-                temp = y-400;
+                temp = y + 431;
                 break;
-                
+
         }
     }
 
@@ -70,7 +70,7 @@ public class Attack extends GameObject {
     public void tick(LinkedList<GameObject> objects) {
         switch (tipe) {
             case 0:
-                if (temp < y) {
+                if (y < temp) {
                     y += velY;
                 } else {
                     remove = true;
@@ -112,13 +112,15 @@ public class Attack extends GameObject {
                 break;
 
         }
-
+//        collision(objects);
     }
 
     @Override
     public void render(Graphics g) {
         g.drawImage(texture.attack[tipe], (int) x, (int) y, null);
         Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.WHITE);
+//        g2d.draw(getBounds());
     }
 
     @Override
