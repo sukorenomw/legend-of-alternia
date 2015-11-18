@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Game;
 
 public class NPC extends GameObject {
@@ -137,20 +140,36 @@ public class NPC extends GameObject {
         if (type == 4 && Game.getGameInstance().handlerWorld.player.isTalk) {
             Game.getGameInstance().handlerWorld.player.isTalk = false;
             if (no == 1 && Game.getGameInstance().storyStates >= 11) {
-                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
-                Game.getGameInstance().loadGame(no);
+                try {
+                    Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
+                    Game.getGameInstance().loadGame(no);
+                } catch (IOException ex) {
+                    Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (no == 2 && Game.getGameInstance().storyStates >= 17) {
-                System.out.println(Game.getGameInstance().handlerWorld.player.getX() + "  " + Game.getGameInstance().handlerWorld.player.getY());
-                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
-                Game.getGameInstance().loadGame(no);
-                Game.getGameInstance().handlerWorld.player.setX(4200);
+                try {
+                    System.out.println(Game.getGameInstance().handlerWorld.player.getX() + "  " + Game.getGameInstance().handlerWorld.player.getY());
+                    Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
+                    Game.getGameInstance().loadGame(no);
+                    Game.getGameInstance().handlerWorld.player.setX(4200);
+                } catch (IOException ex) {
+                    Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (no == 3 && Game.getGameInstance().storyStates >= 22) {
-                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
-                Game.getGameInstance().loadGame(no);
-                Game.getGameInstance().handlerWorld.player.setX(4200);
+                try {
+                    Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
+                    Game.getGameInstance().loadGame(no);
+                    Game.getGameInstance().handlerWorld.player.setX(4200);
+                } catch (IOException ex) {
+                    Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (no == 4 && Game.getGameInstance().storyStates >= 27) {
-                Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
-                Game.getGameInstance().loadGame(no);
+                try {
+                    Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
+                    Game.getGameInstance().loadGame(no);
+                } catch (IOException ex) {
+                    Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 words = "Maaf anda belum bisa masuk dungeon ini@Selesaikan dulu dungeon yang lain";
             }
