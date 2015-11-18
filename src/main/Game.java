@@ -271,7 +271,7 @@ public class Game extends Canvas implements Runnable {
                 minus++;
             }
             count_ticks++;
-            if (minus > 2550) {
+            if (minus > 3550) {
                 state = State.WORLD;
                 introStory = 0;
                 count_ticks = 0;
@@ -390,8 +390,8 @@ public class Game extends Canvas implements Runnable {
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
 //        state = State.INTRO;
-        state = State.WORLD;
-        //state = State.ENDING;
+        //state = State.WORLD;
+        state = State.ENDING;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
