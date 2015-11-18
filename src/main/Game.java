@@ -34,10 +34,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Block;
-import objects.Boss1;
-import objects.Boss2;
-import objects.Boss3;
-import objects.Boss4;
+import objects.Boss;
 import objects.Chat;
 import objects.Ground;
 import objects.Heart;
@@ -311,19 +308,19 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, ObjectId.Monster));
                 }
 //                if (red == 0 && green == 0 && blue == 255) {
-//                    handlerDungeon.addObject(new Boss1(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71, ObjectId.Boss1));
+//                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 71, ObjectId.Boss));
 //                }
                 if (red == 0 && green == 255 && blue == 0 && no == 1) {
-                    handlerDungeon.addObject(new Boss1(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, ObjectId.Boss1));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, 4000, 0, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 2) {
-                    handlerDungeon.addObject(new Boss2(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, ObjectId.Boss2));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 5000, 1, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 3) {
-                    handlerDungeon.addObject(new Boss3(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, ObjectId.Boss3));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 6000, 2, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
-                    handlerDungeon.addObject(new Boss4(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, ObjectId.Boss4));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3,ObjectId.Boss));
                 }
             }
         }
@@ -411,7 +408,7 @@ public class Game extends Canvas implements Runnable {
 
         state = State.LOADING;
         loadImageLevel(level, no);
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
 
     }

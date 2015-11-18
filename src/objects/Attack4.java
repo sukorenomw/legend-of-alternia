@@ -21,8 +21,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 import main.Game;
-import static objects.Boss1.HEIGHT;
-import static objects.Boss1.WIDTH;
+import static objects.Boss.HEIGHT;
+import static objects.Boss.WIDTH;
 
 /**
  *

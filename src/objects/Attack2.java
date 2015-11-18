@@ -21,8 +21,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 import main.Game;
-import static objects.Boss1.HEIGHT;
-import static objects.Boss1.WIDTH;
+import static objects.Boss.HEIGHT;
+import static objects.Boss.WIDTH;
 
 /**
  *
@@ -37,6 +37,7 @@ public class Attack2 extends GameObject {
     private int static_x=1;
     private Handler handler;
     float temp = y-400;
+    private int tipe = 0;
     private Player player;
     
 

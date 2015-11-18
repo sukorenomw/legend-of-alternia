@@ -16,52 +16,76 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 import main.Game;
-import static objects.Boss1.HEIGHT;
-import static objects.Boss1.WIDTH;
+import static objects.Boss.HEIGHT;
+import static objects.Boss.WIDTH;
 
 /**
  *
  * @author Randy
  */
 public class Attack extends GameObject {
-    public static final float WIDTH = 100, HEIGHT = 100;
+
     Texture texture = Game.getInstance();
     private Animation walk, backward;
     private boolean walking = true;
     private boolean remove = false;
-    private int static_x=1;
+    private int static_x = 1;
     private Handler handler;
-    float temp = x-450;
+    private int width, height;
+    float temp;
+    private int tipe = 0;
 
-    public Attack(float x, float y, ObjectId id,Handler handler) {
+    public Attack(float x, float y, int width, int height, int tipe, ObjectId id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-        velX=-8;
+        this.tipe = tipe;
+        this.height = height;
+        this.width = width;
+        switch (tipe) {
+            case 5: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
+                velY = 8;
+                temp = y-400;
+                break;
+            case 17:
+                velX = -8;
+                temp = x - 450;
+                break;
+        }
     }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
-        if(x > temp ){
-            x +=velX;
-        }else{
-            remove = true;
-            handler.removeObject(this);
+        switch (tipe) {
+            case 5:
+                if (temp < y) {
+                    y += velY;
+                } else {
+                    remove = true;
+                    handler.removeObject(this);
+                }
+                break;
+
+            case 17:
+                if (x > temp) {
+                    x += velX;
+                } else {
+                    remove = true;
+                    handler.removeObject(this);
+                }
+                break;
+
         }
-        
-        
+
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(texture.attack[17], (int)x, (int)y, null);
-           Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.red);
-//        g2d.draw(getBounds());
+        g.drawImage(texture.attack[tipe], (int) x, (int) y, null);
+        Graphics2D g2d = (Graphics2D) g;
     }
-        
 
     @Override
     public Rectangle getBounds() {
-         return new Rectangle((int)x, (int)y, (int)WIDTH-20, (int)HEIGHT);
+        return new Rectangle((int) x, (int) y, (int) this.width, (int) this.height);
     }
 }

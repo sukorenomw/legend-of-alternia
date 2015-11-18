@@ -28,16 +28,16 @@ public class Player extends GameObject {
     public static boolean right, down, up, left, isTalk, kebal = false, dead;
     Texture texture = Game.getInstance();
     private int heartNumber = 3;
-    public int health = 300;
+    public int health;
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
     private Heart[] heart;
-    public int bosshp = 5000;
 
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
         this.handler = handler;
         this.kebal = false;
+        this.health = 300;
         walk = new Animation(2,
                 texture.player[8],
                 texture.player[9],
@@ -149,7 +149,7 @@ public class Player extends GameObject {
             if (health <= 0) {
                 dying = true;
             }
-            
+
             if (kebalCount >= 150 && kebal) {
                 kebal = false;
                 kebalCount = 0;
@@ -157,13 +157,11 @@ public class Player extends GameObject {
             if (kebalCount <= 150) {
                 kebalCount++;
             }
-            
-            if(y > 712 || dead){
+
+            if (y > 712 || dead) {
                 Game.state = state.GAME_OVER;
             }
         }
-        
-        
 
         walk.runAnimation();
         jump_left.runAnimation();
@@ -370,7 +368,7 @@ public class Player extends GameObject {
                         health -= 25;
                         kebal = true;
                     }
-                } 
+                }
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
                     x = tempObject.getX() - 90;
                     if (!kebal) {
@@ -395,59 +393,36 @@ public class Player extends GameObject {
                 }
             } else if (tempObject.getId() == ObjectId.Attack && !kebal) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
-                    health -= 25;
-                    kebal = true;
+                    y = tempObject.getY() - 70;
+                    x = tempObject.getX() - 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                    kebal = true;
-                    health -= 25;
-                } else {
-                    falling = true;
+                    y = tempObject.getY() - 90;
+                    x = tempObject.getX() - 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
+                    x = tempObject.getX() - 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
+                    x = tempObject.getX() + 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
-            } else if (tempObject.getId() == ObjectId.Attack2 && !kebal) {
-                if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
-                    health -= 25;
-                    kebal = true;
-                }
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                    kebal = true;
-                    health -= 25;
-                } else {
-                    falling = true;
-                }
-                if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
-                }
-                if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
-                }
-            } else if (tempObject.getId() == ObjectId.Boss1 && !kebal) {
+            } else if (tempObject.getId() == ObjectId.Boss && !kebal) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
                     y = tempObject.getY() + 72;
                     velY = 0;
@@ -467,183 +442,184 @@ public class Player extends GameObject {
                     x = tempObject.getX() + 72;
                 }
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                    if (bosshp >0) {
-                        bosshp = bosshp - 25;
-                    } 
-                    if(bosshp <= 0){
+                    if (((Boss) tempObject).getHealth() > 0) {
+                        ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
+                        System.out.println("health boss: "+((Boss) tempObject).getHealth());
+                    } else {
                         tempObject.setDying(true);
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
+                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
                     }
                 }
-            }else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {
-                    if (getBoundsTop().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() + 72;
-                        velY = 0;
-                    }
-                    if (getBounds().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() - 72;
-                        velY = 0;
-                        falling = false;
-                        jumping = false;
-                    } else {
-                        falling = true;
-                    }
-                    if (getBoundsRight().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() - 72;
-                    }
-                    if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() + 72;
-                    }
-                    if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp >0) {
-                            bosshp = bosshp - 25;
-                        } 
-                        if(bosshp <= 0){
-                            tempObject.setDying(true);
-                            handler.removeObject(tempObject);
-                            handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
-                        }
-                    }
-                } else if (tempObject.getId() == ObjectId.Boss3 && !kebal) {
-                    if (getBoundsTop().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() + 72;
-                        velY = 0;
-                    }
-                    if (getBounds().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() - 72;
-                        velY = 0;
-                        falling = false;
-                        jumping = false;
-                    } else {
-                        falling = true;
-                    }
-                    if (getBoundsRight().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() - 72;
-                    }
-                    if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() + 72;
-                    }
-                    if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp >0) {
-                            bosshp = bosshp - 25;
-                        } 
-                        if(bosshp <= 0){
-                            tempObject.setDying(true);
-                            handler.removeObject(tempObject);
-                            handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
-                        }
-                    }
-                } else if (tempObject.getId() == ObjectId.Boss4 && !kebal) {
-                    if (getBoundsTop().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() + 72;
-                        velY = 0;
-                    }
-                    if (getBounds().intersects(tempObject.getBounds())) {
-                        y = tempObject.getY() - 72;
-                        velY = 0;
-                        falling = false;
-                        jumping = false;
-                    } else {
-                        falling = true;
-                    }
-                    if (getBoundsRight().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() - 72;
-                    }
-                    if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                        x = tempObject.getX() + 72;
-                    }
-                    if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp >0) {
-                            bosshp = bosshp - 25;
-                        } 
-                        if(bosshp <= 0) {
-                            tempObject.setDying(true);
-                            handler.removeObject(tempObject);
-                            handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
-                        }
-                    }
-                } else if (tempObject.getId() == ObjectId.Attack3 && !kebal) {
-                if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
-                    health -= 25;
-                    kebal = true;
-                }
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                    kebal = true;
-                    health -= 25;
-                } else {
-                    falling = true;
-                }
-                if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
-                }
-                if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
-                }
-            } else if (tempObject.getId() == ObjectId.Attack4 && !kebal) {
-                if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
-                    health -= 25;
-                    kebal = true;
-                }
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                    kebal = true;
-                    health -= 25;
-                } else {
-                    falling = true;
-                }
-                if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
-                }
-                if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
-                }
-            } else if (tempObject.getId() == ObjectId.Attack5 && !kebal) {
-                if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
-                    health -= 25;
-                    kebal = true;
-                }
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                    kebal = true;
-                    health -= 25;
-                } else {
-                    falling = true;
-                }
-                if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
-                    kebal = true;
-                    health -= 25;
-                }
-                if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
-                    kebal = true;
-                    health -= 25;
-                }
+//            } else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                }
+//                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+//                    if (bosshp > 0) {
+//                        bosshp = bosshp - 25;
+//                    }
+//                    if (bosshp <= 0) {
+//                        tempObject.setDying(true);
+//                        handler.removeObject(tempObject);
+//                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+//                    }
+//                }
+//            } else if (tempObject.getId() == ObjectId.Boss3 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                }
+//                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+//                    if (bosshp > 0) {
+//                        bosshp = bosshp - 25;
+//                    }
+//                    if (bosshp <= 0) {
+//                        tempObject.setDying(true);
+//                        handler.removeObject(tempObject);
+//                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+//                    }
+//                }
+//            } else if (tempObject.getId() == ObjectId.Boss4 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                }
+//                if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
+//                    if (bosshp > 0) {
+//                        bosshp = bosshp - 25;
+//                    }
+//                    if (bosshp <= 0) {
+//                        tempObject.setDying(true);
+//                        handler.removeObject(tempObject);
+//                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+//                    }
+//                }
+//            } else if (tempObject.getId() == ObjectId.Attack3 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                    health -= 25;
+//                    kebal = true;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                    kebal = true;
+//                    health -= 25;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//            } else if (tempObject.getId() == ObjectId.Attack4 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                    health -= 25;
+//                    kebal = true;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                    kebal = true;
+//                    health -= 25;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//            } else if (tempObject.getId() == ObjectId.Attack5 && !kebal) {
+//                if (getBoundsTop().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() + 72;
+//                    velY = 0;
+//                    health -= 25;
+//                    kebal = true;
+//                }
+//                if (getBounds().intersects(tempObject.getBounds())) {
+//                    y = tempObject.getY() - 72;
+//                    velY = 0;
+//                    falling = false;
+//                    jumping = false;
+//                    kebal = true;
+//                    health -= 25;
+//                } else {
+//                    falling = true;
+//                }
+//                if (getBoundsRight().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() - 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//                if (getBoundsLeft().intersects(tempObject.getBounds())) {
+//                    x = tempObject.getX() + 72;
+//                    kebal = true;
+//                    health -= 25;
+//                }
+//            }
             }
         }
     }
