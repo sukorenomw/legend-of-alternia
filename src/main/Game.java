@@ -68,6 +68,7 @@ public class Game extends Canvas implements Runnable {
     static Texture texture;
     static Game game;
     public static State state;
+    private int minus = 0;
     public String name, words;
     public boolean saves = false;
     public MainMenu mainmenu;
@@ -194,7 +195,7 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
-            
+
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -240,6 +241,29 @@ public class Game extends Canvas implements Runnable {
             }
             count_ticks++;
             if (introStory == detailStory.length) {
+                state = State.WORLD;
+                introStory = 0;
+                count_ticks = 0;
+            }
+        } else if (state == State.ENDING) {
+            curStory = ((String) story.get(29)).split(";");
+            detailStory = curStory[3].split("@");
+            g.setColor(new Color(0, 0, 0));
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.drawImage(intro, (int) 0, (int) 0, null);
+            g2d.setColor(Color.BLACK);
+            g2d.setFont(customFont);
+            int luar = 0;
+            for (int i = 0; i < detailStory.length; i++) {
+                g2d.drawString(detailStory[i], story_x, (story_y + luar * 30 + 500) - minus * 1 / 2);
+                luar++;
+            }
+            if (count_ticks == 50) {
+                count_ticks = 0;
+                minus++;
+            }
+            count_ticks++;
+            if (minus > 2550) {
                 state = State.WORLD;
                 introStory = 0;
                 count_ticks = 0;
@@ -354,6 +378,7 @@ public class Game extends Canvas implements Runnable {
         detailStory = curStory[3].split(",:,");
 //        state = State.INTRO;
         state = State.WORLD;
+        //state = State.ENDING;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
