@@ -194,6 +194,7 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
+            
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());

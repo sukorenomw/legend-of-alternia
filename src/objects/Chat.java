@@ -68,6 +68,25 @@ public class Chat extends GameObject {
         } else {
             tempGame.isStory = false;
         }
+        if (Game.state == State.GAME_PLAY) {
+            if (Game.getGameInstance().handlerDungeon.player.isTalk && !Game.getGameInstance().isStory) {
+                Graphics2D g2d2 = (Graphics2D) g;
+                g2d2.setColor(Color.BLACK);
+                g2d2.drawImage(Game.getGameInstance().dialogBox, (int) Game.getGameInstance().camera.getX() * -1 + 96, (int) Game.getGameInstance().camera.getY() * -1 + 480, null);
+                g2d2.drawString(Game.getGameInstance().name, (int) Game.getGameInstance().camera.getX() * -1 + 120, (int) Game.getGameInstance().camera.getY() * -1 + 500);
+                if (Game.getGameInstance().words.contains("@")) {
+                    g2d2.setColor(Color.BLACK);
+                    String words1[] = Game.getGameInstance().words.split("@");
+                    for (int i = 0; i < words1.length; i++) {
+                        g2d2.setColor(Color.BLACK);
+                        g2d2.drawString(words1[i], (int) Game.getGameInstance().camera.getX() * -1 + 120, (int) Game.getGameInstance().camera.getY() * -1 + 530 + i * 20);
+                    }
+                } else {
+                    g2d2.setColor(Color.BLACK);
+                    g2d2.drawString(Game.getGameInstance().words, (int) Game.getGameInstance().camera.getX() * -1 + 120, (int) Game.getGameInstance().camera.getY() * -1 + 530);
+                }
+            }
+        }
 
     }
 

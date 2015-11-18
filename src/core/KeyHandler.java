@@ -75,7 +75,7 @@ public class KeyHandler extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         handler.removeKey(key);
-        if (state.WORLD == Game.state) {
+        if (state.WORLD == Game.state || state.GAME_PLAY == Game.state) {
             Game.getGameInstance().isPressed = false;
         }
 

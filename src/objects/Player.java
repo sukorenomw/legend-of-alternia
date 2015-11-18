@@ -186,7 +186,7 @@ public class Player extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             Game tempGame = Game.getGameInstance();
-            if (Game.state.WORLD == state.WORLD && ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
+            if ((Game.state.WORLD == state.WORLD || Game.state.GAME_PLAY == State.GAME_PLAY )&& ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
@@ -459,7 +459,7 @@ public class Player extends GameObject {
                         }
                         isTalk = true;
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC, "abraham"));
 
                     }
                 }
