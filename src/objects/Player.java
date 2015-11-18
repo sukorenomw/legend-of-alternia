@@ -389,7 +389,6 @@ public class Player extends GameObject {
                 }
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     tempObject.setDying(true);
-                    handler.removeObject(tempObject);
                 }
             } else if (tempObject.getId() == ObjectId.Dungeon) {
                 if (getBounds(10).intersects(tempObject.getBounds())) {
