@@ -15,7 +15,7 @@ public class Monster extends GameObject {
 
     private float width, height;
     Texture texture = Game.getInstance();
-    private Animation walk, backward;
+    private Animation walk, backward, die_left, die_right;
     private boolean walking = true;
     private int static_x;
     private int static_y;
@@ -72,13 +72,37 @@ public class Monster extends GameObject {
                     texture.monster[34],
                     texture.monster[35]);
             velY = -2;
-        }
+        } else if (tipe == 2) {
+            walk = new Animation(5,
+                    texture.monster[36],
+                    texture.monster[37],
+                    texture.monster[38],
+                    texture.monster[39],
+                    texture.monster[40]);
+            backward = new Animation(5,
+                    texture.monster[41],
+                    texture.monster[42],
+                    texture.monster[43],
+                    texture.monster[44],
+                    texture.monster[45]);
+            die_right = new Animation(5,
+                    texture.monster[50],
+                    texture.monster[51],
+                    texture.monster[52],
+                    texture.monster[53]);
 
+            die_left = new Animation(5,
+                    texture.monster[46],
+                    texture.monster[47],
+                    texture.monster[48],
+                    texture.monster[49]);
+            velX = -2;
+        }
     }
 
     @Override
     public void tick(LinkedList<GameObject> objects) {
-        if (this.tipe == 0) {
+        if ((this.tipe == 0 || this.tipe == 2) && !dying) {
             x += velX;
             if (x < static_x - 100) {
                 velX = +2;
@@ -107,15 +131,25 @@ public class Monster extends GameObject {
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.WHITE);
-        g2d.drawLine((int) (static_x + 44), (int) static_y - 400, (int) (static_x + 44), (int) (y+30));
+        if (this.tipe == 1) {
+            g2d.drawLine((int) (static_x + 44), (int) static_y - 400, (int) (static_x + 44), (int) (y + 30));
+        }
         if (!dying) {
             if (walking) {
-                walk.drawAnimation(g, (int) x, (int) y - 13);
+                walk.drawAnimation(g, (int) x, (int) y);
             } else {
-                backward.drawAnimation(g, (int) x, (int) y - 13);
+                backward.drawAnimation(g, (int) x, (int) y);
             }
+        } else {
+            if (this.tipe == 2) {
+                if (walking) {
+                    die_left.drawAnimation(g, (int) x, (int) y);
+                } else {
+                    die_right.drawAnimation(g, (int) x, (int) y);
+                }
+            }
+            Game.getGameInstance().handlerDungeon.removeObject(this);
         }
-//        g2d.draw(getBounds());
     }
 
     @Override

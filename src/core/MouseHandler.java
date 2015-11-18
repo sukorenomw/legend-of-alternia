@@ -26,7 +26,7 @@ public class MouseHandler extends MouseAdapter{
             } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
                 System.exit(0);
             } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
-                Game.getGameInstance().loadGame(1);
+                Game.getGameInstance().loadGame(3);
             }else if (Game.getGameInstance().mainmenu.bOptions.isHover() && state == Game.state.MAIN_MENU){
                 Game.getGameInstance().loadGames();
             } 

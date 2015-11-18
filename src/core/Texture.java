@@ -7,13 +7,13 @@ import objects.Monster;
 
 public class Texture {
 
-    private SpriteSheet bS, pS, gS, pAS, mS, mS2, vS, hS, tS, npcS, houseS, fS, miscS, signS,b1S,b2S,b3S,b4S,attS;
+    private SpriteSheet bS, pS, gS, pAS, mS, mS2, mS3, vS, hS, tS, npcS, houseS, fS, miscS, signS, b1S, b2S, b3S, b4S, attS;
     private BufferedImage blockSheet = null;
     private BufferedImage playerSheet = null;
     private BufferedImage groundSheet = null;
     private BufferedImage villageSheet = null;
     private BufferedImage playerAttackSheet = null;
-    private BufferedImage monsterSheet, monsterSheet2 = null;
+    private BufferedImage monsterSheet, monsterSheet2, monsterSheet3 = null;
     private BufferedImage heartSheet = null;
     private BufferedImage treeImage = null;
     private BufferedImage NPCSheet = null;
@@ -29,14 +29,14 @@ public class Texture {
     public BufferedImage[] block = new BufferedImage[13];
     public BufferedImage[] ground = new BufferedImage[47];
     public BufferedImage[] player = new BufferedImage[60];
-    public BufferedImage[] monster = new BufferedImage[37];
+    public BufferedImage[] monster = new BufferedImage[54];
     public BufferedImage[] heart = new BufferedImage[5];
     public BufferedImage[] tree = new BufferedImage[2];
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage[] misc = new BufferedImage[6];
     public BufferedImage[] boss = new BufferedImage[10];
-     public BufferedImage[] attack = new BufferedImage[20];
+    public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
 
     public Texture() {
@@ -47,6 +47,7 @@ public class Texture {
             playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
             monsterSheet2 = loader.load("/assets/images/monster/spider03.png");
+            monsterSheet3 = loader.load("/assets/images/monster/wolf.png");
             villageSheet = loader.load("/assets/images/villages/base-terain.png");
             heartSheet = loader.load("/assets/images/dungeon/misc/heart.png");
             treeImage = loader.load("/assets/images/villages/tree.png");
@@ -69,6 +70,7 @@ public class Texture {
         pAS = new SpriteSheet(playerAttackSheet);
         mS = new SpriteSheet(monsterSheet);
         mS2 = new SpriteSheet(monsterSheet2);
+        mS3 = new SpriteSheet(monsterSheet3);
         vS = new SpriteSheet(villageSheet);
         tS = new SpriteSheet(treeImage);
         npcS = new SpriteSheet(NPCSheet);
@@ -76,7 +78,7 @@ public class Texture {
         fS = new SpriteSheet(fountain);
         miscS = new SpriteSheet(miscSheet);
         signS = new SpriteSheet(signSheet);
-         b1S = new SpriteSheet(bossSheet1);
+        b1S = new SpriteSheet(bossSheet1);
         b2S = new SpriteSheet(bossSheet2);
         b3S = new SpriteSheet(bossSheet3);
         b4S = new SpriteSheet(bossSheet4);
@@ -111,8 +113,7 @@ public class Texture {
         misc[3] = miscS.ImageScale(miscS.grabImage2(2, 2, 64, 64), 1.2);
         misc[4] = signS.ImageScale(signS.grabImage2(2, 1, 32, 32), 1.5);
         misc[5] = signS.ImageScale(signS.grabImage2(1, 2, 32, 32), 1.5);
-        
-        
+
         NPC[0] = npcS.grabImage(1, 1, (int) 40, (int) 56);
         NPC[1] = npcS.grabImage(2, 1, (int) 40, (int) 56);
         NPC[2] = npcS.grabImage(3, 1, (int) 40, (int) 56);
@@ -267,7 +268,7 @@ public class Texture {
         player[57] = pS.grabImage(5, 4, 32, 49);
         player[58] = pS.grabImage(6, 4, 32, 49);
         player[59] = pS.grabImage(4, 7, 32, 49);
-        
+
         //terrex
         monster[0] = mS.grabImage(1, 1, 96, 80);
         monster[1] = mS.grabImage(2, 1, 96, 80);
@@ -285,7 +286,7 @@ public class Texture {
         monster[13] = mS.grabImage(6, 2, 96, 80);
         monster[14] = mS.grabImage(7, 2, 96, 80);
         monster[15] = mS.grabImage(8, 2, 96, 80);
-        
+
         //spider
         monster[16] = mS2.grabImage(1, 1, 64, 64);
         monster[17] = mS2.grabImage(2, 1, 64, 64);
@@ -308,33 +309,53 @@ public class Texture {
         monster[34] = mS2.grabImage(9, 3, 64, 64);
         monster[35] = mS2.grabImage(10, 3, 64, 64);
         
-        
-        boss[0] = b1S.grabImage(1,2, 56,71);
-        boss[1] = b2S.grabImage(1,1, 64,64);
-        boss[2] = b3S.grabImage(1,1, 64,96);
-        boss[3] = b4S.grabImage(1,1, 64,64);
+        //wolf
+        monster[36] = mS3.grabImage(1, 1, 64, 32);
+        monster[37] = mS3.grabImage(2, 1, 64, 32);
+        monster[38] = mS3.grabImage(3, 1, 64, 32);
+        monster[39] = mS3.grabImage(4, 1, 64, 32);
+        monster[40] = mS3.grabImage(5, 1, 64, 32);
+        monster[41] = mS3.grabImage(1, 4, 64, 32);
+        monster[42] = mS3.grabImage(2, 4, 64, 32);
+        monster[43] = mS3.grabImage(3, 4, 64, 32);
+        monster[44] = mS3.grabImage(4, 4, 64, 32);
+        monster[45] = mS3.grabImage(5, 4, 64, 32);
+        //wolf die left
+        monster[46] = mS3.grabImage(1, 3, 64, 32);
+        monster[47] = mS3.grabImage(2, 3, 64, 32);
+        monster[48] = mS3.grabImage(3, 3, 64, 32);
+        monster[49] = mS3.grabImage(4, 3, 64, 32);
+        //wolf die right
+        monster[50] = mS3.grabImage(2, 6, 64, 32);
+        monster[51] = mS3.grabImage(3, 6, 64, 32);
+        monster[52] = mS3.grabImage(4, 6, 64, 32);
+        monster[53] = mS3.grabImage(5, 6, 64, 32);
+
+        boss[0] = b1S.grabImage(1, 2, 56, 71);
+        boss[1] = b2S.grabImage(1, 1, 64, 64);
+        boss[2] = b3S.grabImage(1, 1, 64, 96);
+        boss[3] = b4S.grabImage(1, 1, 64, 64);
         boss[4] = b3S.grabImage(2, 1, 64, 64);
         boss[5] = b3S.grabImage(3, 1, 64, 64);
         boss[6] = b3S.grabImage(4, 1, 64, 64);
         boss[7] = b4S.grabImage(1, 2, 64, 64);
         boss[8] = b4S.grabImage(2, 2, 64, 64);
-        
-        
-        attack[0] = attS.grabImage(6, 2, 50,50);
-        attack[1] = attS.grabImage(6, 8, 50,50);
-        attack[2] = attS.grabImage(4, 3, 50,50);
-        attack[3] = attS.grabImage(1, 4, 50,50);
-        attack[4] = attS.grabImage(4, 3, 50,50);
-        attack[7] = attS.grabImage(5, 3, 50,50);
-        attack[8] = attS.grabImage(6, 3, 50,50);
-      
-        attack[10] = attS.grabImage(2, 4, 50,50);
-        attack[11] = attS.grabImage(3, 4, 50,50);
-        attack[12] = attS.grabImage(4, 4, 50,50);
-        attack[13] = attS.grabImage(5, 4, 50,50);
-        attack[14] = attS.grabImage(6, 4, 50,50);
-        attack[15] = attS.grabImage(4, 8, 50,50);
-        attack[16] = attS.grabImage(5, 8, 50,50);
-       
+
+        attack[0] = attS.grabImage(6, 2, 50, 50);
+        attack[1] = attS.grabImage(6, 8, 50, 50);
+        attack[2] = attS.grabImage(4, 3, 50, 50);
+        attack[3] = attS.grabImage(1, 4, 50, 50);
+        attack[4] = attS.grabImage(4, 3, 50, 50);
+        attack[7] = attS.grabImage(5, 3, 50, 50);
+        attack[8] = attS.grabImage(6, 3, 50, 50);
+
+        attack[10] = attS.grabImage(2, 4, 50, 50);
+        attack[11] = attS.grabImage(3, 4, 50, 50);
+        attack[12] = attS.grabImage(4, 4, 50, 50);
+        attack[13] = attS.grabImage(5, 4, 50, 50);
+        attack[14] = attS.grabImage(6, 4, 50, 50);
+        attack[15] = attS.grabImage(4, 8, 50, 50);
+        attack[16] = attS.grabImage(5, 8, 50, 50);
+
     }
 }

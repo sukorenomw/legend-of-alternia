@@ -254,7 +254,7 @@ public class Game extends Canvas implements Runnable {
                 count_ticks = 0;
             }
         } else if (state == State.ENDING) {
-            curStory = ((String) story.get(29)).split(";");
+            curStory = ((String) story.get(30)).split(";");
             detailStory = curStory[3].split("@");
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -343,6 +343,9 @@ public class Game extends Canvas implements Runnable {
                 if (red == 0 && green == 0 && blue == 254) {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 0, ObjectId.Monster));
                 }
+                 if (red == 0 && green == 0 && blue == 253) {
+                    handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 64, 32, 2, ObjectId.Monster));
+                }
 //                if (red == 0 && green == 0 && blue == 255) {
 //                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 88,4000,2, ObjectId.Boss));
 //                }
@@ -365,7 +368,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
     }
 
