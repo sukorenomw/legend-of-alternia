@@ -11,7 +11,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Game;
 
 public class Player extends GameObject {
@@ -154,11 +157,11 @@ public class Player extends GameObject {
                 dying = true;
             }
 
-            if (kebalCount >= 150 && kebal) {
+            if (kebalCount >= 300 && kebal) {
                 kebal = false;
                 kebalCount = 0;
             }
-            if (kebalCount <= 150) {
+            if (kebalCount <= 300) {
                 kebalCount++;
             }
 
@@ -182,10 +185,14 @@ public class Player extends GameObject {
         dyingAnimation.runAnimation();
         kebalAnimationLeft.runAnimation();
         kebalAnimationRight.runAnimation();
-        collision(objects);
+        try {
+            collision(objects);
+        } catch (IOException ex) {
+            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void collision(LinkedList<GameObject> objects) {
+    public void collision(LinkedList<GameObject> objects) throws IOException {
 
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);

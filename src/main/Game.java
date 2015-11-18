@@ -451,7 +451,7 @@ public class Game extends Canvas implements Runnable {
         handlerDungeon = new Handler();
         mainmenu.musicHandler.stop();
         background = imageLoader.load("/assets/images/dungeon/bg" + no + ".jpg");
-        musicHandler.load("assets/sounds/dun-1.mp3");
+        musicHandler.load("assets/sounds/dun-" + no + ".mp3");
         musicHandler.play();
         keyHandlerDungeon = new KeyHandler(handlerDungeon, musicHandler);
         addKeyListener(keyHandlerDungeon);
