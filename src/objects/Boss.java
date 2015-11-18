@@ -58,9 +58,7 @@ public class Boss extends GameObject {
         boss4 = new Animation(15,
             texture.boss[3],
             texture.boss[7],
-            texture.boss[3],
             texture.boss[8],
-            texture.boss[3],
             texture.boss[3]);
     }
     public int getHealth() {
