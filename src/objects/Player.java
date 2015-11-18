@@ -37,7 +37,7 @@ public class Player extends GameObject {
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
         this.handler = handler;
-
+        this.kebal = false;
         walk = new Animation(2,
                 texture.player[8],
                 texture.player[9],
