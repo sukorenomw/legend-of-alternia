@@ -32,7 +32,7 @@ public class Player extends GameObject {
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
     private Heart[] heart;
-    public int bosshp = 500;
+    public int bosshp = 5000;
 
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);

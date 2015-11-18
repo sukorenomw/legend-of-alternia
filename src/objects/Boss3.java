@@ -54,7 +54,7 @@ public class Boss3 extends GameObject {
 
         if (x - player.getX() <= 500) {
 
-            if (count % 350 == 0) {
+            if (count % 280 == 0) {
                 attack = true;
             }
             if (count % 500 == 0) {

@@ -54,10 +54,10 @@ public class Boss2 extends GameObject {
 
         if (x - player.getX() <= 500) {
 
-            if (count % 380 == 0) {
+            if (count % 290 == 0) {
                 attack = true;
             }
-            if (count % 600 == 0) {
+            if (count % 540 == 0) {
                 attack2 = true;
             }
 
