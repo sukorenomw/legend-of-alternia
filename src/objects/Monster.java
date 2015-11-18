@@ -29,6 +29,9 @@ public class Monster extends GameObject {
         static_x = (int) x;
         static_y = (int) y;
         if (tipe == 0) {
+            this.y = this.y - 12;
+        }
+        if (tipe == 0) {
             walk = new Animation(5,
                     texture.monster[0],
                     texture.monster[1],
@@ -135,6 +138,7 @@ public class Monster extends GameObject {
             g2d.drawLine((int) (static_x + 44), (int) static_y - 400, (int) (static_x + 44), (int) (y + 30));
         }
         if (!dying) {
+
             if (walking) {
                 walk.drawAnimation(g, (int) x, (int) y);
             } else {
