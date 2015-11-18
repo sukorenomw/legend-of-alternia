@@ -335,12 +335,13 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));
                 }
 
-                if (red == 64 && green == 0 && blue == 128) {
-                    handlerDungeon.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, handlerDungeon, ObjectId.Player);
+                if (red == 123 && green == 123 && blue == 123) {
+                    handlerDungeon.player = new Player(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, handlerDungeon, ObjectId.Player);
                 }
 
             }
         }
+        state = State.GAME_PLAY;
     }
 
     public static Texture getInstance() {
@@ -426,8 +427,6 @@ public class Game extends Canvas implements Runnable {
         state = State.LOADING;
         loadImageLevel(level, no);
         handlerDungeon.chat = new Chat(1);
-        state = State.GAME_PLAY;
-
     }
 
     public void save() {

@@ -33,9 +33,11 @@ public class Player extends GameObject {
     private int kebalCount = 0;
     private LinkedList<GameObject> check;
     private Heart[] heart;
+    private boolean freeze;
 
     public Player(float x, float y, Handler handler, ObjectId id) {
         super(x, y, id);
+        this.freeze = true;
         this.handler = handler;
         this.kebal = false;
         this.health = 300;
@@ -147,6 +149,7 @@ public class Player extends GameObject {
             }
         }
         if (state.GAME_PLAY == Game.state) {
+            System.out.println("falling : "+falling+" Y: "+y);
             if (health <= 0) {
                 dying = true;
             }
