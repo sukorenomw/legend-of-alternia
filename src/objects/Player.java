@@ -41,6 +41,7 @@ public class Player extends GameObject {
         this.handler = handler;
         this.kebal = false;
         this.health = 300;
+        this.falling = false;
         walk = new Animation(2,
                 texture.player[8],
                 texture.player[9],
@@ -149,7 +150,6 @@ public class Player extends GameObject {
             }
         }
         if (state.GAME_PLAY == Game.state) {
-            System.out.println("falling : "+falling+" Y: "+y);
             if (health <= 0) {
                 dying = true;
             }
@@ -436,8 +436,6 @@ public class Player extends GameObject {
                     velY = 0;
                     falling = false;
                     jumping = false;
-                } else {
-                    falling = true;
                 }
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
                     x = tempObject.getX() - 72;
