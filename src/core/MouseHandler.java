@@ -2,6 +2,9 @@ package core;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Game;
 import static main.Game.state;
 
@@ -26,7 +29,11 @@ public class MouseHandler extends MouseAdapter{
             } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
                 System.exit(0);
             } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
-                Game.getGameInstance().loadGame(2);
+                try {
+                    Game.getGameInstance().loadGame(3);
+                } catch (IOException ex) {
+                    Logger.getLogger(MouseHandler.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else if (Game.getGameInstance().mainmenu.bOptions.isHover() && state == Game.state.MAIN_MENU){
                 Game.getGameInstance().loadGames();
             } 
