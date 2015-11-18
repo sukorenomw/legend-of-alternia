@@ -150,24 +150,30 @@ public class Boss extends GameObject {
     public void render(Graphics g) {
         if (tipe == 0 || tipe == 1) {
             g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
+            g.drawString("Boss = ", (int)x-200,(int)y-230);
+            g.fillRoundRect((int)x-200, (int)y-200, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 2) {
             boss3.drawAnimation(g, (int) x, (int) y);
+            g.drawString("Boss", (int)x-300,(int)y-330);
+            g.fillRoundRect((int)x-300, (int)y-300, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 3) {
             boss4.drawAnimation(g, (int) x, (int) y);
+            g.drawString("Boss", (int)x-300,(int)y-330);
+            g.fillRoundRect((int)x-300, (int)y-300, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         }
-        g.fillRoundRect((int)x-200, (int)y+200, getHealth()/25, 20, 8, 8);
+        
         Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
