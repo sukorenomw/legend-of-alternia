@@ -167,7 +167,7 @@ public class Boss extends GameObject {
                 handler.removeObject(this);
             }
         }
-        g.fillRoundRect((int)x-200, (int)y+150, getHealth()/25, 20, 8, 8);
+        g.fillRoundRect((int)x-200, (int)y+200, getHealth()/25, 20, 8, 8);
         Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
