@@ -149,6 +149,7 @@ public class Player extends GameObject {
             if (health <= 0) {
                 dying = true;
             }
+            
             if (kebalCount >= 150 && kebal) {
                 kebal = false;
                 kebalCount = 0;
@@ -466,10 +467,10 @@ public class Player extends GameObject {
                     x = tempObject.getX() + 72;
                 }
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                    if (bosshp !=0) {
+                    if (bosshp >0) {
                         bosshp = bosshp - 25;
                     } 
-                    if(bosshp == 0){
+                    if(bosshp <= 0){
                         tempObject.setDying(true);
                         handler.removeObject(tempObject);
                         handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
@@ -495,10 +496,10 @@ public class Player extends GameObject {
                         x = tempObject.getX() + 72;
                     }
                     if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp !=0) {
+                        if (bosshp >0) {
                             bosshp = bosshp - 25;
                         } 
-                        if(bosshp == 0){
+                        if(bosshp <= 0){
                             tempObject.setDying(true);
                             handler.removeObject(tempObject);
                             handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
@@ -524,10 +525,10 @@ public class Player extends GameObject {
                         x = tempObject.getX() + 72;
                     }
                     if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp !=0) {
+                        if (bosshp >0) {
                             bosshp = bosshp - 25;
                         } 
-                        if(bosshp == 0){
+                        if(bosshp <= 0){
                             tempObject.setDying(true);
                             handler.removeObject(tempObject);
                             handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
@@ -553,10 +554,10 @@ public class Player extends GameObject {
                         x = tempObject.getX() + 72;
                     }
                     if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
-                        if (bosshp !=0) {
+                        if (bosshp >0) {
                             bosshp = bosshp - 25;
                         } 
-                        if(bosshp == 0) {
+                        if(bosshp <= 0) {
                             tempObject.setDying(true);
                             handler.removeObject(tempObject);
                             handler.addObject(new NPC(tempObject.getX(), tempObject.getY()+37, 5, ObjectId.NPC));
