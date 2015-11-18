@@ -446,6 +446,7 @@ public class Player extends GameObject {
                         ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
                         System.out.println("health boss: "+((Boss) tempObject).getHealth());
                     } else {
+                        tempObject.isDying();
                         tempObject.setDying(true);
                         handler.removeObject(tempObject);
                         handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));

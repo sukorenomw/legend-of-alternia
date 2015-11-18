@@ -35,7 +35,6 @@ public class Boss extends GameObject {
     private Player player;
     private Attack atk;
     private int health;
-    Graphics g1;
     float temp = x - 56;
     int count = 0;
     private Handler handler;
@@ -49,6 +48,9 @@ public class Boss extends GameObject {
         this.tipe = tipe;
         dying = false;
         velX = -10;
+//        for (int i = 0; i < health/25; i++) {
+//            new Rectangle((int)x-1000,(int)y+250,(int)50,(int)50));
+//        }
     }
 
     public int getHealth() {
@@ -63,6 +65,7 @@ public class Boss extends GameObject {
     public void tick(LinkedList<GameObject> objects) {
         this.player = Game.getGameInstance().handlerDungeon.player;
         count++;
+        if(!dying){
         if (x - player.getX() <= 500) {
             if (count % (200 - (tipe * 20)) == 0) {
                 attack = true;
@@ -72,20 +75,53 @@ public class Boss extends GameObject {
             }
 
         }
+        
 
         if (!dying) {
             if (handler.player.isDying() == false) {
-                if (attack) {
-                    handler.addObject(new Attack((int) x - 56, (int) y + 30, 80, 100, 17, ObjectId.Attack, handler));
+                if(tipe == 0){
+                    if (attack) {
+                    handler.addObject(new Attack((int) x - 56, (int) y + 30, 80, 100, 1, ObjectId.Attack, handler));
                     attack = false;
                 }
-                if (attack2) {
-                    handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 5, ObjectId.Attack, handler));
+                    if (attack2) {
+                    handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 0, ObjectId.Attack, handler));
                     attack2 = false;
+                }
+                }
+                if(tipe == 1){
+                    if (attack) {
+                    handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                    attack = false;
+                }
+                    if (attack2) {
+                    handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 2, ObjectId.Attack, handler));
+                    attack2 = false;
+                }
+                }
+                if(tipe == 2){
+                    if (attack) {
+                    handler.addObject(new Attack((int) x - 60, (int) y + 60, 80, 100, 1, ObjectId.Attack, handler));
+                    attack = false;
+                }
+                    if (attack2) {
+                    handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 3, ObjectId.Attack, handler));
+                    attack2 = false;
+                }
+                }
+                if(tipe == 3){
+                    if (attack) {
+                    handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                    attack = false;
+                }
+                    if (attack2) {
+                    handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 4, ObjectId.Attack, handler));
+                    attack2 = false;
+                }
                 }
             }
         }
-
+        }
     }
 
     @Override
