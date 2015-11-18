@@ -287,7 +287,7 @@ public class Game extends Canvas implements Runnable {
         bs.show();
     }
 
-    private void loadImageLevel(BufferedImage image, int no) {
+    private void loadImageLevel(BufferedImage image, int no) throws IOException {
         int w = image.getWidth();
         int h = image.getHeight();
 
@@ -343,7 +343,7 @@ public class Game extends Canvas implements Runnable {
                 if (red == 0 && green == 0 && blue == 254) {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 50, 117, 100, 0, ObjectId.Monster));
                 }
-                 if (red == 0 && green == 0 && blue == 253) {
+                if (red == 0 && green == 0 && blue == 253) {
                     handlerDungeon.addObject(new Monster(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT, 64, 32, 2, ObjectId.Monster));
                 }
 //                if (red == 0 && green == 0 && blue == 255) {
@@ -363,7 +363,7 @@ public class Game extends Canvas implements Runnable {
                 }
 
                 if (red == 123 && green == 123 && blue == 123) {
-                    
+
                 }
 
             }
@@ -435,7 +435,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    public void loadGame(int no) {
+    public void loadGame(int no) throws IOException {
         removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
             musicHandler.stop();

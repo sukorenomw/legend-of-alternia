@@ -2,12 +2,14 @@ package objects;
 
 import core.Animation;
 import core.GameObject;
+import core.MusicHandler;
 import core.ObjectId;
 import core.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.LinkedList;
 import main.Game;
 
@@ -16,15 +18,20 @@ public class Monster extends GameObject {
     private float width, height;
     Texture texture = Game.getInstance();
     private Animation walk, backward, die_left, die_right;
+    MusicHandler sfx;
     private boolean walking = true;
     private int static_x;
     private int static_y;
     private int tipe;
     private int count;
+    private boolean running;
 
-    public Monster(float x, float y, int width, int height, int tipe, ObjectId id) {
+    public Monster(float x, float y, int width, int height, int tipe, ObjectId id) throws IOException {
         super(x, y, id);
+        this.sfx = new MusicHandler();
+        this.sfx.load("assets/sounds/splat.mp3");
         this.tipe = tipe;
+        this.running = false;
         this.width = width;
         this.height = height;
         this.count = 0;
@@ -126,18 +133,27 @@ public class Monster extends GameObject {
                 velY = -2;
             }
         }
-        if (count >= 15) {
-            count = 0;
-            Game.getGameInstance().handlerDungeon.removeObject(this);
-        }
         if (dying) {
             count++;
+        }
+        if (count >= 12) {
+            count = 0;
+            Game.getGameInstance().handlerDungeon.removeObject(this);
         }
         backward.runAnimation();
         walk.runAnimation();
         if (this.tipe == 2) {
             die_left.runAnimation();
             die_right.runAnimation();
+        }
+    }
+
+    @Override
+    public void setDying(boolean dying) {
+        super.setDying(dying);
+        if (!running) {
+            sfx.playOnce();
+            running = true;
         }
     }
 
