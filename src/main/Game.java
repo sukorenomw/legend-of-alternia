@@ -360,11 +360,12 @@ public class Game extends Canvas implements Runnable {
                 }
 
                 if (red == 123 && green == 123 && blue == 123) {
-                    handlerDungeon.player = new Player(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, handlerDungeon, ObjectId.Player);
+                    
                 }
 
             }
         }
+        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
     }
 
@@ -391,8 +392,8 @@ public class Game extends Canvas implements Runnable {
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
 //        state = State.INTRO;
-        //state = State.WORLD;
-        state = State.ENDING;
+        state = State.WORLD;
+        //state = State.ENDING;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
 
