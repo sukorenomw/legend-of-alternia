@@ -316,7 +316,7 @@ public class Texture {
         
         attack[0] = attS.grabImage(6, 2, 50,50);
         attack[1] = attS.grabImage(6, 8, 50,50);
-        attack[2] = attS.grabImage(3, 3, 50,50);
+        attack[2] = attS.grabImage(4, 3, 50,50);
         attack[3] = attS.grabImage(1, 4, 50,50);
         attack[4] = attS.grabImage(4, 3, 50,50);
         attack[7] = attS.grabImage(5, 3, 50,50);

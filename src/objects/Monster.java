@@ -120,7 +120,7 @@ public class Monster extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int) x + 10, (int) y + 5, (int) this.width + 17, (int) this.height);
+        return new Rectangle((int) x + 10, (int) y + 5, (int) this.width, (int) this.height);
     }
 
 }
