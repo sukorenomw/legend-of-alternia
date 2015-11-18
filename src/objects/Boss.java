@@ -44,7 +44,7 @@ public class Boss extends GameObject {
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
         super(x, y, id);
         this.handler = Game.getGameInstance().handlerDungeon;
-        this.health = 300;
+        this.health = health;
         this.tipe = tipe;
         dying = false;
         velX = -10;
@@ -167,6 +167,7 @@ public class Boss extends GameObject {
                 handler.removeObject(this);
             }
         }
+        g.fillRoundRect((int)x-200, (int)y+200, getHealth()/25, 20, 8, 8);
         Graphics2D g2d = (Graphics2D) g;
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());

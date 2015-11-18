@@ -474,7 +474,7 @@ public class Player extends GameObject {
                         }
                         isTalk = true;
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC,((Boss) tempObject).getTipe() , curStory[2]));
+                        handler.addObject(new NPC(tempObject.getX(), Game.getGameInstance().handlerDungeon.player.getY()-12, 5, ObjectId.NPC,((Boss) tempObject).getTipe() , curStory[2]));
 
                     }
                 }

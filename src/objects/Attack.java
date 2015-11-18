@@ -87,7 +87,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 2:
-                if (temp < y) {
+                if (y<temp) {
                     y += velY;
                 } else {
                     remove = true;
@@ -95,7 +95,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 3:
-                if (temp < y) {
+                if (y<temp) {
                     y += velY;
                 } else {
                     remove = true;
@@ -103,7 +103,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 4:
-                if (temp < y) {
+                if (y<temp) {
                     y += velY;
                 } else {
                     remove = true;
