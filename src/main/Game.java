@@ -254,7 +254,7 @@ public class Game extends Canvas implements Runnable {
                 count_ticks = 0;
             }
         } else if (state == State.ENDING) {
-            curStory = ((String) story.get(29)).split(";");
+            curStory = ((String) story.get(30)).split(";");
             detailStory = curStory[3].split("@");
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -365,7 +365,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
     }
 
