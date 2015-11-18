@@ -194,6 +194,7 @@ public class Game extends Canvas implements Runnable {
             g2d.translate(camera.getX(), camera.getY());
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
+            
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -392,6 +393,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void loadGame(int no) {
+        storyStates = 17;
         removeKeyListener(keyHandlerDungeon);
         if (state == State.WORLD) {
             musicHandler.stop();
@@ -411,7 +413,8 @@ public class Game extends Canvas implements Runnable {
 
         state = State.LOADING;
         loadImageLevel(level, no);
-        handlerDungeon.player = new Player(192, 100, handlerDungeon, ObjectId.Player); //9000 boss
+        handlerDungeon.player = new Player(9000, 100, handlerDungeon, ObjectId.Player);
+        handlerDungeon.chat = new Chat(1);
         state = State.GAME_PLAY;
 
     }

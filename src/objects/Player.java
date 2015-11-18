@@ -186,7 +186,7 @@ public class Player extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             Game tempGame = Game.getGameInstance();
-            if (Game.state.WORLD == state.WORLD && ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
+            if ((Game.state.WORLD == state.WORLD || Game.state.GAME_PLAY == State.GAME_PLAY )&& ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
@@ -444,12 +444,23 @@ public class Player extends GameObject {
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     if (((Boss) tempObject).getHealth() > 0) {
                         ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
-                        System.out.println("health boss: "+((Boss) tempObject).getHealth());
+                        System.out.println("health boss: " + ((Boss) tempObject).getHealth());
                     } else {
                         tempObject.isDying();
                         tempObject.setDying(true);
+                        String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
+                        if (!curStory[1].equalsIgnoreCase("5")) {
+                            System.out.println(Game.getGameInstance().storyStates);
+                            if (((Boss) tempObject).getTipe() == 0 && Game.getGameInstance().storyStates <= 17) {
+                                tempGame.isStory = true;
+                                tempGame.storyStates++;
+                                tempGame.isPressed = false;
+                            }
+                        }
+                        isTalk = true;
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC));
+                        handler.addObject(new NPC(tempObject.getX(), tempObject.getY() + 37, 5, ObjectId.NPC, "abraham"));
+
                     }
                 }
 //            } else if (tempObject.getId() == ObjectId.Boss2 && !kebal) {
