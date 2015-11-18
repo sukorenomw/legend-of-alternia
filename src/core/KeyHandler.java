@@ -36,6 +36,7 @@ public class KeyHandler extends KeyAdapter {
         }
         
         if(key == KeyEvent.VK_SPACE && state.GAME_OVER == Game.state){
+            Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
             Game.getGameInstance().musicHandler.stop();
             Game.getGameInstance().mainMenu();
         }
