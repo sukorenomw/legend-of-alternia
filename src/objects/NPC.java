@@ -138,11 +138,12 @@ public class NPC extends GameObject {
     @Override
     public void tick(LinkedList<GameObject> objects) {
         if (type == 4 && Game.getGameInstance().handlerWorld.player.isTalk) {
-            Game.getGameInstance().handlerWorld.player.isTalk = false;
+            
             if (no == 1 && Game.getGameInstance().storyStates >= 11) {
                 try {
                     Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                     Game.getGameInstance().loadGame(no);
+                    Game.getGameInstance().handlerWorld.player.isTalk = false;
                 } catch (IOException ex) {
                     Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -152,6 +153,7 @@ public class NPC extends GameObject {
                     Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                     Game.getGameInstance().loadGame(no);
                     Game.getGameInstance().handlerWorld.player.setX(4200);
+                    Game.getGameInstance().handlerWorld.player.isTalk = false;
                 } catch (IOException ex) {
                     Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -160,6 +162,7 @@ public class NPC extends GameObject {
                     Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                     Game.getGameInstance().loadGame(no);
                     Game.getGameInstance().handlerWorld.player.setX(4200);
+                    Game.getGameInstance().handlerWorld.player.isTalk = false;
                 } catch (IOException ex) {
                     Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -169,6 +172,7 @@ public class NPC extends GameObject {
                     Game.getGameInstance().loadGame(no);
                     Game.getGameInstance().handlerWorld.player.setX(1333);
                     Game.getGameInstance().handlerWorld.player.setY(4141);
+                    Game.getGameInstance().handlerWorld.player.isTalk = false;
                 } catch (IOException ex) {
                     Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -180,7 +184,7 @@ public class NPC extends GameObject {
             if (Game.getGameInstance().storyStates >= 29) {
                 Game.state = State.ENDING;
             } else {
-                System.out.println(no);
+//                System.out.println(no);
                 Game.getGameInstance().musicHandler.stop();
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
                 Game.getGameInstance().addKeyListener(Game.getGameInstance().keyHandler);

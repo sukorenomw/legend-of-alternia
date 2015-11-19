@@ -340,13 +340,13 @@ public class LevelHandler {
                     Game.getGameInstance().handlerWorld.player = new Player(i * Ground.WIDTH, j * Ground.HEIGHT - 50, Game.getGameInstance().handlerWorld, ObjectId.Player);
                     Game.getGameInstance().handlerWorld.chat = new Chat(i * Ground.WIDTH, j * Ground.HEIGHT - 50, ObjectId.Heart);
                 }
-                if (red == 0 && green == 0 && blue == 0) {
+                if (red == 100 && green == 100 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 0, ObjectId.NPC, "Sage Adalia"));
                 }
-                if (red == 1 && green == 0 && blue == 0) {
+                if (red == 100 && green == 100 && blue == 10) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 1, ObjectId.NPC));
                 }
-                if (red == 2 && green == 0 && blue == 0) {
+                if (red == 102 && green == 102 && blue == 102) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 2, ObjectId.NPC));
                 }
                 if (red == 3 && green == 0 && blue == 0) {
@@ -370,10 +370,10 @@ public class LevelHandler {
                 if (red == 9 && green == 0 && blue == 0) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 9, ObjectId.NPC, "Adventurer"));
                 }
-                if (red == 10 && green == 0 && blue == 0) {
+                if (red == 100 && green == 100 && blue == 100) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 10, ObjectId.NPC, "Queen Selenia"));
                 }
-                if (red == 11 && green == 0 && blue == 0) {
+                if (red == 100 && green == 100 && blue == 110) {
                     list.add(new NPC(i * Ground.WIDTH, j * Ground.HEIGHT - 124, 11, ObjectId.NPC, "King Atalon"));
                 }
                 //4 npc jaga

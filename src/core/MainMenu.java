@@ -29,7 +29,7 @@ public class MainMenu {
         musicHandler.play();
         bNewGame = new Button (515, 402, 190, 49, "New Game");
         bLoadGame = new Button(515, 447, 190, 49, "Load Game");
-        bHowToPlay = new Button(515, 492, 190, 49, "HowToPlay");
+        bHowToPlay = new Button(515, 492, 190, 49, "Tutorial");
         bExit = new Button(515, 537, 190, 49, "Exit");
         
     }
