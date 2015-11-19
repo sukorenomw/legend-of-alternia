@@ -8,9 +8,10 @@ import java.util.logging.Logger;
 import main.Game;
 import static main.Game.state;
 
-public class MouseHandler extends MouseAdapter{
+public class MouseHandler extends MouseAdapter {
+
     Handler handler;
-    
+
     public MouseHandler(Handler handler) {
         this.handler = handler;
     }
@@ -22,21 +23,24 @@ public class MouseHandler extends MouseAdapter{
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
         if (state == Game.state.MAIN_MENU) {
             if (Game.getGameInstance().mainmenu.bNewGame.isHover() && state == Game.state.MAIN_MENU) {
                 Game.getGameInstance().playGame();
             } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
                 System.exit(0);
-            } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
+            } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU) {
+
                 try {
                     Game.getGameInstance().loadGame(4);
                 } catch (IOException ex) {
                     Logger.getLogger(MouseHandler.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else if (Game.getGameInstance().mainmenu.bHowToPlay.isHover() && state == Game.state.MAIN_MENU){
+
+//                Game.getGameInstance().loadGames();
+            } else if (Game.getGameInstance().mainmenu.bHowToPlay.isHover() && state == Game.state.MAIN_MENU) {
                 Game.getGameInstance().howToPlay();
-            } 
+            }
         } else if (state == Game.state.HOW_TO_PLAY) {
             if (Game.getGameInstance().howtoplay.bMainMenu.isHover() && state == Game.state.HOW_TO_PLAY) {
                 Game.getGameInstance().mainmenu.musicHandler.stop();
@@ -50,9 +54,9 @@ public class MouseHandler extends MouseAdapter{
             if (Game.getGameInstance().pause.bResume.isHover() && state == Game.state.PAUSE) {
                 Game.state = Game.getGameInstance().stateBefore;
             } else if (Game.getGameInstance().pause.bMainMenu.isHover() && state == Game.state.PAUSE) {
-                if(Game.getGameInstance().stateBefore == state.GAME_PLAY){
+                if (Game.getGameInstance().stateBefore == state.GAME_PLAY) {
                     Game.getGameInstance().musicHandler.stop();
-                }else if(Game.getGameInstance().stateBefore == state.WORLD){
+                } else if (Game.getGameInstance().stateBefore == state.WORLD) {
                     Game.getGameInstance().musicHandler.stop();
                 }
                 Game.getGameInstance().mainMenu();
@@ -60,8 +64,7 @@ public class MouseHandler extends MouseAdapter{
                 System.exit(0);
             }
         }
-        
+
     }
-    
-    
+
 }

@@ -50,15 +50,14 @@ public class Boss extends GameObject {
         this.maxHealth = health;
         dying = false;
         velX = -10;
-        boss3 = new Animation(15,
+        boss3 = new Animation(5,
                 texture.boss[2],
                 texture.boss[4],
-                texture.boss[2],
                 texture.boss[5],
-                texture.boss[2],
                 texture.boss[6],
-                texture.boss[2]);
-        boss4 = new Animation(15,
+                texture.boss[9],
+                texture.boss[10]);
+        boss4 = new Animation(5,
                 texture.boss[3],
                 texture.boss[7],
                 texture.boss[8],

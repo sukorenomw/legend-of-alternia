@@ -35,7 +35,7 @@ public class Texture {
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage[] misc = new BufferedImage[6];
-    public BufferedImage[] boss = new BufferedImage[10];
+    public BufferedImage[] boss = new BufferedImage[13];
     public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
     public BufferedImage bossText = null;
@@ -335,17 +335,20 @@ public class Texture {
 
         boss[0] = b1S.grabImage(1, 2, 56, 71);
         boss[1] = b2S.grabImage(1, 1, 64, 64);
-        boss[2] = b3S.grabImage(1, 1, 64, 96);
+        boss[2] = b3S.grabImage(1, 2, 64, 96);
         boss[3] = b4S.grabImage(1, 1, 64, 64);
-        boss[4] = b3S.grabImage(2, 1, 64, 64);
-        boss[5] = b3S.grabImage(3, 1, 64, 64);
-        boss[6] = b3S.grabImage(4, 1, 64, 64);
+        boss[4] = b3S.grabImage(2, 2, 64, 64);
+        boss[5] = b3S.grabImage(3, 2, 64, 64);
+        boss[6] = b3S.grabImage(4, 2, 64, 64);
         boss[7] = b4S.grabImage(1, 2, 64, 64);
         boss[8] = b4S.grabImage(2, 2, 64, 64);
+        boss[9] = b3S.grabImage(5, 2, 64, 64);
+        boss[10] = b3S.grabImage(6, 2, 64, 64);
+        
 
         attack[0] = attS.grabImage(6, 2, 50, 50);
         attack[1] = attS.grabImage(6, 8, 50, 50);
-        attack[2] = attS.grabImage(4, 3, 50, 50);
+        attack[2] = attS.grabImage(3, 3, 50, 50);
         attack[3] = attS.grabImage(1, 4, 50, 50);
         attack[4] = attS.grabImage(4, 3, 50, 50);
         attack[7] = attS.grabImage(5, 3, 50, 50);
