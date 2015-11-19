@@ -431,20 +431,34 @@ public class Player extends GameObject {
                 }
             } else if (tempObject.getId() == ObjectId.Boss && !kebal) {
                 if (getBoundsTop().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() + 72;
-                    velY = 0;
+                    y = tempObject.getY() - 70;
+                    x = tempObject.getX() - 150;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBounds().intersects(tempObject.getBounds())) {
-                    y = tempObject.getY() - 72;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
+                    y = tempObject.getY() - 90;
+                    x = tempObject.getX() - 150;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBoundsRight().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() - 72;
+                    x = tempObject.getX() - 150;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if (getBoundsLeft().intersects(tempObject.getBounds())) {
-                    x = tempObject.getX() + 72;
+                    x = tempObject.getX() + 90;
+                    if (!kebal) {
+                        health -= 25;
+                        kebal = true;
+                    }
                 }
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     if (((Boss) tempObject).getHealth() > 0) {

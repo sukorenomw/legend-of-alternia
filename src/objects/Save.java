@@ -34,7 +34,7 @@ public class Save extends GameObject {
         if (Game.getGameInstance().saves) {
             FileWriter fw = null;
             try {
-                String content = Game.getGameInstance().storyStates+";"+(int)Game.getGameInstance().handlerWorld.player.getX()+";"+(int)Game.getGameInstance().handlerWorld.player.getY();
+                String content = Game.getGameInstance().storyStates+";"+(int)Game.getGameInstance().handlerWorld.player.getX()+";"+(int)Game.getGameInstance().handlerWorld.player.getY()+";"+Game.getGameInstance().character;
                 File file = new File(getClass().getResource("/data/files/saves.loa").getPath());
                 // if file doesnt exists, then create it
                 if (!file.exists()) {

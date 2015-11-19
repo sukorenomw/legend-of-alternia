@@ -240,7 +240,7 @@ public class Game extends Canvas implements Runnable {
             g2d.setFont(customFont);
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
-            
+
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -409,7 +409,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(9000, 400, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(192, 400, handlerDungeon, ObjectId.Player); //9000 tes boss normal 192
         state = State.GAME_PLAY;
     }
 
@@ -447,16 +447,17 @@ public class Game extends Canvas implements Runnable {
             data = fileHandler.readLargerTextFileAlternate("/data/files/saves.loa");
             removeKeyListener(keyHandler);
             handlerWorld = new Handler();
-            int dat[] = {2, 2, 2};
+            String[] dat = {"2", "2", "2", "2"};
             int i = 0;
             if (!data.isEmpty()) {
                 for (Object data1 : data) {
                     for (String data2 : data1.toString().split(";")) {
-                        dat[i] = Integer.parseInt(data2.toString());
+                        dat[i] = data2.toString();
                         i++;
                     }
                 }
-                storyStates = dat[0];
+                texture.changeCharacter(dat[3]);
+                storyStates = Integer.parseInt(dat[0]);
                 isStory = false;
                 mainmenu.musicHandler.stop();
                 keyHandler = new KeyHandler(handlerWorld, musicHandler);
@@ -465,8 +466,8 @@ public class Game extends Canvas implements Runnable {
                 state = State.LOADING;
                 levelHandler = new LevelHandler();
                 musicHandler.play();
-                handlerWorld.player.setX(dat[1]);
-                handlerWorld.player.setY(dat[2]);
+                handlerWorld.player.setX(Integer.parseInt(dat[1]));
+                handlerWorld.player.setY(Integer.parseInt(dat[2]));
                 state = State.WORLD;
             } else {
             }
@@ -510,7 +511,7 @@ public class Game extends Canvas implements Runnable {
     public void howToPlay() {
         state = State.HOW_TO_PLAY;
     }
-    
+
     public void characterSelect() {
         state = State.CHARACTER_SELECT;
     }
@@ -520,10 +521,9 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void setCharacter(String character) {
+        this.character = character;
         texture.changeCharacter(character);
     }
-    
-    
 
     public void mainMenu() {
         state = State.MAIN_MENU;

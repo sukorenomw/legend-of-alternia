@@ -157,8 +157,12 @@ public class Boss extends GameObject {
                                 attack = false;
                             }
                             if (attack2) {
-                                handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 2, ObjectId.Attack, handler));
+                                handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 4, ObjectId.Attack, handler));
                                 attack2 = false;
+                            }
+                            if (attack5) {
+                                handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                                attack5 = false;
                             }
                         }
                         if (tipe == 2) {
@@ -169,6 +173,10 @@ public class Boss extends GameObject {
                             if (attack2) {
                                 handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 3, ObjectId.Attack, handler));
                                 attack2 = false;
+                            }
+                            if (attack5) {
+                                handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                                attack5 = false;
                             }
                         }
                         if (tipe == 3) {
@@ -241,6 +249,6 @@ public class Boss extends GameObject {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, (int) WIDTH - 24, (int) HEIGHT);
+        return new Rectangle((int) x, (int) y - 500, (int) WIDTH - 24, (int) HEIGHT + 600);
     }
 }
