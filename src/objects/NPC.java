@@ -167,6 +167,8 @@ public class NPC extends GameObject {
                 try {
                     Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandler);
                     Game.getGameInstance().loadGame(no);
+                    Game.getGameInstance().handlerWorld.player.setX(1333);
+                    Game.getGameInstance().handlerWorld.player.setY(4141);
                 } catch (IOException ex) {
                     Logger.getLogger(NPC.class.getName()).log(Level.SEVERE, null, ex);
                 }

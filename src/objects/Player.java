@@ -185,6 +185,7 @@ public class Player extends GameObject {
         dyingAnimation.runAnimation();
         kebalAnimationLeft.runAnimation();
         kebalAnimationRight.runAnimation();
+        System.out.println(x +" "+y);
         try {
             collision(objects);
         } catch (IOException ex) {

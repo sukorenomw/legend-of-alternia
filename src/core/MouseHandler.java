@@ -29,11 +29,7 @@ public class MouseHandler extends MouseAdapter{
             } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
                 System.exit(0);
             } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU){
-                try {
-                    Game.getGameInstance().loadGame(2);
-                } catch (IOException ex) {
-                    Logger.getLogger(MouseHandler.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Game.getGameInstance().loadGames();
             }else if (Game.getGameInstance().mainmenu.bHowToPlay.isHover() && state == Game.state.MAIN_MENU){
                 Game.getGameInstance().howToPlay();
             } 
