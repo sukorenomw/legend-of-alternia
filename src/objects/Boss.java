@@ -185,7 +185,7 @@ public class Boss extends GameObject {
                 handler.removeObject(this);
             }
         } else if (tipe == 2) {
-            boss3.drawAnimation(g, (int) x, (int) y);
+            boss3.drawAnimation(g, (int) x - 50, (int) y - 80);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);

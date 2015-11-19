@@ -404,16 +404,16 @@ public class Texture {
 
         boss[0] = b1S.grabImage(1, 2, 56, 71);
         boss[1] = b2S.grabImage(1, 1, 64, 64);
-        boss[2] = b3S.grabImage(1, 2, 62, 90);
+        boss[2] = b3S.ImageScale(b3S.grabImage(1, 2, 62, 90),1.7);
         boss[3] = b4S.ImageScale(b4S.grabImage(1, 3, 64, 64), 2.0);
 
         //boss 3 attack animation
-        boss[4] = b3S.grabImage(2, 2, 62, 90);
-        boss[5] = b3S.grabImage(3, 2, 62, 90);
-        boss[6] = b3S.grabImage(4, 2, 62, 90);
-        boss[7] = b3S.grabImage(5, 2, 62, 90);
-        boss[8] = b3S.grabImage(6, 2, 62, 90);
-        boss[9] = b3S.grabImage(7, 2, 62, 90);
+        boss[4] = b3S.ImageScale(b3S.grabImage(2, 2, 62, 90),1.7);
+        boss[5] = b3S.ImageScale(b3S.grabImage(3, 2, 62, 90),1.7);
+        boss[6] = b3S.ImageScale(b3S.grabImage(4, 2, 62, 90),1.7);
+        boss[7] = b3S.ImageScale(b3S.grabImage(5, 2, 62, 90),1.7);
+        boss[8] = b3S.ImageScale(b3S.grabImage(6, 2, 62, 90),1.7);
+        boss[9] = b3S.ImageScale(b3S.grabImage(7, 2, 62, 90),1.7);
 
         //boss 4 attack animation
         boss[10] = b4S.ImageScale(b4S.grabImage(1, 2, 64, 64), 2.0);

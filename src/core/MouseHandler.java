@@ -32,7 +32,7 @@ public class MouseHandler extends MouseAdapter {
             } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU) {
 
                 try {
-                    Game.getGameInstance().loadGame(4);
+                    Game.getGameInstance().loadGame(3);
                 } catch (IOException ex) {
                     Logger.getLogger(MouseHandler.class.getName()).log(Level.SEVERE, null, ex);
                 }
