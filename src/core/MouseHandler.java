@@ -26,7 +26,7 @@ public class MouseHandler extends MouseAdapter {
 
         if (state == Game.state.MAIN_MENU) {
             if (Game.getGameInstance().mainmenu.bNewGame.isHover() && state == Game.state.MAIN_MENU) {
-                Game.getGameInstance().playGame();
+                Game.getGameInstance().characterSelect();
             } else if (Game.getGameInstance().mainmenu.bExit.isHover() && state == Game.state.MAIN_MENU) {
                 System.exit(0);
             } else if (Game.getGameInstance().mainmenu.bLoadGame.isHover() && state == Game.state.MAIN_MENU) {
@@ -50,7 +50,18 @@ public class MouseHandler extends MouseAdapter {
             } else if (Game.getGameInstance().howtoplay.bPrev.isHover() && state == Game.state.HOW_TO_PLAY) {
                 Game.getGameInstance().howtoplay.page -= 1;
             }
-        } else {
+        }else if (state == Game.state.CHARACTER_SELECT) {
+            if (Game.getGameInstance().characterSelect.bMale.isHover() && state == Game.state.CHARACTER_SELECT) {
+                Game.getGameInstance().setChar(1);
+                Game.getGameInstance().playGame();
+            } else if (Game.getGameInstance().characterSelect.bFemale.isHover() && state == Game.state.CHARACTER_SELECT) {
+                Game.getGameInstance().setChar(2);
+                Game.getGameInstance().playGame();
+            } else if (Game.getGameInstance().characterSelect.bMainMenu.isHover() && state == Game.state.CHARACTER_SELECT) {
+                Game.getGameInstance().mainmenu.musicHandler.stop();
+                Game.getGameInstance().mainMenu();
+            }
+        }else {
             if (Game.getGameInstance().pause.bResume.isHover() && state == Game.state.PAUSE) {
                 Game.state = Game.getGameInstance().stateBefore;
             } else if (Game.getGameInstance().pause.bMainMenu.isHover() && state == Game.state.PAUSE) {

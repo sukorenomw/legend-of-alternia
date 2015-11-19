@@ -21,5 +21,6 @@ public enum State {
     SAVE, 
     GAME_OVER,
     ENDING,
-    HOW_TO_PLAY
+    HOW_TO_PLAY,
+    CHARACTER_SELECT
 }

@@ -363,4 +363,20 @@ public class Texture {
         attack[16] = attS.grabImage(5, 8, 50, 50);
 
     }
+    
+    public void setCharacter(int no) {
+        ImageLoader loader = new ImageLoader();
+        try {
+            if (no == 1) {
+                playerSheet = loader.load("/assets/images/character/male.png");
+                playerAttackSheet = loader.load("/assets/images/character/male-attack.png");
+            } else if (no == 2) {
+                playerSheet = loader.load("/assets/images/character/female.png");
+                playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
+            }
+            getTextures();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
