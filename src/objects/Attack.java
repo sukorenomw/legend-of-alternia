@@ -39,6 +39,7 @@ public class Attack extends GameObject {
     float temp;
     private int tipe = 0;
     MusicHandler sfx;
+    Thread sound;
 
     public Attack(float x, float y, int width, int height, int tipe, ObjectId id, Handler handler) {
         super(x, y, id);
@@ -49,11 +50,26 @@ public class Attack extends GameObject {
 
         switch (tipe) {
             case 0: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
+                sound = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            sfx = new MusicHandler();
+                            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        sfx.playOnce();
+                    }
+                });
+                sound.start();
+                sound.interrupt();
                 velY = 8;
                 temp = y + 431;
                 break;
             case 1:
-                Thread sound = new Thread(new Runnable() {
+                sound = new Thread(new Runnable() {
 
                     @Override
                     public void run() {
@@ -76,11 +92,7 @@ public class Attack extends GameObject {
                 temp = y + 432;
                 break;
             case 3:
-                velY = 8;
-                temp = y + 431;
-                break;
-            case 4:
-                Thread sound2 = new Thread(new Runnable() {
+                sound = new Thread(new Runnable() {
 
                     @Override
                     public void run() {
@@ -93,8 +105,27 @@ public class Attack extends GameObject {
                         sfx.playOnce();
                     }
                 });
-                sound2.start();
-                sound2.interrupt();
+                sound.start();
+                sound.interrupt();
+                velY = 8;
+                temp = y + 431;
+                break;
+            case 4:
+                sound = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            sfx = new MusicHandler();
+                            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        sfx.playOnce();
+                    }
+                });
+                sound.start();
+                sound.interrupt();
                 velY = 8;
                 temp = y + 431;
                 break;

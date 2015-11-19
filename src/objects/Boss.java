@@ -32,10 +32,7 @@ public class Boss extends GameObject {
 
     public static final float WIDTH = 100, HEIGHT = 100;
     Texture texture = Game.getInstance();
-    private boolean attack = false;
-    private boolean attack2 = false;
-    private boolean attack3 = false;
-    private boolean attack4 = false;
+    private boolean attack, attack2, attack3, attack4, attack5 = false;
     private int static_x;
     private Player player;
     private Attack atk;
@@ -45,7 +42,7 @@ public class Boss extends GameObject {
     private Handler handler;
     private GameObject tempObject;
     private int tipe = 0;
-    private Animation boss1,boss2,boss3, boss4;
+    private Animation boss1, boss2, boss3, boss4;
     private int maxHealth;
 
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
@@ -133,6 +130,7 @@ public class Boss extends GameObject {
                         }
                         if (count % (300 - (tipe * 30)) == 0) {
                             attack2 = true;
+                            attack5 = true;
                         }
                         if (count % (310 - (tipe * 30)) == 0) {
                             attack4 = true;
@@ -178,12 +176,16 @@ public class Boss extends GameObject {
                                 handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
                                 attack = false;
                             }
+                            if (attack5) {
+                                handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                                attack5 = false;
+                            }
                             if (attack2) {
                                 handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 4, ObjectId.Attack, handler));
                                 attack2 = false;
                             }
                             if (attack3) {
-                                handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                                handler.addObject(new Attack(player.getX() - 70, player.getY() - 400, 70, 70, 0, ObjectId.Attack, handler));
                                 attack3 = false;
                             }
                             if (attack4) {
@@ -200,19 +202,19 @@ public class Boss extends GameObject {
     @Override
     public void render(Graphics g) {
         if (tipe == 0) {
-            boss1.drawAnimation(g, (int)x, (int)y);
+            boss1.drawAnimation(g, (int) x, (int) y);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
-        }else if (tipe == 1) {
+        } else if (tipe == 1) {
             boss2.drawAnimation(g, (int) x, (int) y);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 2) {
-            
+
             boss3.drawAnimation(g, (int) x - 50, (int) y - 80);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
