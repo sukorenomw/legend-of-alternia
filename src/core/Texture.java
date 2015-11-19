@@ -36,7 +36,7 @@ public class Texture {
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage[] misc = new BufferedImage[6];
-    public BufferedImage[] boss = new BufferedImage[13];
+    public BufferedImage[] boss = new BufferedImage[15];
     public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
     public BufferedImage bossText = null;
@@ -404,15 +404,22 @@ public class Texture {
 
         boss[0] = b1S.grabImage(1, 2, 56, 71);
         boss[1] = b2S.grabImage(1, 1, 64, 64);
-        boss[2] = b3S.grabImage(1, 2, 64, 96);
-        boss[3] = b4S.grabImage(1, 1, 64, 64);
-        boss[4] = b3S.grabImage(2, 2, 64, 64);
-        boss[5] = b3S.grabImage(3, 2, 64, 64);
-        boss[6] = b3S.grabImage(4, 2, 64, 64);
-        boss[7] = b4S.grabImage(1, 2, 64, 64);
-        boss[8] = b4S.grabImage(2, 2, 64, 64);
-        boss[9] = b3S.grabImage(5, 2, 64, 64);
-        boss[10] = b3S.grabImage(6, 2, 64, 64);
+        boss[2] = b3S.grabImage(1, 2, 62, 90);
+        boss[3] = b4S.ImageScale(b4S.grabImage(1, 3, 64, 64), 2.0);
+
+        //boss 3 attack animation
+        boss[4] = b3S.grabImage(2, 2, 62, 90);
+        boss[5] = b3S.grabImage(3, 2, 62, 90);
+        boss[6] = b3S.grabImage(4, 2, 62, 90);
+        boss[7] = b3S.grabImage(5, 2, 62, 90);
+        boss[8] = b3S.grabImage(6, 2, 62, 90);
+        boss[9] = b3S.grabImage(7, 2, 62, 90);
+
+        //boss 4 attack animation
+        boss[10] = b4S.ImageScale(b4S.grabImage(1, 2, 64, 64), 2.0);
+        boss[11] = b4S.ImageScale(b4S.grabImage(2, 2, 64, 64), 2.0);
+        boss[12] = b4S.ImageScale(b4S.grabImage(3, 2, 64, 64), 2.0);
+        boss[13] = b4S.ImageScale(b4S.grabImage(4, 2, 64, 64), 2.0);
 
         attack[0] = attS.grabImage(6, 2, 50, 50);
         attack[1] = attS.grabImage(6, 8, 50, 50);
