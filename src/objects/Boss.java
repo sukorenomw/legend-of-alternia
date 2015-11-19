@@ -45,7 +45,7 @@ public class Boss extends GameObject {
     private Handler handler;
     private GameObject tempObject;
     private int tipe = 0;
-    private Animation boss3, boss4;
+    private Animation boss1,boss2,boss3, boss4;
     private int maxHealth;
 
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
@@ -56,6 +56,22 @@ public class Boss extends GameObject {
         this.maxHealth = health;
         dying = false;
         velX = -10;
+        boss1 = new Animation(5,
+                texture.boss[0],
+                texture.boss[14],
+                texture.boss[15],
+                texture.boss[16],
+                texture.boss[17],
+                texture.boss[18]);
+        boss2 = new Animation(5,
+                texture.boss[1],
+                texture.boss[19],
+                texture.boss[20],
+                texture.boss[21],
+                texture.boss[22],
+                texture.boss[23],
+                texture.boss[24],
+                texture.boss[25]);
         boss3 = new Animation(5,
                 texture.boss[2],
                 texture.boss[4],
@@ -90,6 +106,12 @@ public class Boss extends GameObject {
             this.player = Game.getGameInstance().handlerDungeon.player;
             count++;
             if (!Game.getGameInstance().bossInit) {
+                if (tipe == 0) {
+                    boss1.runAnimation();
+                }
+                if (tipe == 1) {
+                    boss2.runAnimation();
+                }
                 if (tipe == 2) {
                     boss3.runAnimation();
                 }
@@ -177,13 +199,20 @@ public class Boss extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        if (tipe == 0 || tipe == 1) {
-            g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
+        if (tipe == 0) {
+            boss1.drawAnimation(g, (int)x, (int)y);
+            if (dying) {
+                handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
+                handler.removeObject(this);
+            }
+        }else if (tipe == 1) {
+            boss2.drawAnimation(g, (int) x, (int) y);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 2) {
+            
             boss3.drawAnimation(g, (int) x - 50, (int) y - 80);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));

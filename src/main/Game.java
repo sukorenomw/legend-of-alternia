@@ -391,10 +391,10 @@ public class Game extends Canvas implements Runnable {
 //                    handlerDungeon.addObject(new Boss(i  * Block.WIDTH, (j-26*(no-1))  * Block.HEIGHT - 88,4000,2, ObjectId.Boss));
 //                }
                 if (red == 0 && green == 255 && blue == 0 && no == 1) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 71, 4000, 0, ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 60, 4000, 0, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 2) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 5000, 1, ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 60, 5000, 1, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 3) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 65, 6000, 2, ObjectId.Boss));
