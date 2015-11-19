@@ -36,7 +36,7 @@ public class Texture {
     public BufferedImage[] NPC = new BufferedImage[12];
     public BufferedImage[] house = new BufferedImage[3];
     public BufferedImage[] misc = new BufferedImage[6];
-    public BufferedImage[] boss = new BufferedImage[15];
+    public BufferedImage[] boss = new BufferedImage[27];
     public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
     public BufferedImage bossText = null;
@@ -58,8 +58,8 @@ public class Texture {
             fountain = loader.load("/assets/images/villages/fountain.png");
             miscSheet = loader.load("/assets/images/villages/misc.png");
             signSheet = loader.load("/assets/images/villages/signpost.png");
-            bossSheet1 = loader.load("/assets/images/monster/boss1.png");
-            bossSheet2 = loader.load("/assets/images/monster/boss2.png");
+            bossSheet1 = loader.load("/assets/images/monster/boss1-2.png");
+            bossSheet2 = loader.load("/assets/images/monster/boss2-2.png");
             bossSheet3 = loader.load("/assets/images/monster/boss3.png");
             bossSheet4 = loader.load("/assets/images/monster/boss4.png");
             atkSheet = loader.load("/assets/images/monster/attacksprite.png");
@@ -401,9 +401,23 @@ public class Texture {
         monster[51] = mS3.grabImage(3, 6, 64, 32);
         monster[52] = mS3.grabImage(4, 6, 64, 32);
         monster[53] = mS3.grabImage(5, 6, 64, 32);
-
-        boss[0] = b1S.grabImage(1, 2, 56, 71);
-        boss[1] = b2S.grabImage(1, 1, 64, 64);
+        // boss 1 anim
+        boss[0] = b1S.grabImage(1, 1, 64, 64);
+        boss[14] = b1S.grabImage(2, 1, 64, 64);
+        boss[15] = b1S.grabImage(3, 1, 64, 64);
+        boss[16] = b1S.grabImage(1, 2, 64, 64);
+        boss[17] = b1S.grabImage(2, 2, 64, 64);
+        boss[18] = b1S.grabImage(3, 2, 64, 64);
+        //boss 2 anim
+        boss[1] = b2S.grabImage(1, 1, 48, 72);
+        boss[19] = b2S.grabImage(2, 1, 48, 72);
+        boss[20] = b2S.grabImage(3, 1, 48, 72);
+        boss[21] = b2S.grabImage(4, 1, 48, 72);
+        boss[22] = b2S.grabImage(1, 2, 48, 72);
+        boss[23] = b2S.grabImage(2, 2, 48, 72);
+        boss[24] = b2S.grabImage(3, 2, 48, 72);
+        boss[25] = b2S.grabImage(4, 2, 48, 72);
+        
         boss[2] = b3S.ImageScale(b3S.grabImage(1, 2, 62, 90),1.7);
         boss[3] = b4S.ImageScale(b4S.grabImage(1, 3, 64, 64), 2.0);
 
