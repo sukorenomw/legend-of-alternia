@@ -52,10 +52,10 @@ public class MouseHandler extends MouseAdapter {
             }
         }else if (state == Game.state.CHARACTER_SELECT) {
             if (Game.getGameInstance().characterSelect.bMale.isHover() && state == Game.state.CHARACTER_SELECT) {
-                Game.getGameInstance().setChar(1);
+                Game.getGameInstance().setCharacter("male");
                 Game.getGameInstance().playGame();
             } else if (Game.getGameInstance().characterSelect.bFemale.isHover() && state == Game.state.CHARACTER_SELECT) {
-                Game.getGameInstance().setChar(2);
+                Game.getGameInstance().setCharacter("female");
                 Game.getGameInstance().playGame();
             } else if (Game.getGameInstance().characterSelect.bMainMenu.isHover() && state == Game.state.CHARACTER_SELECT) {
                 Game.getGameInstance().mainmenu.musicHandler.stop();

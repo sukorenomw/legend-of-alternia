@@ -82,6 +82,7 @@ public class Game extends Canvas implements Runnable {
     public boolean isPressed;
     public boolean bossFight;
     public boolean bossSound = false;
+    public String character = "male";
 
     public boolean isBossFight() {
         return bossFight;
@@ -512,10 +513,16 @@ public class Game extends Canvas implements Runnable {
     public void characterSelect() {
         state = State.CHARACTER_SELECT;
     }
-    
-    public void setChar(int no) {
-        texture.setCharacter(no);
+
+    public String getCharacter() {
+        return this.character;
     }
+
+    public void setCharacter(String character) {
+        texture.changeCharacter(character);
+    }
+    
+    
 
     public void mainMenu() {
         state = State.MAIN_MENU;

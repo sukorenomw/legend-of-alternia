@@ -1,6 +1,7 @@
 package core;
 
 import java.awt.image.BufferedImage;
+import main.Game;
 import objects.Block;
 import objects.Ground;
 import objects.Monster;
@@ -43,9 +44,9 @@ public class Texture {
     public Texture() {
         ImageLoader loader = new ImageLoader();
         try {
-            playerSheet = loader.load("/assets/images/character/female.png");
+            playerSheet = loader.load("/assets/images/character/" + Game.getGameInstance().getCharacter() + ".png");
+            playerAttackSheet = loader.load("/assets/images/character/" + Game.getGameInstance().getCharacter() + "-attack.png");
             groundSheet = loader.load("/assets/images/dungeon/Ground-sheet-3.png");
-            playerAttackSheet = loader.load("/assets/images/character/female-attack.png");
             monsterSheet = loader.load("/assets/images/monster/terrex.png");
             monsterSheet2 = loader.load("/assets/images/monster/spider03.png");
             monsterSheet3 = loader.load("/assets/images/monster/wolf.png");
@@ -106,6 +107,74 @@ public class Texture {
         block[11] = gS.grabImage(2, 4, (int) 32, (int) 32);
         block[12] = gS.grabImage(3, 4, (int) 32, (int) 32);
 
+    }
+
+    public void changeCharacter(String character) {
+        ImageLoader loader = new ImageLoader();
+        playerSheet = loader.load("/assets/images/character/" + character + ".png");
+        playerAttackSheet = loader.load("/assets/images/character/" + character + "-attack.png");
+        pS = new SpriteSheet(playerSheet);
+        pAS = new SpriteSheet(playerAttackSheet);
+        player[0] = pS.grabImage(1, 1, 32, 49);
+        player[1] = pS.grabImage(2, 1, 32, 49);
+        player[2] = pS.grabImage(3, 1, 32, 49);
+        player[3] = pS.grabImage(4, 1, 32, 49);
+        player[4] = pS.grabImage(5, 1, 32, 49);
+        player[5] = pS.grabImage(7, 1, 32, 49);
+        player[6] = pS.grabImage(8, 1, 32, 49);
+        player[7] = pS.grabImage(9, 1, 32, 49);
+        player[8] = pS.grabImage(1, 2, 32, 49);
+        player[9] = pS.grabImage(2, 2, 32, 49);
+        player[10] = pS.grabImage(3, 2, 32, 49);
+        player[11] = pS.grabImage(4, 2, 32, 49);
+        player[12] = pS.grabImage(5, 2, 32, 49);
+        player[13] = pS.grabImage(7, 2, 32, 49);
+        player[14] = pS.grabImage(8, 2, 32, 49);
+        player[15] = pS.grabImage(9, 2, 32, 49);
+        player[16] = pS.grabImage(1, 3, 32, 49);
+        player[17] = pS.grabImage(2, 3, 32, 49);
+        player[18] = pS.grabImage(3, 3, 32, 49);
+        player[19] = pS.grabImage(4, 3, 32, 49);
+        player[20] = pS.grabImage(5, 3, 32, 49);
+        player[21] = pS.grabImage(6, 3, 32, 49);
+        player[22] = pS.grabImage(7, 3, 32, 49);
+        player[23] = pS.grabImage(8, 3, 32, 49);
+        player[24] = pS.grabImage(9, 3, 32, 49);
+        player[25] = pS.grabImage(1, 4, 32, 49);
+        player[26] = pAS.grabImage(1, 1, 102, 49);
+        player[27] = pAS.grabImage(2, 1, 102, 49);
+        player[28] = pAS.grabImage(3, 1, 102, 49);
+        player[29] = pAS.grabImage(4, 1, 102, 49);
+        player[30] = pAS.grabImage(5, 1, 102, 49);
+        player[31] = pAS.grabImage(5, 2, 102, 49);
+        player[32] = pAS.grabImage(4, 2, 102, 49);
+        player[33] = pAS.grabImage(3, 2, 102, 49);
+        player[34] = pAS.grabImage(2, 2, 102, 49);
+        player[35] = pAS.grabImage(1, 2, 102, 49);
+        player[36] = pS.grabImage(4, 5, 32, 49);
+        player[37] = pS.grabImage(5, 5, 32, 49);
+        player[38] = pS.grabImage(6, 5, 32, 49);
+        player[39] = pS.grabImage(7, 5, 32, 49);
+        player[40] = pS.grabImage(8, 5, 32, 49);
+        player[41] = pS.grabImage(9, 5, 32, 49);
+        player[42] = pS.grabImage(1, 6, 32, 49);
+        player[43] = pS.grabImage(2, 6, 32, 49);
+        player[44] = pS.grabImage(3, 6, 32, 49);
+        player[45] = pS.grabImage(4, 6, 32, 49);
+        player[46] = pS.grabImage(5, 6, 32, 49);
+        player[47] = pS.grabImage(6, 6, 32, 49);
+        player[48] = pS.grabImage(7, 6, 32, 49);
+        player[49] = pS.grabImage(8, 6, 32, 49);
+        player[50] = pS.grabImage(9, 6, 32, 49);
+        player[51] = pS.grabImage(1, 7, 32, 49);
+        player[52] = pS.grabImage(2, 7, 32, 49);
+        player[53] = pS.grabImage(3, 7, 32, 49);
+        player[54] = pS.grabImage(2, 4, 32, 49);
+        player[55] = pS.grabImage(3, 4, 32, 49);
+        player[56] = pS.grabImage(4, 4, 32, 49);
+        player[57] = pS.grabImage(5, 4, 32, 49);
+        player[58] = pS.grabImage(6, 4, 32, 49);
+        player[59] = pS.grabImage(4, 7, 32, 49);
     }
 
     private void getTextures() {
@@ -310,7 +379,7 @@ public class Texture {
         monster[33] = mS2.grabImage(8, 3, 64, 64);
         monster[34] = mS2.grabImage(9, 3, 64, 64);
         monster[35] = mS2.grabImage(10, 3, 64, 64);
-        
+
         //wolf
         monster[36] = mS3.grabImage(1, 1, 64, 32);
         monster[37] = mS3.grabImage(2, 1, 64, 32);
@@ -344,7 +413,6 @@ public class Texture {
         boss[8] = b4S.grabImage(2, 2, 64, 64);
         boss[9] = b3S.grabImage(5, 2, 64, 64);
         boss[10] = b3S.grabImage(6, 2, 64, 64);
-        
 
         attack[0] = attS.grabImage(6, 2, 50, 50);
         attack[1] = attS.grabImage(6, 8, 50, 50);
@@ -363,7 +431,7 @@ public class Texture {
         attack[16] = attS.grabImage(5, 8, 50, 50);
 
     }
-    
+
     public void setCharacter(int no) {
         ImageLoader loader = new ImageLoader();
         try {
