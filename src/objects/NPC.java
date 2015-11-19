@@ -180,7 +180,7 @@ public class NPC extends GameObject {
             if (Game.getGameInstance().storyStates >= 29) {
                 Game.state = State.ENDING;
             } else {
-                System.out.println(no);
+//                System.out.println(no);
                 Game.getGameInstance().musicHandler.stop();
                 Game.getGameInstance().removeKeyListener(Game.getGameInstance().keyHandlerDungeon);
                 Game.getGameInstance().addKeyListener(Game.getGameInstance().keyHandler);

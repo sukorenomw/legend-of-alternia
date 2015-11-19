@@ -93,11 +93,6 @@ public class Boss extends GameObject {
                     boss4.runAnimation();
                 }
             }
-            if (dying) {
-                Game.getGameInstance().bossFight = false;
-                Game.getGameInstance().bossSound = false;
-            }
-
             if (!dying) {
                 if (x - player.getX() <= 500) {
                     if (!Game.getGameInstance().bossFight) {

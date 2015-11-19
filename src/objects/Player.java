@@ -185,7 +185,6 @@ public class Player extends GameObject {
         dyingAnimation.runAnimation();
         kebalAnimationLeft.runAnimation();
         kebalAnimationRight.runAnimation();
-        System.out.println(x +" "+y);
         try {
             collision(objects);
         } catch (IOException ex) {
@@ -198,7 +197,7 @@ public class Player extends GameObject {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             Game tempGame = Game.getGameInstance();
-            if ((Game.state.WORLD == state.WORLD || Game.state.GAME_PLAY == State.GAME_PLAY )&& ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
+            if ((Game.state.WORLD == state.WORLD || Game.state.GAME_PLAY == State.GAME_PLAY) && ObjectId.NPC == tempObject.getId() && talk && tempGame.isPressed) {
                 if (right) {
                     if (getBoundsRight(10).intersects(tempObject.getBounds())) {
                         String[] curStory = ((String) tempGame.story.get(tempGame.storyStates + 1)).split(";");
@@ -481,8 +480,12 @@ public class Player extends GameObject {
                             }
                         }
                         isTalk = true;
+                        if (Game.getGameInstance().bossFight) {
+                            Game.getGameInstance().bossFight = false;
+                            Game.getGameInstance().bossSound = false;
+                        }
                         handler.removeObject(tempObject);
-                        handler.addObject(new NPC(tempObject.getX(), Game.getGameInstance().handlerDungeon.player.getY()-12, 5, ObjectId.NPC,((Boss) tempObject).getTipe() , curStory[2]));
+                        handler.addObject(new NPC(tempObject.getX(), Game.getGameInstance().handlerDungeon.player.getY() - 12, 5, ObjectId.NPC, ((Boss) tempObject).getTipe(), curStory[2]));
 
                     }
                 }
