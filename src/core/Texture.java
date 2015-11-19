@@ -38,6 +38,7 @@ public class Texture {
     public BufferedImage[] boss = new BufferedImage[13];
     public BufferedImage[] attack = new BufferedImage[20];
     public BufferedImage fountain = null;
+    public BufferedImage bossText = null;
 
     public Texture() {
         ImageLoader loader = new ImageLoader();
@@ -61,6 +62,7 @@ public class Texture {
             bossSheet3 = loader.load("/assets/images/monster/boss3.png");
             bossSheet4 = loader.load("/assets/images/monster/boss4.png");
             atkSheet = loader.load("/assets/images/monster/attacksprite.png");
+            bossText = loader.load("/assets/images/monster/boss.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
