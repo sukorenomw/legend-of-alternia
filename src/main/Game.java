@@ -81,6 +81,7 @@ public class Game extends Canvas implements Runnable {
     public Pause pause;
     public boolean isPressed;
     public boolean bossFight;
+    public boolean bossInit = true;
     public boolean bossSound = false;
     public String character = "male";
 

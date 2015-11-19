@@ -85,14 +85,14 @@ public class Boss extends GameObject {
         if (Game.state == State.GAME_PLAY) {
             this.player = Game.getGameInstance().handlerDungeon.player;
             count++;
-
-            if (tipe == 2) {
-                boss3.runAnimation();
+            if (!Game.getGameInstance().bossInit) {
+                if (tipe == 2) {
+                    boss3.runAnimation();
+                }
+                if (tipe == 3) {
+                    boss4.runAnimation();
+                }
             }
-            if (tipe == 3) {
-                boss4.runAnimation();
-            }
-
             if (dying) {
                 Game.getGameInstance().bossFight = false;
                 Game.getGameInstance().bossSound = false;
@@ -103,17 +103,19 @@ public class Boss extends GameObject {
                     if (!Game.getGameInstance().bossFight) {
                         Game.getGameInstance().bossFight = true;
                     }
-                    if (count % (200 - (tipe * 20)) == 0) {
-                        attack = true;
-                    }
-                    if (count % (220 - (tipe * 20)) == 0) {
-                        attack3 = true;
-                    }
-                    if (count % (300 - (tipe * 30)) == 0) {
-                        attack2 = true;
-                    }
-                    if (count % (310 - (tipe * 30)) == 0) {
-                        attack4 = true;
+                    if (!Game.getGameInstance().bossInit) {
+                        if (count % (200 - (tipe * 20)) == 0) {
+                            attack = true;
+                        }
+                        if (count % (220 - (tipe * 20)) == 0) {
+                            attack3 = true;
+                        }
+                        if (count % (300 - (tipe * 30)) == 0) {
+                            attack2 = true;
+                        }
+                        if (count % (310 - (tipe * 30)) == 0) {
+                            attack4 = true;
+                        }
                     }
 
                 }
@@ -189,13 +191,13 @@ public class Boss extends GameObject {
                 handler.removeObject(this);
             }
         } else if (tipe == 3) {
-            boss4.drawAnimation(g, (int) x, (int) y);
+            boss4.drawAnimation(g, (int) x - 100, (int) y - 35 * 2);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         }
-        if (Game.getGameInstance().bossFight) {
+        if (Game.getGameInstance().bossFight && !Game.getGameInstance().bossInit) {
             g.drawImage(texture.bossText, (int) x - 300, (int) y - 330, null);
             double healtPerc = getHealth() / (maxHealth / 100);
 

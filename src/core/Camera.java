@@ -51,6 +51,7 @@ public class Camera {
             } else {
                 if (x <= -8900) {
                     x = -8900;
+                    Game.getGameInstance().bossInit = false;
                 } else {
                     x -= 3;
                 }
