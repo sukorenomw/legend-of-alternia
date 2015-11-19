@@ -8,13 +8,17 @@ package objects;
 import core.Animation;
 import core.GameObject;
 import core.Handler;
+import core.MusicHandler;
 import core.ObjectId;
 import core.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Game;
 import static objects.Boss.HEIGHT;
 import static objects.Boss.WIDTH;
@@ -34,6 +38,7 @@ public class Attack extends GameObject {
     private int width, height;
     float temp;
     private int tipe = 0;
+    MusicHandler sfx;
 
     public Attack(float x, float y, int width, int height, int tipe, ObjectId id, Handler handler) {
         super(x, y, id);
@@ -41,12 +46,20 @@ public class Attack extends GameObject {
         this.tipe = tipe;
         this.height = height;
         this.width = width;
+        try {
+            this.sfx = new MusicHandler();
+            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
+        } catch (IOException ex) {
+            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         switch (tipe) {
             case 0: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
                 velY = 8;
                 temp = y + 431;
                 break;
             case 1:
+                sfx.playOnce();
                 velX = -8;
                 temp = x - 450;
                 break;
@@ -59,10 +72,10 @@ public class Attack extends GameObject {
                 temp = y + 431;
                 break;
             case 4:
+                sfx.playOnce();
                 velY = 8;
                 temp = y + 431;
                 break;
-
         }
     }
 
@@ -87,7 +100,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 2:
-                if (y<temp) {
+                if (y < temp) {
                     y += velY;
                 } else {
                     remove = true;
@@ -95,7 +108,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 3:
-                if (y<temp) {
+                if (y < temp) {
                     y += velY;
                 } else {
                     remove = true;
@@ -103,7 +116,7 @@ public class Attack extends GameObject {
                 }
                 break;
             case 4:
-                if (y<temp) {
+                if (y < temp) {
                     y += velY;
                 } else {
                     remove = true;

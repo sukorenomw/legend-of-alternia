@@ -8,6 +8,7 @@ package objects;
 import core.Animation;
 import core.GameObject;
 import core.Handler;
+import core.MusicHandler;
 import core.ObjectId;
 import core.State;
 import core.Texture;
@@ -16,7 +17,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import objects.Attack;
 import main.Game;
 
