@@ -46,12 +46,6 @@ public class Attack extends GameObject {
         this.tipe = tipe;
         this.height = height;
         this.width = width;
-        try {
-            this.sfx = new MusicHandler();
-            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
-        } catch (IOException ex) {
-            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
         switch (tipe) {
             case 0: //benerin ininya nanti, sesuain texture nya sama tipenya, ngurut aja dari 0 - xxx
@@ -59,7 +53,21 @@ public class Attack extends GameObject {
                 temp = y + 431;
                 break;
             case 1:
-                sfx.playOnce();
+                Thread sound = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            sfx = new MusicHandler();
+                            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        sfx.playOnce();
+                    }
+                });
+                sound.start();
+                sound.interrupt();
                 velX = -8;
                 temp = x - 450;
                 break;
@@ -72,7 +80,21 @@ public class Attack extends GameObject {
                 temp = y + 431;
                 break;
             case 4:
-                sfx.playOnce();
+                Thread sound2 = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            sfx = new MusicHandler();
+                            sfx.load("assets/sounds/attack-" + tipe + ".mp3");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Attack.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        sfx.playOnce();
+                    }
+                });
+                sound2.start();
+                sound2.interrupt();
                 velY = 8;
                 temp = y + 431;
                 break;
