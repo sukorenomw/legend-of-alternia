@@ -30,6 +30,8 @@ public class Boss extends GameObject {
     Texture texture = Game.getInstance();
     private boolean attack = false;
     private boolean attack2 = false;
+    private boolean attack3 = false;
+    private boolean attack4 = false;
     private int static_x;
     private Player player;
     private Attack atk;
@@ -40,7 +42,7 @@ public class Boss extends GameObject {
     private GameObject tempObject;
     private int tipe = 0;
     private Animation boss3, boss4;
-    private int maxHealth; 
+    private int maxHealth;
 
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
         super(x, y, id);
@@ -102,8 +104,14 @@ public class Boss extends GameObject {
                     if (count % (200 - (tipe * 20)) == 0) {
                         attack = true;
                     }
+                    if (count % (220 - (tipe * 20)) == 0) {
+                        attack3 = true;
+                    }
                     if (count % (300 - (tipe * 30)) == 0) {
                         attack2 = true;
+                    }
+                    if (count % (310 - (tipe * 30)) == 0) {
+                        attack4 = true;
                     }
 
                 }
@@ -149,6 +157,14 @@ public class Boss extends GameObject {
                                 handler.addObject(new Attack(player.getX(), player.getY() - 400, 70, 70, 4, ObjectId.Attack, handler));
                                 attack2 = false;
                             }
+                            if (attack3) {
+                                handler.addObject(new Attack((int) x - 60, (int) y + 20, 80, 100, 1, ObjectId.Attack, handler));
+                                attack3 = false;
+                            }
+                            if (attack4) {
+                                handler.addObject(new Attack(player.getX() + 70, player.getY() - 400, 70, 70, 3, ObjectId.Attack, handler));
+                                attack4 = false;
+                            }
                         }
                     }
                 }
@@ -179,9 +195,9 @@ public class Boss extends GameObject {
         }
         if (Game.getGameInstance().bossFight) {
             g.drawImage(texture.bossText, (int) x - 300, (int) y - 330, null);
-            double healtPerc = getHealth()/(maxHealth/100);
-            
-            g.fillRect((int) x - 300, (int) y - 230, ((int)(healtPerc == 0?0:healtPerc+1))*2, 20);
+            double healtPerc = getHealth() / (maxHealth / 100);
+
+            g.fillRect((int) x - 300, (int) y - 230, ((int) (healtPerc == 0 ? 0 : healtPerc + 1)) * 2, 20);
         }
         Graphics2D g2d = (Graphics2D) g;
 
