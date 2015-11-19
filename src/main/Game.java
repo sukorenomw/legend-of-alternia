@@ -230,8 +230,10 @@ public class Game extends Canvas implements Runnable {
             }
             g.drawImage(background, (int) 0, (int) 0, null);
             g2d.translate(camera.getX(), camera.getY());
+            g2d.setFont(customFont);
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
+            
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -386,7 +388,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 5000, 1, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 3) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 3000, 2, ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 6000, 2, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));

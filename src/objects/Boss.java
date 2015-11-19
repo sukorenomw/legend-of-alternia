@@ -40,12 +40,14 @@ public class Boss extends GameObject {
     private GameObject tempObject;
     private int tipe = 0;
     private Animation boss3, boss4;
+    private int maxHealth; 
 
     public Boss(float x, float y, int health, int tipe, ObjectId id) {
         super(x, y, id);
         this.handler = Game.getGameInstance().handlerDungeon;
         this.health = health;
         this.tipe = tipe;
+        this.maxHealth = health;
         dying = false;
         velX = -10;
         boss3 = new Animation(15,
@@ -87,15 +89,15 @@ public class Boss extends GameObject {
             if (tipe == 3) {
                 boss4.runAnimation();
             }
-            
-            if(dying){
+
+            if (dying) {
                 Game.getGameInstance().bossFight = false;
                 Game.getGameInstance().bossSound = false;
             }
-            
+
             if (!dying) {
                 if (x - player.getX() <= 500) {
-                    if(!Game.getGameInstance().bossFight){
+                    if (!Game.getGameInstance().bossFight) {
                         Game.getGameInstance().bossFight = true;
                     }
                     if (count % (200 - (tipe * 20)) == 0) {
@@ -159,34 +161,33 @@ public class Boss extends GameObject {
     public void render(Graphics g) {
         if (tipe == 0 || tipe == 1) {
             g.drawImage(texture.boss[tipe], (int) x, (int) y, null);
-            g.drawString("Boss", (int)x-200,(int)y-230);
-            g.fillRoundRect((int)x-200, (int)y-200, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 2) {
             boss3.drawAnimation(g, (int) x, (int) y);
-            g.drawString("Boss", (int)x-300,(int)y-330);
-            g.fillRoundRect((int)x-300, (int)y-300, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         } else if (tipe == 3) {
             boss4.drawAnimation(g, (int) x, (int) y);
-            g.drawString("Boss", (int)x-300,(int)y-330);
-            g.fillRoundRect((int)x-300, (int)y-300, getHealth()/25, 20, 8, 8);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         }
-        
+        if (Game.getGameInstance().bossFight) {
+            g.drawImage(texture.bossText, (int) x - 300, (int) y - 330, null);
+            double healtPerc = getHealth()/(maxHealth/100);
+            
+            g.fillRect((int) x - 300, (int) y - 230, ((int)(healtPerc == 0?0:healtPerc+1))*2, 20);
+        }
         Graphics2D g2d = (Graphics2D) g;
+
 //        g2d.setColor(Color.red);
 //        g2d.draw(getBounds());
-
     }
 
     @Override
