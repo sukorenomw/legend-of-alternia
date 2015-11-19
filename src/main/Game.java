@@ -1,6 +1,7 @@
 package main;
 
 import core.Camera;
+import core.CharacterSelect;
 import core.FileHandler;
 import core.FontHandler;
 import core.GameObject;
@@ -74,6 +75,7 @@ public class Game extends Canvas implements Runnable {
     public boolean saves = false;
     public MainMenu mainmenu;
     public HowToPlay howtoplay;
+    public CharacterSelect characterSelect;
     private MouseAdapter mouseHandler, mouseHandlerDungeon;
     private ImageLoader imageLoader;
     public Pause pause;
@@ -102,6 +104,7 @@ public class Game extends Canvas implements Runnable {
             pause = new Pause();
             mainmenu = new MainMenu();
             howtoplay = new HowToPlay();
+            characterSelect = new CharacterSelect();
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -197,6 +200,8 @@ public class Game extends Canvas implements Runnable {
             }
         } else if (state == state.HOW_TO_PLAY) {
             howtoplay.tick();
+        } else if (state == state.CHARACTER_SELECT) {
+            characterSelect.tick();
         }
     }
 
@@ -312,6 +317,8 @@ public class Game extends Canvas implements Runnable {
             g.drawImage(load, 0, 0, null);
         } else if (state == state.HOW_TO_PLAY) {
             howtoplay.render(g);
+        } else if (state == state.CHARACTER_SELECT) {
+            characterSelect.render(g);
         }
         g.dispose();
         bs.show();
@@ -498,6 +505,14 @@ public class Game extends Canvas implements Runnable {
 
     public void howToPlay() {
         state = State.HOW_TO_PLAY;
+    }
+    
+    public void characterSelect() {
+        state = State.CHARACTER_SELECT;
+    }
+    
+    public void setChar(int no) {
+        texture.setCharacter(no);
     }
 
     public void mainMenu() {
