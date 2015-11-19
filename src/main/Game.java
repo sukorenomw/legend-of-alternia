@@ -78,6 +78,16 @@ public class Game extends Canvas implements Runnable {
     private ImageLoader imageLoader;
     public Pause pause;
     public boolean isPressed;
+    public boolean bossFight;
+    public boolean bossSound = false;
+
+    public boolean isBossFight() {
+        return bossFight;
+    }
+
+    public void setBossFight(boolean bossFight) {
+        this.bossFight = bossFight;
+    }
 
     private void init() {
         state = state.LOADING;
@@ -204,11 +214,24 @@ public class Game extends Canvas implements Runnable {
             mainmenu.render(g);
             game_over = false;
         } else if (state == State.GAME_PLAY) {
+            if (!bossSound && bossFight) {
+                bossSound = true;
+                musicHandler.stop();
+                Thread sound = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        musicHandler.load("assets/sounds/boss.mp3");
+                        musicHandler.play();
+                    }
+                });
+                sound.start();
+                sound.interrupt();
+            }
             g.drawImage(background, (int) 0, (int) 0, null);
             g2d.translate(camera.getX(), camera.getY());
             handlerDungeon.render(g);
             g2d.translate(-camera.getX(), -camera.getY());
-
         } else if (state == State.WORLD) {
             g.setColor(new Color(0, 0, 0));
             g.fillRect(0, 0, getWidth(), getHeight());
@@ -363,7 +386,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 5000, 1, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 3) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 6000, 2, ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 88, 3000, 2, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 42, 6500, 3, ObjectId.Boss));
@@ -375,7 +398,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(192, 400, handlerDungeon, ObjectId.Player);
+        handlerDungeon.player = new Player(9000, 400, handlerDungeon, ObjectId.Player);
         state = State.GAME_PLAY;
     }
 
@@ -472,7 +495,7 @@ public class Game extends Canvas implements Runnable {
     public void pause() {
         state = State.PAUSE;
     }
-    
+
     public void howToPlay() {
         state = State.HOW_TO_PLAY;
     }

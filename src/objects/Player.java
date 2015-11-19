@@ -452,7 +452,7 @@ public class Player extends GameObject {
                 if ((attacking_left || attacking_right) && (getBoundsSwordRight().intersects(tempObject.getBounds()) || getBoundsSwordLeft().intersects(tempObject.getBounds()))) {
                     if (((Boss) tempObject).getHealth() > 0) {
                         ((Boss) tempObject).setHealth(((Boss) tempObject).getHealth() - 25);
-                        System.out.println("health boss: " + ((Boss) tempObject).getHealth());
+//                        System.out.println("health boss: " + ((Boss) tempObject).getHealth());
                     } else {
                         tempObject.isDying();
                         tempObject.setDying(true);

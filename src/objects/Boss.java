@@ -87,8 +87,17 @@ public class Boss extends GameObject {
             if (tipe == 3) {
                 boss4.runAnimation();
             }
+            
+            if(dying){
+                Game.getGameInstance().bossFight = false;
+                Game.getGameInstance().bossSound = false;
+            }
+            
             if (!dying) {
                 if (x - player.getX() <= 500) {
+                    if(!Game.getGameInstance().bossFight){
+                        Game.getGameInstance().bossFight = true;
+                    }
                     if (count % (200 - (tipe * 20)) == 0) {
                         attack = true;
                     }
