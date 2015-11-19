@@ -196,13 +196,13 @@ public class Boss extends GameObject {
     @Override
     public void render(Graphics g) {
         if (tipe == 0) {
-            boss1.drawAnimation(g, (int)x-50, (int)y-50);
+            boss1.drawAnimation(g, (int)x, (int)y);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
             }
         }else if (tipe == 1) {
-            boss2.drawAnimation(g, (int) x - 30, (int) y - 60);
+            boss2.drawAnimation(g, (int) x, (int) y);
             if (dying) {
                 handler.addObject(new NPC(this.getX(), this.getY() + 37, 5, ObjectId.NPC));
                 handler.removeObject(this);
