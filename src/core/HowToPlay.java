@@ -46,8 +46,11 @@ public class HowToPlay {
         Point mPos = Game.getGameInstance().getMousePosition();
         
         if (mPos != null) {
-            bPrev.checkHover(mPos);
-            bNext.checkHover(mPos);
+            if (page == 1) {
+                bNext.checkHover(mPos);
+            } else if (page == 2) {
+                bPrev.checkHover(mPos);
+            }
             bMainMenu.checkHover(mPos);
         }
     }

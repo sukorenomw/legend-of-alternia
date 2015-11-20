@@ -45,9 +45,9 @@ public class MouseHandler extends MouseAdapter {
             if (Game.getGameInstance().howtoplay.bMainMenu.isHover() && state == Game.state.HOW_TO_PLAY) {
                 Game.getGameInstance().mainmenu.musicHandler.stop();
                 Game.getGameInstance().mainMenu();
-            } else if (Game.getGameInstance().howtoplay.bNext.isHover() && state == Game.state.HOW_TO_PLAY) {
+            } else if (Game.getGameInstance().howtoplay.bNext.isHover() && state == Game.state.HOW_TO_PLAY && Game.getGameInstance().howtoplay.page == 1) {
                 Game.getGameInstance().howtoplay.page += 1;
-            } else if (Game.getGameInstance().howtoplay.bPrev.isHover() && state == Game.state.HOW_TO_PLAY) {
+            } else if (Game.getGameInstance().howtoplay.bPrev.isHover() && state == Game.state.HOW_TO_PLAY && Game.getGameInstance().howtoplay.page != 1) {
                 Game.getGameInstance().howtoplay.page -= 1;
             }
         }else if (state == Game.state.CHARACTER_SELECT) {
