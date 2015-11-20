@@ -3,7 +3,7 @@
 3;2;Soldier A;*Press E to talk* @Hey, Bangun!! Raja telah menunggu.;
 4;3;Soldier A;Heroes Bangun Cepat!;
 5;2;Soldier A;Cepat, kita harus bergerak sekarang.;
-6;2;Soldier A;Jalan lah ke Utara untuk memasuki kota, @kemudian pergilah ke tengah kota disana @terdapat istana Raja Atalon. Cepat pergi!!;
+6;2;Soldier A;Jalan lah ke Barat untuk memasuki kota, @kemudian pergilah ke tengah kota disana @terdapat istana Raja Atalon. Cepat pergi!!;
 7;5;;;
 8;2;King Atalon;Hero Niamh, carilah sage di sekitar timur Alternia.@ dia akan memberikanmu kunci dan @letak guardian pertama.;
 9;2;Queen Selenia;berhati-hatilah Hero Niamh. @May Tyr be with you.;
@@ -11,7 +11,7 @@
 11;2;Sage Adalia;OH Hero Niamh, selamat datang. @Hero Niamh Guardian pertama ada di utara dari Alternia.@Setelah berhasil menglahkannya kembalilah kemari @untuk mendapatkan arah ke guardian 2. @May Tyr be with you.;
 12;5;;;
 13;2;Eligos;Terima kasih Hero Niamh;
-14;2;Elgios;kamu telah membebaskanku dari kutukan Vajra.;
+14;2;Eligos;kamu telah membebaskanku dari kutukan Vajra.;
 15;2;Eligos;May tyr be with u;
 16;5;;;
 17;2;Sage Adalia;oh!! hero Niamh kamu berhasil mengalahkan  Eligos! @Guardian 2 berada di timur laut Alternia.Sekarang pergilah. @May Tyr be with you.;
