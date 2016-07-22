@@ -303,7 +303,7 @@ public class Game extends Canvas implements Runnable {
                 g2d.drawString(detailStory[i], story_x, (story_y + luar * 30 + 500) - minus * 1 / 2);
                 luar++;
             }
-            if (count_ticks == 50) {
+            if (count_ticks == 25) {
                 count_ticks = 0;
                 minus++;
             }
@@ -400,7 +400,7 @@ public class Game extends Canvas implements Runnable {
                     handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 65, 6000, 2, ObjectId.Boss));
                 }
                 if (red == 0 && green == 255 && blue == 0 && no == 4) {
-                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 36, 6500, 3, ObjectId.Boss));
+                    handlerDungeon.addObject(new Boss(i * Block.WIDTH, (j - 26 * (no - 1)) * Block.HEIGHT - 36, 4000, 3, ObjectId.Boss));
                 }
 
                 if (red == 123 && green == 123 && blue == 123) {
@@ -409,7 +409,7 @@ public class Game extends Canvas implements Runnable {
 
             }
         }
-        handlerDungeon.player = new Player(192, 400, handlerDungeon, ObjectId.Player); //9000 tes boss normal 192
+        handlerDungeon.player = new Player(9000, 400, handlerDungeon, ObjectId.Player); //9000 tes boss normal 192
         state = State.GAME_PLAY;
     }
 
@@ -435,8 +435,8 @@ public class Game extends Canvas implements Runnable {
         musicHandler.play();
         curStory = ((String) story.get(0)).split(";");
         detailStory = curStory[3].split(",:,");
-//        state = State.INTRO;
-        state = State.WORLD;
+        state = State.INTRO;
+//        state = State.WORLD;
         //state = State.ENDING;
 //        handler.addObject(new Player(192, 500, handler, ObjectId.Player, musicHandler));
     }
